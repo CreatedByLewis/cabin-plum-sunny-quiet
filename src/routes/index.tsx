@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { Testimonials } from "@/components/testimonials";
+import { clientLogos } from "@/components/client-logos";
 import { Showcase } from "@/components/showcase/showcase";
 import { PackageCard } from "@/components/package-card";
 import { PricesNote } from "@/components/prices-note";
@@ -324,24 +325,34 @@ const steps = [
 ];
 
 function ClientStrip() {
-  const names = projects.filter((p) => p.status !== "in-progress").map((p) => p.name);
-  const row = [...names, ...names, ...names];
+  const clients = projects.filter((p) => p.status !== "in-progress" && clientLogos[p.slug]);
+  const row = [...clients, ...clients, ...clients];
   return (
-    <div className="relative z-10 border-y border-line bg-paper/40 py-5 backdrop-blur-sm">
+    <div className="relative z-10 border-y border-line bg-paper/40 py-6 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-5 sm:px-8">
         <p className="hidden shrink-0 text-[11px] tracking-[0.22em] text-muted uppercase sm:block">Built for</p>
-        <div className="marquee-mask relative flex-1 overflow-hidden">
-          <ul className="marquee flex w-max gap-12" aria-label="Clients">
-            {[...row, ...row].map((name, i) => (
-              <li
-                key={`${name}-${i}`}
-                aria-hidden={i >= names.length}
-                className="flex items-center gap-12 font-display text-xl whitespace-nowrap text-ink/70 italic"
-              >
-                {name}
-                <span className="size-1.5 rounded-full bg-signal/60" aria-hidden />
-              </li>
-            ))}
+        <div className="marquee-mask group/marquee relative flex-1 overflow-hidden">
+          <ul className="marquee flex w-max items-center gap-16 group-hover/marquee:[animation-play-state:paused] sm:gap-20" aria-label="Clients">
+            {[...row, ...row].map((project, i) => {
+              const logo = clientLogos[project.slug];
+              const hidden = i >= clients.length;
+              return (
+                <li key={`${project.slug}-${i}`} aria-hidden={hidden} className="flex items-center">
+                  <Link
+                    to="/work/$slug"
+                    params={{ slug: project.slug }}
+                    tabIndex={hidden ? -1 : undefined}
+                    aria-label={`${project.name} case study`}
+                    className="block text-ink/55 transition-colors duration-300 hover:text-ink"
+                  >
+                    <span
+                      className={`block [&>svg]:h-full [&>svg]:w-auto ${logo.height}`}
+                      dangerouslySetInnerHTML={{ __html: logo.svg }}
+                    />
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
