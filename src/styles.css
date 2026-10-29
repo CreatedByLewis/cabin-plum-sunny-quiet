@@ -1,0 +1,390 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #111114;
+  --color-ink: #f4f4f2;
+  --color-muted: #a3a3ad;
+  --color-line: #2c2c33;
+  --color-card: #1a1a1f;
+  --color-signal: #8b7cf7;
+  --color-signal-hover: #7466e4;
+  --color-on-signal: #ffffff;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --leading-display: 1.05;
+  --shadow-frame: 0 24px 48px -28px rgb(0 0 0 / 0.7);
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    color-scheme: dark;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100%;
+  }
+
+  html[data-theme="light"] {
+    --color-paper: #f3f2ef;
+    --color-ink: #16161a;
+    --color-muted: #5e5e68;
+    --color-line: #e3e1dc;
+    --color-card: #ffffff;
+    --color-signal: #6a56e8;
+    --color-signal-hover: #5746cc;
+    color-scheme: light;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-on-signal);
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-ink);
+    box-shadow: 0 0 0 1000px var(--color-card) inset;
+  }
+
+  @keyframes step-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .step-in {
+    animation: step-in 220ms ease-out;
+  }
+
+  @keyframes orb-drift-a {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(22px, -16px);
+    }
+  }
+
+  @keyframes orb-drift-b {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-20px, 14px);
+    }
+  }
+
+  @keyframes orb-drift-c {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(14px, 18px);
+    }
+  }
+
+  .orb-drift-a {
+    animation: orb-drift-a 11s ease-in-out infinite;
+  }
+
+  .orb-drift-b {
+    animation: orb-drift-b 14s ease-in-out infinite;
+  }
+
+  .orb-drift-c {
+    animation: orb-drift-c 12s ease-in-out infinite;
+  }
+
+  .calendly-shell,
+  .calendly-inline-widget,
+  .calendly-inline-widget iframe {
+    background: transparent !important;
+    border: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .calendly-inline-widget iframe {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ---------- Showcase ---------- */
+@keyframes showcase-progress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.showcase-progress {
+  animation: showcase-progress linear forwards;
+}
+
+@keyframes showcase-rise {
+  from { opacity: 0; transform: translateY(14px); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+.showcase-rise {
+  animation: showcase-rise 620ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes showcase-kenburns {
+  from { transform: scale(1.04); }
+  to { transform: scale(1); }
+}
+.showcase-kenburns {
+  animation: showcase-kenburns 1600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.showcase-tilt {
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+@keyframes showcase-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+.showcase-phone {
+  animation: showcase-float 6s ease-in-out infinite;
+  transform: translateZ(40px);
+}
+
+.showcase-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--accent) var(--fill), var(--color-line) var(--fill));
+  outline: none;
+}
+.showcase-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #fff;
+  border: 3px solid var(--accent);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.35);
+  cursor: grab;
+}
+.showcase-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #fff;
+  border: 3px solid var(--accent);
+  cursor: grab;
+}
+.showcase-range:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 4px;
+}
+
+/* ---------- Site-wide polish ---------- */
+@layer base {
+  body {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* A soft violet wash at the top of every page, and a fine grain over it all. */
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 900px;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(55% 60% at 50% -10%, color-mix(in srgb, var(--color-signal) 20%, transparent), transparent 70%),
+      radial-gradient(30% 40% at 85% 0%, rgb(94 196 216 / 0.07), transparent 70%);
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.045;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  html[data-theme="light"] body::after {
+    opacity: 0.03;
+    mix-blend-mode: multiply;
+  }
+
+  :focus-visible {
+    outline-color: var(--color-signal);
+  }
+}
+
+/* Scroll reveal: sections rise into place as they enter the viewport.
+   Pure CSS, so browsers without scroll timelines just show the content. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    main > section:not(:first-child) > div,
+    .reveal {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 38%;
+    }
+  }
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hero headline: words rise in on load. */
+@keyframes word-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.45em);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+.word-rise,
+.rise {
+  animation: word-rise 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.word-rise {
+  display: inline-block;
+}
+
+.text-shimmer {
+  background: linear-gradient(100deg, var(--color-ink) 20%, color-mix(in srgb, var(--color-signal) 70%, white) 45%, var(--color-ink) 70%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 100% 0; }
+  50% { background-position: 0% 0; }
+}
+
+/* Cards that lift a little and catch the light. */
+.lift {
+  transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 300ms, box-shadow 400ms;
+}
+@media (hover: hover) {
+  .lift:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--color-ink) 22%, transparent);
+    box-shadow: 0 24px 48px -24px rgb(0 0 0 / 0.55);
+  }
+}
+
+/* A moving gradient ring for the featured package and the photo. */
+.ring-glow {
+  position: relative;
+  isolation: isolate;
+}
+.ring-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--ring-angle, 0deg), #8b7cf7, #d46a9a, #5ec4d8, #8b7cf7);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: ring-spin 8s linear infinite;
+}
+@property --ring-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes ring-spin {
+  to { --ring-angle: 360deg; }
+}
+
+/* Marquee for the client strip. */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee {
+  animation: marquee 32s linear infinite;
+}
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.eyebrow::before {
+  content: "";
+  width: 1.5rem;
+  height: 1px;
+  background: linear-gradient(to right, var(--color-signal), transparent);
+}
