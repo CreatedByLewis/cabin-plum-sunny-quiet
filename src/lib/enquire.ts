@@ -186,7 +186,7 @@ export const sendPrices = createServerFn({ method: "POST" })
     const summaries: Record<string, string> = {
       order: "A homepage and a store.",
       box: "A postcode check, a custom hero, and a build-a-box you own.",
-      complete: "The box, subscriptions, search, and a refine of your branding.",
+      complete: "The box, subscriptions, search and a refresh of your branding.",
     };
     const priceRows = packages.map((pkg) => ({
       name: pkg.name,
@@ -207,7 +207,7 @@ export const sendPrices = createServerFn({ method: "POST" })
       heading: "The prices.",
       paragraphs: [
         "25% now, the rest when the site goes live.",
-        "Partner is optional: £150 a month for six months after launch. It covers product changes, fixes, and one improvement a month. It is not included in the build price.",
+        "Partner is optional: £150 a month for six months after launch. It covers product changes, fixes and one improvement a month, and isn’t included in the build price.",
         "Prices are negotiable. If your budget is different, call 07484 686442.",
         "Lewis",
       ],

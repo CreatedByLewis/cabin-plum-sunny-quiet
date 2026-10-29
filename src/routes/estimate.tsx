@@ -132,9 +132,9 @@ function EstimatePage() {
           <p className="text-xs tracking-widest text-muted uppercase">Estimate received</p>
           <h1 className="mt-3 font-display text-4xl text-ink sm:text-5xl">Thanks, {first}.</h1>
           <p className="mt-4 max-w-lg leading-relaxed text-muted">
-            {placed.business} looks like {estimate.pkg.name}, from {formatGBP(placed.build)}. A confirmation is
-            on its way to {placed.email}. Pay the deposit if you want to start, or wait and we can still move
-            the price.
+            {placed.business} looks like a fit for {estimate.pkg.name}, from {formatGBP(placed.build)}. A
+            confirmation is on its way to {placed.email}. Pay the deposit if you’re ready to start, or hold off
+            and we can still talk about the price.
           </p>
           <dl className="mt-8 space-y-2 border-t border-line pt-6 text-sm">
             <Line label="Reference" value={placed.ref} strong />
@@ -175,8 +175,8 @@ function EstimatePage() {
         What would it cost?
       </h1>
       <p className="mt-4 max-w-xl text-muted">
-        Six short questions. I’ll match a package as we go. The price is a starting point. Tell me if the
-        budget is different.
+        Six short questions, and I’ll match a package as you go. The price is a starting point, so tell me if
+        your budget is different.
       </p>
 
       <div className="mt-8 flex items-center gap-3">
@@ -242,7 +242,7 @@ function EstimatePage() {
               <Choices>
                 <Choice
                   title="Yes"
-                  detail="There’s a site already. It may need starting again."
+                  detail="You have a site already, but it might need starting again."
                   selected={hasSite === "yes"}
                   onPick={() => {
                     setHasSite("yes");
@@ -264,7 +264,7 @@ function EstimatePage() {
           ) : null}
 
           {step === 2 ? (
-            <Question kicker="2 of 6" title="What should the site do?" hint="Pick the closest. We can adjust it later.">
+            <Question kicker="2 of 6" title="What should the site do?" hint="Pick the closest one. We can change it later.">
               <Choices>
                 {jobsFor(hasSite).map((item) => (
                   <Choice
@@ -286,12 +286,12 @@ function EstimatePage() {
             <Question
               kicker="3 of 6"
               title="Want Partner after launch?"
-              hint="£150 a month for six months, on top of whichever build you pick. Menu changes, fixes, and one improvement a month. It is not a bigger website."
+              hint="£150 a month for six months, on top of whichever build you pick. Menu changes, fixes and one improvement a month. It looks after the site rather than adding to it."
             >
               <Choices>
                 <Choice
                   title="The site is enough"
-                  detail="Stay with the package that matches what you just picked."
+                  detail="Stick with the package that matches what you picked."
                   selected={brand === "site"}
                   onPick={() => {
                     setBrand("site");
@@ -301,7 +301,7 @@ function EstimatePage() {
                 />
                 <Choice
                   title="Add Partner after launch"
-                  detail="£150 a month for six months. Menu changes, fixes, and one improvement a month. The build price stays the same."
+                  detail="£150 a month for six months. Menu changes, fixes and one improvement a month. The build price stays the same."
                   selected={brand === "works"}
                   onPick={() => {
                     setBrand("works");
@@ -435,8 +435,8 @@ function EstimatePage() {
                   </p>
                 ) : null}
                 <p className="max-w-md text-sm text-muted">
-                  Sending this asks me to look at it. The price can still move. You aren’t charged until you
-                  pay an invoice.
+                  Sending this just asks me to take a look. The price can still change, and you aren’t charged
+                  until you pay an invoice.
                 </p>
               </form>
             </Question>
@@ -461,7 +461,7 @@ function EstimatePage() {
             </>
           ) : (
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              Keep going. The package shows up once I know what the site has to do.
+              Keep going. Your package appears once I know what the site needs to do.
             </p>
           )}
           <p className="mt-4 text-xs leading-relaxed text-muted">

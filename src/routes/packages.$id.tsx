@@ -76,7 +76,7 @@ function PackagePage() {
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <ButtonAnchor href={`/start?package=${pkg.id}`}>Choose {pkg.name}</ButtonAnchor>
           <ButtonLink to="/book" variant="secondary">
-            Book a no fee chat
+            Book a free chat
           </ButtonLink>
         </div>
       </article>

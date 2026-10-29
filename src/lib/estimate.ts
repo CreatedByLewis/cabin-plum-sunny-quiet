@@ -12,9 +12,9 @@ export type EstimateAnswers = {
 };
 
 export const meetings: { id: Meeting; title: string; detail: string }[] = [
-  { id: "person", title: "In person", detail: "Wherever suits. Or we do it on a call." },
+  { id: "person", title: "In person", detail: "Wherever suits you, or we can do it on a call." },
   { id: "video", title: "Video call", detail: "We go through it on a call." },
-  { id: "either", title: "Either is fine", detail: "I’ll fit around how you want to talk." },
+  { id: "either", title: "Either is fine", detail: "I’ll fit around whatever works for you." },
 ];
 
 export function jobsFor(_hasSite: HasSite | null) {
@@ -22,7 +22,7 @@ export function jobsFor(_hasSite: HasSite | null) {
     {
       id: "ordering" as const,
       title: "A home page and a store",
-      detail: "People land, look, and buy. That’s Shop.",
+      detail: "People land, browse and buy. That’s Shop.",
     },
     {
       id: "box" as const,
@@ -32,7 +32,7 @@ export function jobsFor(_hasSite: HasSite | null) {
     {
       id: "full" as const,
       title: "The box, and a subscription",
-      detail: "Everything in Shop and Box, plus a weekly or monthly subscription to retain your customers, and a refinement or rebrand of your business.",
+      detail: "Everything in Shop and Box, plus weekly or monthly subscriptions to keep customers coming back, and a refresh of your branding.",
     },
   ];
 }
@@ -47,5 +47,5 @@ export function recommend(answers: EstimateAnswers): PackageId | null {
 export function why(id: PackageId) {
   if (id === "order") return "Shop. A homepage and a store, so people can buy what you sell.";
   if (id === "box") return "Box. A postcode check, a custom hero, and a build-a-box you own.";
-  return "Stay. Everything in Shop and Box, plus a weekly or monthly subscription to retain your customers, and a refinement or rebrand of your business.";
+  return "Stay. Everything in Shop and Box, plus weekly or monthly subscriptions to keep customers coming back, and a refresh of your branding.";
 }

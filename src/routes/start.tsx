@@ -34,7 +34,7 @@ export const Route = createFileRoute("/start")({
   head: () => seo({
     title: "Start a project | CreatedByLewis",
     description:
-      "Order a CreatedByLewis website package. Invoice to start. No card taken on the site.",
+      "Order a CreatedByLewis website package. You’ll get an invoice to start, and no card details are taken on the site.",
     path: "/start",
   }),
   component: StartPage,
@@ -296,8 +296,8 @@ function StartPage() {
         Start a Project.
       </h1>
       <p className="mt-4 max-w-xl text-muted">
-        Choose a package and send the brief. Prices are negotiable. Say so if the budget is different. I’ll
-        reply with a start date and an invoice for the deposit. No card is taken here.
+        Choose a package and send me the brief. Prices are negotiable, so say if your budget is different.
+        I’ll reply with a start date and an invoice for the deposit. No card details are taken here.
       </p>
 
       <div className="mt-12 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
@@ -461,7 +461,7 @@ function StartPage() {
                 {sending ? "Sending…" : "Place order"}
               </Button>
               <ButtonLink to="/book" variant="secondary" className="w-full sm:w-auto">
-                Book a no fee chat
+                Book a free chat
               </ButtonLink>
             </div>
             {sendError ? (
@@ -529,8 +529,8 @@ function Receipt({ order }: { order: Order }) {
       <h1 className="mt-3 font-display text-4xl text-ink sm:text-5xl">Thanks, {first}.</h1>
       <p className="mt-4 max-w-lg leading-relaxed text-muted">
         {order.business} is in the queue. A confirmation is on its way to {order.email}. Pay the{" "}
-        {formatGBP(order.deposit)} deposit to start, or wait and I’ll invoice that address. We can still talk
-        the budget through before the work begins.
+        {formatGBP(order.deposit)} deposit to get started, or wait and I’ll send an invoice to that address. We
+        can still talk through the budget before any work begins.
       </p>
       <dl className="mt-8 space-y-2 border-t border-line pt-6 text-sm">
         <Row label="Reference" value={order.ref} strong />

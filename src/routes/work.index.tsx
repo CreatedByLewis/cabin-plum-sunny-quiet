@@ -47,7 +47,7 @@ function Work() {
         <p className="eyebrow">My work</p>
         <h1 className="mt-4 max-w-3xl font-display text-5xl text-ink sm:text-6xl">Sites that take the order.</h1>
         <p className="mt-4 max-w-xl text-muted">
-          Three live sites. One app in the works. Each one is built around what the business sells.
+          Three live sites and one app in the works, each built around what the business sells.
         </p>
       </section>
       {projects.map((project) => {

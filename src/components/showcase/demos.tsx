@@ -118,7 +118,7 @@ function JKitchenDemo({ accent }: { accent: string }) {
 
   return (
     <div>
-      <p className="text-xs text-muted">Orders lock Friday at 5pm. The live countdown, as the site shows it:</p>
+      <p className="text-xs text-muted">Orders close at 5pm on Friday. Here’s the countdown, as it shows on the site:</p>
       <div className="mt-2 grid grid-cols-4 gap-1.5" aria-label="Time until Friday 5pm">
         {(units ?? [{ v: 0, l: "days" }, { v: 0, l: "hrs" }, { v: 0, l: "min" }, { v: 0, l: "sec" }]).map((unit) => (
           <div key={unit.l} className="rounded-lg border border-line bg-paper/60 py-2 text-center">
@@ -172,7 +172,7 @@ function FarmersDemo({ accent }: { accent: string }) {
   const picked = areas.find((a) => a.id === area) ?? areas[0];
   return (
     <div>
-      <p className="text-xs text-muted">Where are you? The site says the delivery day before you order.</p>
+      <p className="text-xs text-muted">Where are you? The site shows your delivery day before you order.</p>
       <div className="mt-2">
         <Segmented label="Area" accent={accent} value={area} onChange={setArea} options={areas.map((a) => ({ value: a.id, label: a.label }))} />
       </div>
@@ -266,7 +266,7 @@ function RealFoodDemo({ accent }: { accent: string }) {
       <Readout>
         {door === "plan" ? `A ${kcal.toLocaleString("en-GB")} kcal plan` : "Your own box"},{" "}
         <strong className="font-medium" style={{ color: accent }}>
-          {where === "local" ? "dropped Sunday and Wednesday" : "one courier box on Tuesday"}
+          {where === "local" ? "delivered Sunday and Wednesday" : "one courier box on Tuesday"}
         </strong>
         .
       </Readout>
@@ -286,7 +286,7 @@ function TrackrDemo({ accent, active, onPick }: { accent: string; active: number
   const c = 2 * Math.PI * r;
   return (
     <div>
-      <p className="text-xs text-muted">Walk through the app. The phone follows.</p>
+      <p className="text-xs text-muted">Tap through the app and the phone follows.</p>
       <div className="mt-2">
         <Segmented
           label="Trackr screen"

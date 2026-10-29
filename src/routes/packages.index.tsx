@@ -24,11 +24,11 @@ function PackagesPage() {
           Three Ways to Sell.
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-          Every site is shaped around what you sell, and built so people can finish an order on a desktop or
-          a phone. Shop is the homepage and the store. Box adds a postcode check, a custom hero, and a
-          build-a-box you own. Stay includes everything in Shop and Box, plus a weekly or monthly
-          subscription to retain your customers, and a refinement or rebrand of your business. Partner is
-          monthly, after launch, and it is not hidden inside the build.
+          Every site is shaped around what you sell and built so people can finish an order on a desktop or
+          a phone. Shop is the homepage and the store. Box adds a postcode check, a custom hero and a
+          build-a-box you own. Stay includes everything in Shop and Box, plus weekly or monthly
+          subscriptions to keep customers coming back, and a refresh of your branding. Partner is a
+          monthly add-on after launch, and it isn’t hidden inside the build price.
         </p>
         <Link
           to="/estimate"
@@ -47,8 +47,8 @@ function PackagesPage() {
         <div id="extras" className="mt-14 scroll-mt-24">
           <h2 className="font-display text-4xl text-ink">Partner</h2>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
-            Optional, on top of Shop, Box, or Stay. Six months minimum. It is the running of the site, not a
-            pile of cheap extras.
+            Optional, on top of Shop, Box or Stay, for a minimum of six months. It covers the day-to-day
+            running of the site, not a pile of cheap extras.
           </p>
           <ul className="mt-8 divide-y divide-line border-y border-line">
             {extras.map((item) => (
@@ -63,7 +63,7 @@ function PackagesPage() {
           </ul>
         </div>
         <p className="mt-8 max-w-3xl text-sm leading-relaxed text-muted">
-          Prices are a starting point. Spread the cost with flexible payment methods. Easier for small and new businesses. If your budget is different, we’ll look at what fits. I can meet you on a video call, or in person, and go through everything. While the site is being built, I’m on call.
+          Prices are a starting point. You can spread the cost with flexible payment options, which helps if you’re a small or new business. If your budget is different, we’ll look at what fits. I can meet you on a video call or in person to go through everything, and while the site is being built, I’m on call.
         </p>
         <PricesNote />
         <div className="mt-14">
@@ -115,14 +115,14 @@ function PackagesPage() {
 const notes = [
   {
     title: "In Person or on a Call",
-    body: "Meet up, or talk on a video call, and go through what the site has to do.",
+    body: "Meet in person or on a video call and go through what the site needs to do.",
   },
   {
     title: "On Call During the Build",
-    body: "While it’s being made, I’m near enough always available to talk about how it’s going.",
+    body: "While it’s being built, I’m available pretty much any time to talk about how it’s going.",
   },
   {
     title: "Partner, After Launch",
-    body: "£150 a month for six months. Product changes, fixes, and one planned improvement a month. A new brand or a second project is quoted separately.",
+    body: "£150 a month for six months. Product changes, fixes and one planned improvement a month. A new brand or a second project is quoted separately.",
   },
 ];

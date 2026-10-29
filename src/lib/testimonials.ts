@@ -8,8 +8,8 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Lewis pays a lot of detail and attention to everything he does. The site was initially made and any changes I asked for were done, and done quickly. The aftercare was also brilliant!",
-    attribution: "Founder, Real Food Delivered",
+      "Lewis pays a lot of attention to detail in everything he does. Once the site was built, any changes I asked for were done, and done quickly. The aftercare was brilliant too!",
+    attribution: "James, founder of Real Food Delivered",
     project: "real-food-delivered",
   },
   // {

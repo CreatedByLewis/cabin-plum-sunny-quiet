@@ -42,7 +42,7 @@ export function PricesNote() {
     <form onSubmit={onSubmit} noValidate className="relative mt-4 rounded-xl border border-line bg-card p-5 sm:p-6">
       <p className="font-medium text-ink">Not ready to book?</p>
       <p className="mt-1 max-w-lg text-sm leading-relaxed text-muted">
-        Leave your email and I’ll send the prices. No commitment, and nothing to pay.
+        Leave your email and I’ll send the prices. No commitment and nothing to pay.
       </p>
       {sent ? (
         <p className="mt-4 text-sm text-ink">Sent. The prices are on their way to {email.trim()}.</p>

@@ -48,8 +48,8 @@ function Home() {
             style={{ animationDelay: "720ms" }}
           >
             I design and build websites for brands that sell products, whether you’ve just opened or you’re
-            already a large company. You work with me, from the brief to the day it goes live. Not an account
-            manager, and not a theme with the logo swapped.
+            already a big company. You work with me from the brief to the day it goes live. No account
+            managers, and no templates with your logo swapped in.
           </p>
           <div className="rise mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row" style={{ animationDelay: "820ms" }}>
             <ButtonLink to="/book" className="group shadow-[0_10px_40px_-10px_color-mix(in_srgb,var(--color-signal)_70%,transparent)]">
@@ -98,8 +98,8 @@ function Home() {
             <p className="text-xs tracking-[0.22em] text-signal uppercase">Yes</p>
             <h2 className="mt-3 font-display text-4xl text-ink sm:text-5xl">Who Is It For?</h2>
             <p className="mt-4 max-w-md leading-relaxed text-ink">
-              Brands that sell a product people order, often more than once. A kitchen that’s just opened, or
-              one that’s already delivering nationwide. A bakery, a butcher, a hamper brand, a florist, a
+              Brands selling something people order, often more than once. A kitchen that’s just opened, or
+              one already delivering nationwide. A bakery, a butcher, a hamper brand, a florist, a coffee
               roaster. Anywhere in the UK.
             </p>
           </div>
@@ -107,8 +107,8 @@ function Home() {
             <p className="text-xs tracking-[0.22em] text-muted uppercase">No</p>
             <h2 className="mt-3 font-display text-4xl text-muted sm:text-5xl">Who Isn’t It For?</h2>
             <p className="mt-4 max-w-md leading-relaxed text-muted">
-              A brochure for a trade, or a page that only explains what you do. If the site doesn’t need to
-              take an order, I’m the wrong person.
+              A brochure site for a trade, or a page that only explains what you do. If your site doesn’t need
+              to take orders, I’m not the right person.
             </p>
           </div>
         </div>
@@ -122,7 +122,7 @@ function Home() {
             <div>
               <h2 className="font-display text-4xl text-ink sm:text-5xl">Three Ways to Sell</h2>
               <p className="mt-3 max-w-lg text-muted">
-                Pick the one that matches the business. The detail is on the next page, not a wall of bullets here.
+                Pick the one that fits your business. The full detail is on the packages page.
               </p>
             </div>
             <Link to="/packages" className="inline-flex min-h-11 items-center text-sm font-medium text-ink">
@@ -139,11 +139,11 @@ function Home() {
             <h3 className="mt-3 font-display text-4xl text-ink">Partner</h3>
             <p className="mt-3 max-w-2xl leading-relaxed text-muted">
               £150 a month for six months, on top of any of the three. I handle product and menu changes
-              within an agreed hour a week, fix what breaks, and make one planned improvement a month. A new
-              brand or a second project is quoted separately.
+              up to an agreed hour a week, fix anything that breaks, and make one planned improvement a month.
+              A new brand or a second project is quoted separately.
             </p>
           </div>
-          <p className="mt-6 text-sm text-muted">Spread the cost with flexible payment methods. Easier for small and new businesses.</p>
+          <p className="mt-6 text-sm text-muted">You can spread the cost with flexible payment options, which helps if you’re a small or new business.</p>
           <PricesNote />
         </div>
       </section>
@@ -152,8 +152,8 @@ function Home() {
         <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
           <h2 className="max-w-2xl font-display text-4xl text-ink sm:text-5xl">Built Around How You Sell</h2>
           <p className="mt-4 max-w-xl text-muted">
-            The package is the shape. What goes on the pages is worked out with you. These are the pieces I
-            build in when the business needs them, and leave out when it doesn’t.
+            The package is the starting point. What goes on the pages is worked out with you. These are the
+            pieces I build in when a business needs them, and leave out when it doesn’t.
           </p>
           <ul className="mt-10 divide-y divide-line border-y border-line">
             {practice.map((item, i) => (
@@ -206,18 +206,18 @@ function Home() {
           </div>
           <h2 className="mt-8 font-display text-4xl text-ink sm:text-5xl">About Lewis</h2>
           <p className="mt-6 text-lg leading-relaxed text-ink">
-            I design it and I build it. The same person from the brief to launch. I treat the site as if it
-            were my own.
+            I design it and I build it, so you deal with the same person from the brief to launch. I treat
+            every site as if it were my own.
           </p>
           <p className="mt-4 leading-relaxed text-muted">
-            Recent work is meal prep and delivery, because those businesses live or die on the order. The same
-            build suits a brand that’s just starting and one that’s already selling at scale, anywhere in the UK.
+            Most of my recent work is meal prep and food delivery, because those businesses live or die on the
+            order. The same approach works for a brand that’s just starting out and one that’s already selling
+            at scale, anywhere in the UK.
           </p>
           <p className="mt-4 leading-relaxed text-muted">
-            You work with me, not an account manager and not a theme shop. We go through how you actually
-            sell before I design anything. We can meet on a video call, or in person if that suits. While
-            it’s being built, I’m on call. Prices are a starting point. If the budget is different, the scope
-            moves with it.
+            We go through how you actually sell before I design anything, on a video call or in person if that
+            suits. While the site’s being built, I’m on call. Prices are a starting point, and if your budget
+            is different, the scope moves with it.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <ButtonLink to="/book">Book a call</ButtonLink>
@@ -305,22 +305,22 @@ const steps = [
   {
     n: "01",
     title: "Brief",
-    body: "What you sell, who it’s for, and what the page has to make happen.",
+    body: "What you sell, who it’s for, and what the site needs to do.",
   },
   {
     n: "02",
     title: "Design",
-    body: "Type, layout, and the path through the offer. You see it before it’s built.",
+    body: "Fonts, layout and how people move through the offer. You see it before it’s built.",
   },
   {
     n: "03",
     title: "Build",
-    body: "Built for this business, then tested the way a customer would use it, on a phone, including the points where people get stuck.",
+    body: "Built for your business, then tested on a phone the way a customer would use it, including the spots where people get stuck.",
   },
   {
     n: "04",
     title: "Launch",
-    body: "Live on your domain, with a walkthrough of how you change it. Search is set up so the pages can be found.",
+    body: "Live on your domain, with a walkthrough of how to update it. Search is set up so the pages can be found.",
   },
 ];
 

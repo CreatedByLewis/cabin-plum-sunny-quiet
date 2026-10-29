@@ -46,7 +46,7 @@ function BookPage() {
         </h1>
       </div>
       <p className="mt-4 max-w-xl text-muted">
-        A conversation about the business and whether a site would help. No package, no deposit, nothing to
+        A chat about your business and whether a new site would help. No package, no deposit and nothing to
         pay. Pick a time and it goes straight into my calendar. The call is on Teams.
       </p>
       <p className="mt-3 text-sm text-muted">
