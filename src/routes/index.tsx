@@ -83,7 +83,7 @@ function Home() {
         <div className="mx-auto max-w-7xl px-5 pt-12 pb-16 sm:px-8 sm:pt-16 sm:pb-24">
           <div className="flex items-end justify-between gap-6">
             <h2 className="font-display text-4xl text-ink sm:text-5xl">Selected Work</h2>
-            <p className="hidden text-sm text-muted sm:block">Three sites taking orders. One app in the works.</p>
+            <p className="hidden text-sm text-muted sm:block">Three sites taking orders, one launching soon, and an app in the works.</p>
           </div>
           <div className="mt-8 sm:mt-10">
             <Showcase />
@@ -325,7 +325,7 @@ const steps = [
 ];
 
 function ClientStrip() {
-  const clients = projects.filter((p) => p.status !== "in-progress" && clientLogos[p.slug]);
+  const clients = projects.filter((p) => clientLogos[p.slug]);
   const row = [...clients, ...clients, ...clients];
   return (
     <div className="relative z-10 border-y border-line bg-paper/40 py-6 backdrop-blur-sm">

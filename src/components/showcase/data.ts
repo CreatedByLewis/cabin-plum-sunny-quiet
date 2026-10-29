@@ -63,6 +63,22 @@ export const showcase: Record<string, ShowcaseEntry> = {
     lightImage: "/work/real-food-light.jpg",
     themeToggle: { x: 93, y: 3.7 },
   },
+  "the-macro-kitchen": {
+    accent: "#b9cf8c",
+    colours: ["#24301c", "#5a6840", "#f4efe6", "#d8bf86"],
+    hotspots: [
+      { feature: 0, x: 74.5, y: 18 },
+      { feature: 1, x: 43, y: 71.5 },
+      { feature: 2, x: 41.5, y: 82 },
+      { feature: 3, x: 50, y: 82 },
+    ],
+    phoneFeature: 4,
+    phone: [
+      { src: "/work/macro-kitchen-mobile.jpg", label: "Home", alt: "The Macro Kitchen on a phone: The Week, Already Cooked, with Build Your Week." },
+      { src: "/work/macro-kitchen-plan-mobile.jpg", label: "Build your box", alt: "The Macro Kitchen Build Your Box page on a phone, with the countdown to the next delivery." },
+      { src: "/work/macro-kitchen-menu-mobile.jpg", label: "Menu", alt: "The Macro Kitchen menu on a phone: ten mains and five breakfasts, with a 30g+ protein filter." },
+    ],
+  },
   trackr: {
     accent: "#8b7cf7",
     colours: ["#111114", "#8b7cf7", "#1c1c22", "#f3f2ef"],

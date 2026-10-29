@@ -230,7 +230,7 @@ export function Showcase() {
               params={{ slug: project.slug }}
               className="inline-flex min-h-11 items-center gap-2 rounded-full bg-ink px-5 text-sm font-medium text-paper transition-[background-color,scale] duration-200 hover:bg-ink/90 active:scale-[0.96]"
             >
-              {project.status === "in-progress" ? "Read about Trackr" : "View the case study"}
+              {project.status === "in-progress" ? `Read about ${project.name}` : "View the case study"}
             </Link>
             {project.status === "in-progress" ? null : (
               <a
@@ -298,7 +298,7 @@ function StatusPill({ project }: { project: Project }) {
         {live ? <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-60" /> : null}
         <span className={cn("relative inline-flex size-2 rounded-full", live ? "bg-emerald-400" : "bg-amber-400")} />
       </span>
-      {live ? "Live, taking orders" : "In the works"}
+      {live ? "Live, taking orders" : project.soonLabel ?? "In the works"}
     </span>
   );
 }
@@ -386,7 +386,7 @@ function Stage({
             </div>
             <div className="mx-auto flex min-w-0 max-w-[60%] flex-1 items-center justify-center gap-1.5 rounded-md bg-white/[0.06] px-3 py-1 text-[11px] text-white/60">
               <Lock className="size-3 shrink-0" aria-hidden />
-              <span className="truncate">{project.status === "in-progress" ? "trackr · preview" : project.urlLabel}</span>
+              <span className="truncate">{project.browserLabel ?? project.urlLabel}</span>
             </div>
             {entry.lightImage ? (
               <button

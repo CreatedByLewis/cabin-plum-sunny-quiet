@@ -32,6 +32,10 @@ export type Project = {
   url: string;
   urlLabel: string;
   status?: "live" | "in-progress";
+  /** Shown instead of "In the works" for projects that aren't live yet. */
+  soonLabel?: string;
+  /** What the address bar says in the showcase. Defaults to urlLabel. */
+  browserLabel?: string;
   lede: string;
   role: string;
   year: string;
@@ -196,8 +200,61 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "trackr",
+    slug: "the-macro-kitchen",
     index: "04",
+    name: "The Macro Kitchen",
+    summary: "Coming soon. High-protein meal prep from County Durham, with a new menu every week.",
+    image: "/work/macro-kitchen.jpg",
+    mobileImage: "/work/macro-kitchen-mobile.jpg",
+    imageAlt: "The Macro Kitchen homepage: “The Week, Already Cooked.”, with Build Your Week and the protein, price and delivery-day stats.",
+    url: "/work/the-macro-kitchen",
+    urlLabel: "Coming soon",
+    browserLabel: "themacrokitchen.co.uk",
+    status: "in-progress",
+    soonLabel: "Coming soon",
+    lede: "A weekly high-protein menu from a kitchen in County Durham, built so people can order the whole week in one go. Launching soon.",
+    role: "Design and build",
+    year: "2026",
+    focus: "A menu that changes every week",
+    quote: "The week, already cooked.",
+    result:
+      "Customers pick 5, 10, 15 or 20 meals, choose their dishes from this week’s menu, and pay once or subscribe. Every dish shows its macros, and delivery is chilled on Saturday or Wednesday across the North East.",
+    brief: [
+      "The Macro Kitchen cooks high-protein meals near Stanley, County Durham, and delivers them chilled on Saturday and Wednesday. The menu changes every week, with mains and breakfasts.",
+      "The site had to make a changing menu easy to order from, show the macros on every dish, and let the kitchen change the week without touching the site.",
+    ],
+    built: [
+      {
+        title: "This week’s menu, updated on its own",
+        detail: "The menu moves on every Thursday from the kitchen’s Shopify collections, so nobody has to edit the site to change the week.",
+      },
+      {
+        title: "Build your box",
+        detail: "Pick 5, 10, 15 or 20 meals, then choose the dishes. Mix mains and breakfasts and watch the price build as you go.",
+      },
+      {
+        title: "Macros on every dish",
+        detail: "Protein, carbs, fat and calories sit on each dish, and the menu has a 30g+ protein filter.",
+      },
+      {
+        title: "Once, or every week",
+        detail: "Pay for a single week, or subscribe weekly and save 5%. Mains start at £8, premium dishes are £9.",
+      },
+      {
+        title: "Two drops a week",
+        detail: "Chilled delivery on Saturday or Wednesday, with a live countdown to the next cutoff and a postcode check for the 20-mile area.",
+      },
+    ],
+    specs: [
+      { label: "Kitchen", value: "Stanley, County Durham" },
+      { label: "Delivery", value: "Saturday & Wednesday, chilled" },
+      { label: "Menu", value: "New every week" },
+      { label: "Box sizes", value: "5 to 20 meals" },
+    ],
+  },
+  {
+    slug: "trackr",
+    index: "05",
     name: "Trackr",
     summary: "In the works. Calories, meals, workouts and weight in one diary.",
     image: "/work/trackr-home.jpg",
@@ -205,6 +262,7 @@ export const projects: Project[] = [
     imageAlt: "Trackr diary home. Today, calories left, protein, carbs and fat.",
     url: "/work/trackr",
     urlLabel: "In the works",
+    browserLabel: "trackr · preview",
     status: "in-progress",
     lede: "Calories, meals, workouts and weight, all in one place. Still being built.",
     role: "App, in progress",

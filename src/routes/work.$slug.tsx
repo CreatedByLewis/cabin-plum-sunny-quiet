@@ -48,7 +48,7 @@ function CaseStudy() {
             ["Role", project.role],
             ["Year", project.year],
             ["Focus", project.focus],
-            ["Live", project.status === "in-progress" ? "In the works" : project.urlLabel],
+            ["Live", project.status === "in-progress" ? project.soonLabel ?? "In the works" : project.urlLabel],
           ].map(([label, value]) => (
             <div key={label} className="bg-paper px-4 py-4 sm:px-5">
               <dt className="text-xs tracking-widest text-muted uppercase">{label}</dt>
@@ -112,7 +112,7 @@ function CaseStudy() {
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
           {project.status === "in-progress" ? (
-            <ButtonAnchor href="/book">Book a call about Trackr</ButtonAnchor>
+            <ButtonAnchor href="/book">Book a call about {project.name}</ButtonAnchor>
           ) : (
             <ButtonAnchor href={project.url} target="_blank" rel="noreferrer">
               Visit the live site

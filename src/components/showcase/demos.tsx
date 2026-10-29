@@ -16,6 +16,7 @@ export function Demo({ slug, accent, onPhoneScreen, phoneScreen }: {
   if (slug === "jkitchen-cooks") return <JKitchenDemo accent={accent} />;
   if (slug === "the-farmers-box") return <FarmersDemo accent={accent} />;
   if (slug === "real-food-delivered") return <RealFoodDemo accent={accent} />;
+  if (slug === "the-macro-kitchen") return <MacroKitchenDemo accent={accent} />;
   if (slug === "trackr") return <TrackrDemo accent={accent} active={phoneScreen} onPick={onPhoneScreen} />;
   return null;
 }
@@ -152,6 +153,81 @@ function JKitchenDemo({ accent }: { accent: string }) {
       <Readout>
         {meals} meals, delivered Sunday.{" "}
         {subscribe ? <strong className="font-medium" style={{ color: accent }}>First box 15% off.</strong> : "One-off box."}
+      </Readout>
+    </div>
+  );
+}
+
+/* The Macro Kitchen: box size, subscribe and save, and the next drop. */
+
+// Orders close at midnight: end of Wednesday for Saturday, end of Sunday for Wednesday.
+function nextMacroDrop(date: Date) {
+  const { day, h, m, s } = londonParts(date);
+  const now = day * 86400 + h * 3600 + m * 60 + s;
+  const cutoffs = [
+    { at: 4 * 86400, drop: "Saturday" }, // Thursday 00:00 = end of Wednesday
+    { at: 1 * 86400, drop: "Wednesday" }, // Monday 00:00 = end of Sunday
+  ];
+  let best = { left: Infinity, drop: "" };
+  for (const c of cutoffs) {
+    let left = c.at - now;
+    if (left <= 0) left += 7 * 86400;
+    if (left < best.left) best = { left, drop: c.drop };
+  }
+  return best;
+}
+
+function MacroKitchenDemo({ accent }: { accent: string }) {
+  const [meals, setMeals] = useState(10);
+  const [weekly, setWeekly] = useState(false);
+  const [next, setNext] = useState<{ left: number; drop: string } | null>(null);
+  useEffect(() => {
+    const tick = () => setNext(nextMacroDrop(new Date()));
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => window.clearInterval(id);
+  }, []);
+  const base = meals * 8;
+  const price = weekly ? base * 0.95 : base;
+  const d = next ? Math.floor(next.left / 86400) : 0;
+  const hr = next ? Math.floor((next.left % 86400) / 3600) : 0;
+  const min = next ? Math.floor((next.left % 3600) / 60) : 0;
+  return (
+    <div>
+      <p className="text-xs text-muted">Meals a week</p>
+      <div className="mt-2">
+        <Segmented
+          label="Meals a week"
+          accent={accent}
+          value={meals}
+          onChange={setMeals}
+          options={[5, 10, 15, 20].map((n) => ({ value: n, label: `${n}` }))}
+        />
+      </div>
+      <p className="mt-4 text-xs text-muted">How do you want to pay?</p>
+      <div className="mt-2">
+        <Segmented
+          label="How to pay"
+          accent={accent}
+          value={weekly ? "weekly" : "once"}
+          onChange={(v) => setWeekly(v === "weekly")}
+          options={[
+            { value: "once", label: "One week" },
+            { value: "weekly", label: "Every week, save 5%" },
+          ]}
+        />
+      </div>
+      <Readout>
+        {meals} meals from{" "}
+        <strong className="font-medium" style={{ color: accent }}>
+          £{price.toFixed(2)}
+        </strong>
+        {weekly ? " a week" : " one-off"}.{" "}
+        {next ? (
+          <>
+            Order within {d}d {hr}h {min}m for {next.drop} delivery.
+          </>
+        ) : null}
       </Readout>
     </div>
   );

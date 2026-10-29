@@ -7,7 +7,7 @@ export const Route = createFileRoute("/work/")({
   head: () => seo({
     title: "My work | CreatedByLewis",
     description:
-      "Sites that take orders. Real Food Delivered, JKitchen Cooks, The Farmers Box, and Trackr.",
+      "Sites that take orders. JKitchen Cooks, The Farmers Box, Real Food Delivered, The Macro Kitchen and Trackr.",
     path: "/work",
   }),
   component: Work,
@@ -32,6 +32,12 @@ const decks: Record<string, { stack: string; headline: string; points: string[];
     points: ["Four sizes, contents follow the harvest", "Once, or every week", "Wednesday to Friday, by area"],
     colours: ["#1f3a2a", "#f3efe4", "#6b8f4e", "#e7d7a8"],
   },
+  "the-macro-kitchen": {
+    stack: "/work/mk-stack.jpg",
+    headline: "The whole week, ordered in one go.",
+    points: ["A menu that changes every Thursday", "Macros on every dish", "Saturday and Wednesday drops"],
+    colours: ["#24301c", "#5a6840", "#f4efe6", "#d8bf86"],
+  },
   trackr: {
     stack: "/work/trackr-stack.jpg",
     headline: "Calories, meals, workouts and weight. One diary.",
@@ -47,7 +53,7 @@ function Work() {
         <p className="eyebrow">My work</p>
         <h1 className="mt-4 max-w-3xl font-display text-5xl text-ink sm:text-6xl">Sites that take the order.</h1>
         <p className="mt-4 max-w-xl text-muted">
-          Three live sites and one app in the works, each built around what the business sells.
+          Three live sites, one launching soon and an app in the works, each built around what the business sells.
         </p>
       </section>
       {projects.map((project) => {
@@ -77,7 +83,7 @@ function Work() {
                     View the case study
                   </Link>
                   {project.status === "in-progress" ? (
-                    <span className="text-sm text-muted">In the works</span>
+                    <span className="text-sm text-muted">{project.soonLabel ?? "In the works"}</span>
                   ) : (
                     <a href={project.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm text-muted hover:text-ink">
                       {project.urlLabel}
