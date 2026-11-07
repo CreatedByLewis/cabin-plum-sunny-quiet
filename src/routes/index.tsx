@@ -65,7 +65,7 @@ function Home() {
             style={{ animationDelay: "920ms" }}
           >
             {[
-              { k: "Sites live", v: "3" },
+              { k: "Sites live", v: String(projects.filter((p) => p.status !== "in-progress").length) },
               { k: "Packages", v: "3" },
               { k: "Deposit", v: "25%" },
             ].map((stat) => (
