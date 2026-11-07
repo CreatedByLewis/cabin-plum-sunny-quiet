@@ -14,6 +14,8 @@ export type ShowcaseEntry = {
   hotspots: Hotspot[];
   /** Built features that live on the phone rather than the desktop shot. */
   phoneFeature?: number;
+  /** Phone screen to show when that feature is picked. */
+  phoneFeatureScreen?: number;
   phone: PhoneScreen[];
   /** Phone screenshot is taller than the screen, so it scrolls. */
   phoneScrolls?: boolean;
@@ -67,16 +69,37 @@ export const showcase: Record<string, ShowcaseEntry> = {
     accent: "#b9cf8c",
     colours: ["#24301c", "#5a6840", "#f4efe6", "#d8bf86"],
     hotspots: [
-      { feature: 0, x: 74.5, y: 18 },
-      { feature: 1, x: 43, y: 71.5 },
-      { feature: 2, x: 41.5, y: 82 },
-      { feature: 3, x: 50, y: 82 },
+      { feature: 0, x: 29.6, y: 8.4 },
+      { feature: 1, x: 43.2, y: 71.6 },
+      { feature: 2, x: 41.6, y: 83 },
+      { feature: 4, x: 58.3, y: 83 },
     ],
-    phoneFeature: 4,
+    phoneFeature: 3,
+    phoneFeatureScreen: 3,
     phone: [
-      { src: "/work/macro-kitchen-mobile.jpg", label: "Home", alt: "The Macro Kitchen on a phone: The Week, Already Cooked, with Build Your Week." },
-      { src: "/work/macro-kitchen-plan-mobile.jpg", label: "Build your box", alt: "The Macro Kitchen Build Your Box page on a phone, with the countdown to the next delivery." },
+      { src: "/work/macro-kitchen-mobile.jpg", label: "Home", alt: "The Macro Kitchen on a phone: The Week, Already Cooked, with Build Your Plan and Browse The Menu." },
+      { src: "/work/macro-kitchen-plan-mobile.jpg", label: "Build your plan", alt: "The Macro Kitchen Build Your Plan page on a phone, with the countdown to Wednesday’s delivery and who’s eating." },
       { src: "/work/macro-kitchen-menu-mobile.jpg", label: "Menu", alt: "The Macro Kitchen menu on a phone: ten mains and five breakfasts, with a 30g+ protein filter." },
+      { src: "/work/macro-kitchen-week-mobile.jpg", label: "Plan your week", alt: "The Macro Kitchen week planner on a phone: Build Muscle, five days with breakfast, and the protein and calories for each day." },
+    ],
+  },
+  pocketplan: {
+    accent: "#a9b78c",
+    colours: ["#1f1d1a", "#4e5a3c", "#eae4da", "#f5f2ed"],
+    hotspots: [
+      { feature: 0, x: 47.2, y: 62.8 },
+      { feature: 2, x: 40.2, y: 3.6 },
+      { feature: 3, x: 88.6, y: 3.6 },
+      { feature: 4, x: 47.6, y: 3.6 },
+    ],
+    phoneFeature: 1,
+    phoneFeatureScreen: 2,
+    phone: [
+      { src: "/work/pocketplan-mobile.jpg", label: "Home", alt: "PocketPlan on a phone: Eat Well, Without The Rules, with Start your plan." },
+      { src: "/work/pocketplan-recipes-mobile.jpg", label: "Library", alt: "The PocketPlan recipe library on a phone: 29 recipes live in Block 1, split by breakfast, lunch, dinner and snacks." },
+      { src: "/work/pocketplan-recipe-mobile.jpg", label: "Recipes", alt: "A PocketPlan recipe card on a phone: High Protein Breakfast Burrito, 35g protein and 462 kcal." },
+      { src: "/work/pocketplan-learn-mobile.jpg", label: "Learn", alt: "PocketPlan Learn guides on a phone: The Thinking Behind The Plan." },
+      { src: "/work/pocketplan-train-mobile.jpg", label: "Train", alt: "Train With Pocket on a phone: what do you most want to work on?" },
     ],
   },
   trackr: {

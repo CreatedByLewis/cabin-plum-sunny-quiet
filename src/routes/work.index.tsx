@@ -7,7 +7,7 @@ export const Route = createFileRoute("/work/")({
   head: () => seo({
     title: "My work | CreatedByLewis",
     description:
-      "Sites that take orders. JKitchen Cooks, The Farmers Box, Real Food Delivered, The Macro Kitchen and Trackr.",
+      "Sites that take orders. JKitchen Cooks, The Farmers Box, Real Food Delivered, The Macro Kitchen, PocketPlan and Trackr.",
     path: "/work",
   }),
   component: Work,
@@ -35,8 +35,14 @@ const decks: Record<string, { stack: string; headline: string; points: string[];
   "the-macro-kitchen": {
     stack: "/work/mk-stack.jpg",
     headline: "The whole week, ordered in one go.",
-    points: ["A menu that changes every Thursday", "Macros on every dish", "Saturday and Wednesday drops"],
+    points: ["A new menu every week", "Macros on every dish", "Wednesday and Saturday drops"],
     colours: ["#24301c", "#5a6840", "#f4efe6", "#d8bf86"],
+  },
+  pocketplan: {
+    stack: "/work/pp-stack.jpg",
+    headline: "A recipe library that grows every six weeks.",
+    points: ["24+ recipes a block, macros done", "Standard, pescatarian and vegetarian", "PT clients get in with a code"],
+    colours: ["#1f1d1a", "#4e5a3c", "#eae4da", "#f5f2ed"],
   },
   trackr: {
     stack: "/work/trackr-stack.jpg",
@@ -53,7 +59,7 @@ function Work() {
         <p className="eyebrow">My work</p>
         <h1 className="mt-4 max-w-3xl font-display text-5xl text-ink sm:text-6xl">Sites that take the order.</h1>
         <p className="mt-4 max-w-xl text-muted">
-          Three live sites, one launching soon and an app in the works, each built around what the business sells.
+          Four live sites, one launching soon and an app in the works, each built around what the business sells.
         </p>
       </section>
       {projects.map((project) => {

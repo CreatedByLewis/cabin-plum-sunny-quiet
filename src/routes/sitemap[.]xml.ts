@@ -3,7 +3,7 @@ import { packages, projects } from "@/lib/content";
 import { SITE_URL } from "@/lib/seo";
 
 // /enquiries is private and deliberately left out.
-const LASTMOD = "2026-10-29";
+const LASTMOD = "2026-11-07";
 
 function build() {
   const paths = [

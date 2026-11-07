@@ -74,7 +74,7 @@ export function Showcase() {
           role="tablist"
           aria-label="Projects"
           onKeyDown={onTabKey}
-          className="-mx-5 flex flex-1 gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden"
+          className="-mx-5 flex flex-1 gap-1.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden"
         >
           {projects.map((p, i) => {
             const on = i === index;
@@ -89,11 +89,11 @@ export function Showcase() {
                 tabIndex={on ? 0 : -1}
                 onClick={() => select(i)}
                 className={cn(
-                  "group relative min-h-12 shrink-0 overflow-hidden rounded-full border px-4 text-left transition-all duration-300 sm:px-5",
+                  "group relative min-h-12 shrink-0 overflow-hidden rounded-full border px-3.5 text-left transition-all duration-300 sm:px-4",
                   on ? "border-[var(--accent)]/60 bg-card text-ink" : "border-line text-muted hover:border-ink/30 hover:text-ink",
                 )}
               >
-                <span className="relative z-10 flex items-center gap-2.5 text-sm">
+                <span className="relative z-10 flex items-center gap-2 text-sm">
                   <span className={cn("font-display text-xs tabular-nums", on ? "text-[var(--accent)]" : "text-muted")}>{p.index}</span>
                   <span className="font-medium whitespace-nowrap">{p.name}</span>
                   {p.status === "in-progress" ? (
@@ -330,6 +330,10 @@ function Stage({
   const focused = entry.hotspots.find((h) => h.feature === focus) ?? null;
   const phoneFocused = focus !== null && entry.phoneFeature === focus;
   const lit = light && entry.lightImage;
+
+  useEffect(() => {
+    if (phoneFocused && entry.phoneFeatureScreen !== undefined) onPhoneScreen(entry.phoneFeatureScreen);
+  }, [phoneFocused, entry.phoneFeatureScreen, onPhoneScreen]);
 
   useEffect(() => {
     const el = tilt.current;

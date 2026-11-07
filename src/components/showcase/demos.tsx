@@ -17,6 +17,7 @@ export function Demo({ slug, accent, onPhoneScreen, phoneScreen }: {
   if (slug === "the-farmers-box") return <FarmersDemo accent={accent} />;
   if (slug === "real-food-delivered") return <RealFoodDemo accent={accent} />;
   if (slug === "the-macro-kitchen") return <MacroKitchenDemo accent={accent} />;
+  if (slug === "pocketplan") return <PocketPlanDemo accent={accent} />;
   if (slug === "trackr") return <TrackrDemo accent={accent} active={phoneScreen} onPick={onPhoneScreen} />;
   return null;
 }
@@ -158,7 +159,7 @@ function JKitchenDemo({ accent }: { accent: string }) {
   );
 }
 
-/* The Macro Kitchen: box size, subscribe and save, and the next drop. */
+/* The Macro Kitchen: who’s eating, meals a week, subscribe and save, and the next drop. */
 
 // Orders close at midnight: end of Wednesday for Saturday, end of Sunday for Wednesday.
 function nextMacroDrop(date: Date) {
@@ -178,6 +179,7 @@ function nextMacroDrop(date: Date) {
 }
 
 function MacroKitchenDemo({ accent }: { accent: string }) {
+  const [people, setPeople] = useState(1);
   const [meals, setMeals] = useState(10);
   const [weekly, setWeekly] = useState(false);
   const [next, setNext] = useState<{ left: number; drop: string } | null>(null);
@@ -187,21 +189,31 @@ function MacroKitchenDemo({ accent }: { accent: string }) {
     const id = window.setInterval(tick, 1000);
     return () => window.clearInterval(id);
   }, []);
-  const base = meals * 8;
+  const base = people * meals * 8;
   const price = weekly ? base * 0.95 : base;
   const d = next ? Math.floor(next.left / 86400) : 0;
   const hr = next ? Math.floor((next.left % 86400) / 3600) : 0;
   const min = next ? Math.floor((next.left % 3600) / 60) : 0;
   return (
     <div>
-      <p className="text-xs text-muted">Meals a week</p>
+      <p className="text-xs text-muted">Who’s eating?</p>
+      <div className="mt-2">
+        <Segmented
+          label="Who’s eating"
+          accent={accent}
+          value={people}
+          onChange={setPeople}
+          options={[1, 2, 3, 4].map((n) => ({ value: n, label: n === 1 ? "Just you" : `${n} people` }))}
+        />
+      </div>
+      <p className="mt-4 text-xs text-muted">Meals a week, each</p>
       <div className="mt-2">
         <Segmented
           label="Meals a week"
           accent={accent}
           value={meals}
           onChange={setMeals}
-          options={[5, 10, 15, 20].map((n) => ({ value: n, label: `${n}` }))}
+          options={[5, 7, 10, 14].map((n) => ({ value: n, label: `${n}` }))}
         />
       </div>
       <p className="mt-4 text-xs text-muted">How do you want to pay?</p>
@@ -218,7 +230,7 @@ function MacroKitchenDemo({ accent }: { accent: string }) {
         />
       </div>
       <Readout>
-        {meals} meals from{" "}
+        {people * meals} meals from{" "}
         <strong className="font-medium" style={{ color: accent }}>
           £{price.toFixed(2)}
         </strong>
@@ -228,6 +240,72 @@ function MacroKitchenDemo({ accent }: { accent: string }) {
             Order within {d}d {hr}h {min}m for {next.drop} delivery.
           </>
         ) : null}
+      </Readout>
+    </div>
+  );
+}
+
+/* PocketPlan: a new block of recipes every six weeks, and the client code. */
+
+function PocketPlanDemo({ accent }: { accent: string }) {
+  const [week, setWeek] = useState(4);
+  const [client, setClient] = useState<"member" | "client">("member");
+  const blocks = 1 + (week >= 6 ? 1 : 0) + (week >= 12 ? 1 : 0);
+  const nextAt = week < 6 ? 6 : week < 12 ? 12 : 18;
+  const wait = nextAt - week;
+  const pct = ((week - 1) / 11) * 100;
+  return (
+    <div>
+      <div className="flex items-baseline justify-between">
+        <label htmlFor="pp-week" className="text-xs text-muted">
+          Weeks since joining
+        </label>
+        <p className="font-display text-xl text-ink tabular-nums">Week {week}</p>
+      </div>
+      <input
+        id="pp-week"
+        type="range"
+        min={1}
+        max={12}
+        step={1}
+        value={week}
+        onChange={(event) => setWeek(+event.target.value)}
+        className="showcase-range mt-2 w-full"
+        style={{ ["--fill" as string]: `${pct}%`, ["--accent" as string]: accent }}
+      />
+      <ul className="mt-3 grid grid-cols-3 gap-2" aria-label="Recipe blocks">
+        {[1, 2, 3].map((b) => {
+          const open = b <= blocks;
+          return (
+            <li
+              key={b}
+              className={`rounded-xl border px-3 py-2 text-xs transition-colors duration-300 ${open ? "bg-paper/60" : "border-line opacity-60"}`}
+              style={open ? { borderColor: accent } : undefined}
+            >
+              <span className={open ? "font-medium" : "text-muted"}>Block {b}</span>
+              <span className="mt-0.5 block text-[10px] text-muted">{b === 1 ? "Day one" : `Week ${(b - 1) * 6}`}</span>
+            </li>
+          );
+        })}
+      </ul>
+      <div className="mt-4">
+        <Segmented
+          label="How you join"
+          accent={accent}
+          value={client}
+          onChange={setClient}
+          options={[
+            { value: "member", label: "Membership" },
+            { value: "client", label: "I train with Pocket" },
+          ]}
+        />
+      </div>
+      <Readout>
+        <strong className="font-medium" style={{ color: accent }}>
+          {blocks * 24}+ recipes
+        </strong>{" "}
+        in your library. Block {blocks + 1} unlocks in {wait} {wait === 1 ? "week" : "weeks"}.{" "}
+        {client === "client" ? "Your client code gets you full access, no payment." : "Membership opens soon."}
       </Readout>
     </div>
   );

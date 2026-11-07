@@ -1,0 +1,204 @@
+import { f as projects } from "./content-CgSyAvuN.mjs";
+import { C as require_jsx_runtime, b as Link } from "../_libs/@tanstack/react-router+[...].mjs";
+import { m as ArrowUpRight } from "../_libs/lucide-react.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/work.index-CFap-ZQX.js
+var import_jsx_runtime = require_jsx_runtime();
+var decks = {
+	"real-food-delivered": {
+		stack: "/work/rfd-stack.jpg",
+		headline: "Two ways to order from the same kitchen.",
+		points: [
+			"Build a box, or pick a calorie plan",
+			"Local drops and a nationwide box",
+			"The kitchen owns the ordering"
+		],
+		colours: [
+			"#1b1b1b",
+			"#f4efe6",
+			"#c45c26",
+			"#f7f3ec"
+		]
+	},
+	"jkitchen-cooks": {
+		stack: "/work/jk-stack.jpg",
+		headline: "A Sunday menu, ordered before Friday at five.",
+		points: [
+			"This week’s plates, with calories",
+			"Boxes from 6 to 15 meals",
+			"A cutoff the page makes obvious"
+		],
+		colours: [
+			"#2a241c",
+			"#efe6d6",
+			"#8a6a3b",
+			"#f7f1e6"
+		]
+	},
+	"the-farmers-box": {
+		stack: "/work/fb-stack.jpg",
+		headline: "A farm box, ordered on the site.",
+		points: [
+			"Four sizes, contents follow the harvest",
+			"Once, or every week",
+			"Wednesday to Friday, by area"
+		],
+		colours: [
+			"#1f3a2a",
+			"#f3efe4",
+			"#6b8f4e",
+			"#e7d7a8"
+		]
+	},
+	"the-macro-kitchen": {
+		stack: "/work/mk-stack.jpg",
+		headline: "The whole week, ordered in one go.",
+		points: [
+			"A new menu every week",
+			"Macros on every dish",
+			"Wednesday and Saturday drops"
+		],
+		colours: [
+			"#24301c",
+			"#5a6840",
+			"#f4efe6",
+			"#d8bf86"
+		]
+	},
+	pocketplan: {
+		stack: "/work/pp-stack.jpg",
+		headline: "A recipe library that grows every six weeks.",
+		points: [
+			"24+ recipes a block, macros done",
+			"Standard, pescatarian and vegetarian",
+			"PT clients get in with a code"
+		],
+		colours: [
+			"#1f1d1a",
+			"#4e5a3c",
+			"#eae4da",
+			"#f5f2ed"
+		]
+	},
+	trackr: {
+		stack: "/work/trackr-stack.jpg",
+		headline: "Calories, meals, workouts and weight. One diary.",
+		points: [
+			"Still in the works",
+			"Photograph a plate, or describe it",
+			"A website plan can add it, branded"
+		],
+		colours: [
+			"#111114",
+			"#8b7cf7",
+			"#1c1c22",
+			"#f3f2ef"
+		]
+	}
+};
+function Work() {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("main", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "mx-auto max-w-6xl px-5 pt-12 pb-6 sm:px-8 sm:pt-16",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "eyebrow",
+				children: "My work"
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+				className: "mt-4 max-w-3xl font-display text-5xl text-ink sm:text-6xl",
+				children: "Sites that take the order."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-4 max-w-xl text-muted",
+				children: "Four live sites, one launching soon and an app in the works, each built around what the business sells."
+			})
+		]
+	}), projects.map((project) => {
+		const deck = decks[project.slug];
+		if (!deck) return null;
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+			className: "border-t border-line",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mx-auto grid max-w-6xl items-center gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.2fr]",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+						className: "flex items-center gap-3 text-xs tracking-widest text-signal uppercase",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "font-display text-muted",
+							children: project.index
+						}), project.name]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+						className: "mt-3 max-w-md font-display text-4xl leading-tight text-ink sm:text-5xl",
+						children: deck.headline
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-4 max-w-md leading-relaxed text-muted",
+						children: project.result
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+						className: "mt-6 space-y-3",
+						children: deck.points.map((point) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+							className: "flex items-start gap-3 text-ink",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "mt-1.5 size-2 shrink-0 rounded-full bg-signal" }), point]
+						}, point))
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-8 flex flex-wrap items-center gap-x-6 gap-y-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+							to: "/work/$slug",
+							params: { slug: project.slug },
+							className: "inline-flex min-h-11 items-center text-sm font-medium text-ink underline decoration-line underline-offset-4",
+							children: "View the case study"
+						}), project.status === "in-progress" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "text-sm text-muted",
+							children: project.soonLabel ?? "In the works"
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+							href: project.url,
+							target: "_blank",
+							rel: "noreferrer",
+							className: "inline-flex items-center gap-1 text-sm text-muted hover:text-ink",
+							children: [project.urlLabel, /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, { className: "size-4" })]
+						})]
+					})
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+					to: "/work/$slug",
+					params: { slug: project.slug },
+					"aria-label": `View the ${project.name} case study`,
+					className: "group relative block overflow-hidden rounded-2xl border border-line bg-[#0c0c0f] transition-[border-color,box-shadow] duration-500 hover:border-ink/25 hover:shadow-[0_40px_80px_-40px_rgba(0,0,0,0.8)]",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							"aria-hidden": true,
+							className: "pointer-events-none absolute inset-0 opacity-60 transition-opacity duration-500 group-hover:opacity-100",
+							style: { background: `radial-gradient(60% 60% at 50% 60%, ${deck.colours[2]}55, transparent 70%)` }
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+							src: deck.stack,
+							alt: `${project.name} on a desktop and a phone`,
+							loading: "lazy",
+							className: "relative w-full transition-transform duration-700 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:scale-[1.035]"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+							className: "absolute right-4 bottom-4 inline-flex translate-y-2 items-center gap-1.5 rounded-full bg-ink px-3.5 py-2 text-xs font-medium text-paper opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100",
+							children: ["Open the case study ", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, {
+								className: "size-3.5",
+								"aria-hidden": true
+							})]
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+					className: "mt-4 flex flex-wrap gap-2",
+					"aria-label": "Colours",
+					children: deck.colours.map((colour) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
+						className: "inline-flex items-center gap-2 rounded-full border border-line bg-card py-1 pr-3 pl-1 text-[11px] text-muted uppercase tabular-nums",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "size-5 rounded-full border border-line",
+							style: { background: colour }
+						}), colour]
+					}, colour))
+				})] })]
+			})
+		}, project.slug);
+	})] });
+}
+//#endregion
+export { Work as component };
