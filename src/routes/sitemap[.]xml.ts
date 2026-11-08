@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { packages, projects } from "@/lib/content";
 import { SITE_URL } from "@/lib/seo";
+import { posts } from "@/lib/blog";
 
 // /enquiries is private and deliberately left out.
 const LASTMOD = "2026-11-08";
@@ -16,6 +17,8 @@ function build() {
     "/work",
     "/web-designer-newcastle",
     ...projects.map((project) => `/work/${project.slug}`),
+    "/blog",
+    ...posts.map((post) => `/blog/${post.slug}`),
   ];
   const urls = paths
     .map((path) => `  <url><loc>${SITE_URL}${path}</loc><lastmod>${LASTMOD}</lastmod></url>`)

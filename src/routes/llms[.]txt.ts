@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { extras, faqs, formatGBP, packages, projects } from "@/lib/content";
 import { SITE_URL } from "@/lib/seo";
+import { posts } from "@/lib/blog";
 
 // A plain-text summary for AI assistants and answer engines (llmstxt.org).
 // Built from the same content as the site, so prices and projects never drift.
@@ -41,6 +42,10 @@ function build() {
     "",
     ...faqs.map((item) => `- ${item.q} ${item.a}`),
     "",
+    "## Articles",
+    "",
+    ...posts.map((post) => `- [${post.title}](${SITE_URL}/blog/${post.slug}): ${post.description}`),
+    "",
     "## Pages",
     "",
     `- [Home](${SITE_URL}/): what CreatedByLewis does and who it is for`,
@@ -50,6 +55,7 @@ function build() {
     `- [Estimate](${SITE_URL}/estimate): a short questionnaire that suggests a package and a starting price`,
     `- [Book a consultation](${SITE_URL}/book): book a free call with Lewis`,
     `- [Start a project](${SITE_URL}/start): order a package`,
+    `- [Blog](${SITE_URL}/blog): advice on platforms, costs and websites that sell`,
     "",
   ];
   return lines.join("\n");

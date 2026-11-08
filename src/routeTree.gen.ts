@@ -20,6 +20,8 @@ import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StartRouteImport } from './routes/start'
 import { Route as WebDesignerNewcastleRouteImport } from './routes/web-designer-newcastle'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as PackagesIndexRouteImport } from './routes/packages.index'
 import { Route as PackagesIdRouteImport } from './routes/packages.$id'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
@@ -81,6 +83,16 @@ const WebDesignerNewcastleRoute = WebDesignerNewcastleRouteImport.update({
   path: '/web-designer-newcastle',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PackagesIndexRoute = PackagesIndexRouteImport.update({
   id: '/packages/',
   path: '/packages/',
@@ -114,8 +126,10 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/start': typeof StartRoute
   '/web-designer-newcastle': typeof WebDesignerNewcastleRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/packages/$id': typeof PackagesIdRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/packages/': typeof PackagesIndexRoute
   '/work/': typeof WorkIndexRoute
 }
@@ -131,8 +145,10 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/start': typeof StartRoute
   '/web-designer-newcastle': typeof WebDesignerNewcastleRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/packages/$id': typeof PackagesIdRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/packages': typeof PackagesIndexRoute
   '/work': typeof WorkIndexRoute
 }
@@ -149,8 +165,10 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/start': typeof StartRoute
   '/web-designer-newcastle': typeof WebDesignerNewcastleRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/packages/$id': typeof PackagesIdRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/packages/': typeof PackagesIndexRoute
   '/work/': typeof WorkIndexRoute
 }
@@ -168,8 +186,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/start'
     | '/web-designer-newcastle'
+    | '/blog/$slug'
     | '/packages/$id'
     | '/work/$slug'
+    | '/blog/'
     | '/packages/'
     | '/work/'
   fileRoutesByTo: FileRoutesByTo
@@ -185,8 +205,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/start'
     | '/web-designer-newcastle'
+    | '/blog/$slug'
     | '/packages/$id'
     | '/work/$slug'
+    | '/blog'
     | '/packages'
     | '/work'
   id:
@@ -202,8 +224,10 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/start'
     | '/web-designer-newcastle'
+    | '/blog/$slug'
     | '/packages/$id'
     | '/work/$slug'
+    | '/blog/'
     | '/packages/'
     | '/work/'
   fileRoutesById: FileRoutesById
@@ -220,8 +244,10 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StartRoute: typeof StartRoute
   WebDesignerNewcastleRoute: typeof WebDesignerNewcastleRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   PackagesIdRoute: typeof PackagesIdRoute
   WorkSlugRoute: typeof WorkSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   PackagesIndexRoute: typeof PackagesIndexRoute
   WorkIndexRoute: typeof WorkIndexRoute
 }
@@ -305,6 +331,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WebDesignerNewcastleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/packages/': {
       id: '/packages/'
       path: '/packages'
@@ -349,8 +389,10 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StartRoute: StartRoute,
   WebDesignerNewcastleRoute: WebDesignerNewcastleRoute,
+  BlogSlugRoute: BlogSlugRoute,
   PackagesIdRoute: PackagesIdRoute,
   WorkSlugRoute: WorkSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   PackagesIndexRoute: PackagesIndexRoute,
   WorkIndexRoute: WorkIndexRoute,
 }

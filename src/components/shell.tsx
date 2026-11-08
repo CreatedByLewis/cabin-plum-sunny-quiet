@@ -10,6 +10,7 @@ const links = [
   { label: "Packages", to: "/packages", hash: undefined },
   { label: "Estimate", to: "/estimate", hash: undefined },
   { label: "Book", to: "/book", hash: undefined },
+  { label: "Blog", to: "/blog", hash: undefined },
   { label: "About", to: "/", hash: "studio" },
 ] as const;
 
@@ -221,6 +222,9 @@ function Footer() {
           </Link>
           <Link to="/web-designer-newcastle" className="text-muted hover:text-ink">
             Web design in Newcastle
+          </Link>
+          <Link to="/blog" className="text-muted hover:text-ink">
+            Blog
           </Link>
         </nav>
         <p className="text-sm whitespace-nowrap text-muted">© {new Date().getFullYear()} CreatedByLewis</p>
