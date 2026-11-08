@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as BookRouteImport } from './routes/book'
+import { Route as C68fb7dac68e4a65874be7afaf94604aDottxtRouteImport } from './routes/c68fb7dac68e4a65874be7afaf94604a[.]txt'
 import { Route as EnquiriesRouteImport } from './routes/enquiries'
 import { Route as EstimateRouteImport } from './routes/estimate'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
@@ -38,6 +39,12 @@ const BookRoute = BookRouteImport.update({
   path: '/book',
   getParentRoute: () => rootRouteImport,
 } as any)
+const C68fb7dac68e4a65874be7afaf94604aDottxtRoute =
+  C68fb7dac68e4a65874be7afaf94604aDottxtRouteImport.update({
+    id: '/c68fb7dac68e4a65874be7afaf94604a.txt',
+    path: '/c68fb7dac68e4a65874be7afaf94604a.txt',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const EnquiriesRoute = EnquiriesRouteImport.update({
   id: '/enquiries',
   path: '/enquiries',
@@ -93,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/book': typeof BookRoute
+  '/c68fb7dac68e4a65874be7afaf94604a.txt': typeof C68fb7dac68e4a65874be7afaf94604aDottxtRoute
   '/enquiries': typeof EnquiriesRoute
   '/estimate': typeof EstimateRoute
   '/llms.txt': typeof LlmsDottxtRoute
@@ -108,6 +116,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/book': typeof BookRoute
+  '/c68fb7dac68e4a65874be7afaf94604a.txt': typeof C68fb7dac68e4a65874be7afaf94604aDottxtRoute
   '/enquiries': typeof EnquiriesRoute
   '/estimate': typeof EstimateRoute
   '/llms.txt': typeof LlmsDottxtRoute
@@ -124,6 +133,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/book': typeof BookRoute
+  '/c68fb7dac68e4a65874be7afaf94604a.txt': typeof C68fb7dac68e4a65874be7afaf94604aDottxtRoute
   '/enquiries': typeof EnquiriesRoute
   '/estimate': typeof EstimateRoute
   '/llms.txt': typeof LlmsDottxtRoute
@@ -141,6 +151,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/book'
+    | '/c68fb7dac68e4a65874be7afaf94604a.txt'
     | '/enquiries'
     | '/estimate'
     | '/llms.txt'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/book'
+    | '/c68fb7dac68e4a65874be7afaf94604a.txt'
     | '/enquiries'
     | '/estimate'
     | '/llms.txt'
@@ -171,6 +183,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/book'
+    | '/c68fb7dac68e4a65874be7afaf94604a.txt'
     | '/enquiries'
     | '/estimate'
     | '/llms.txt'
@@ -187,6 +200,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   BookRoute: typeof BookRoute
+  C68fb7dac68e4a65874be7afaf94604aDottxtRoute: typeof C68fb7dac68e4a65874be7afaf94604aDottxtRoute
   EnquiriesRoute: typeof EnquiriesRoute
   EstimateRoute: typeof EstimateRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
@@ -220,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/book'
       fullPath: '/book'
       preLoaderRoute: typeof BookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/c68fb7dac68e4a65874be7afaf94604a.txt': {
+      id: '/c68fb7dac68e4a65874be7afaf94604a.txt'
+      path: '/c68fb7dac68e4a65874be7afaf94604a.txt'
+      fullPath: '/c68fb7dac68e4a65874be7afaf94604a.txt'
+      preLoaderRoute: typeof C68fb7dac68e4a65874be7afaf94604aDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/enquiries': {
@@ -299,6 +320,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   BookRoute: BookRoute,
+  C68fb7dac68e4a65874be7afaf94604aDottxtRoute:
+    C68fb7dac68e4a65874be7afaf94604aDottxtRoute,
   EnquiriesRoute: EnquiriesRoute,
   EstimateRoute: EstimateRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
