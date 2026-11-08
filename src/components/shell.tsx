@@ -1,6 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Instagram, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
+import { Stars, TrustpilotMark } from "@/components/testimonials";
+import { TRUSTPILOT_URL, testimonials } from "@/lib/testimonials";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -260,17 +262,47 @@ function Footer() {
         </nav>
         <p className="text-sm text-muted">© {new Date().getFullYear()} CreatedByLewis</p>
       </div>
-      <div className="mx-auto max-w-6xl px-5 pb-10 sm:px-8">
-        <p className="text-xs tracking-widest text-muted uppercase">Pay with</p>
-        <ul className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-4" aria-label="Payment methods">
-          <li><ApplePayMark /></li>
-          <li><GooglePayMark /></li>
-          <li><PayPalMark /></li>
-          <li><KlarnaMark /></li>
-          <li><ClearpayMark /></li>
-        </ul>
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 pb-10 sm:flex-row sm:items-end sm:justify-between sm:px-8">
+        <div>
+          <p className="text-xs tracking-widest text-muted uppercase">Pay with</p>
+          <ul className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-4" aria-label="Payment methods">
+            <li><ApplePayMark /></li>
+            <li><GooglePayMark /></li>
+            <li><PayPalMark /></li>
+            <li><KlarnaMark /></li>
+            <li><ClearpayMark /></li>
+          </ul>
+        </div>
+        <TrustpilotBadge />
       </div>
     </footer>
+  );
+}
+
+function TrustpilotBadge() {
+  const count = testimonials.length;
+  if (count === 0) return null;
+  const allFive = testimonials.every((t) => t.rating === 5);
+  return (
+    <div>
+      <p className="text-xs tracking-widest text-muted uppercase">Reviewed on</p>
+      <a
+        href={TRUSTPILOT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group mt-3 inline-flex min-h-11 flex-wrap items-center gap-x-3 gap-y-2 rounded-xl border border-line px-4 py-2.5 transition-colors hover:border-ink/40"
+        aria-label={`Trustpilot: ${count} ${count === 1 ? "review" : "reviews"}${allFive ? ", all 5 stars" : ""}. Opens Trustpilot.`}
+      >
+        <TrustpilotMark className="text-[15px]" />
+        {allFive ? <Stars rating={5} size={16} /> : null}
+        <span className="text-xs text-muted">
+          {count} {count === 1 ? "review" : "reviews"}
+          <span aria-hidden className="ml-1.5 inline-block transition-transform group-hover:translate-x-0.5">
+            ↗
+          </span>
+        </span>
+      </a>
+    </div>
   );
 }
 

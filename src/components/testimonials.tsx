@@ -21,7 +21,7 @@ export function Stars({ rating, size = 22 }: { rating: number; size?: number }) 
   );
 }
 
-function TrustpilotMark({ className = "" }: { className?: string }) {
+export function TrustpilotMark({ className = "" }: { className?: string }) {
   return (
     <span className={`inline-flex items-center gap-1.5 font-medium text-ink ${className}`}>
       <svg viewBox="0 0 24 24" className="size-[1.1em]" aria-hidden>
