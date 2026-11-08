@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Instagram, Menu, Moon, Sun, X } from "lucide-react";
+import { Instagram, Menu, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { Stars, TrustpilotMark } from "@/components/testimonials";
 import { TRUSTPILOT_URL, testimonials } from "@/lib/testimonials";
@@ -33,12 +33,6 @@ export function Shell({ children }: { children: ReactNode }) {
 function Header() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const [open, setOpen] = useState(false);
-  const [light, setLight] = useState(false);
-
-  useEffect(() => {
-    setLight(document.documentElement.dataset.theme === "light");
-  }, []);
-
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
@@ -51,15 +45,6 @@ function Header() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
-
-  function setTheme(nextLight: boolean) {
-    setLight(nextLight);
-    document.documentElement.dataset.theme = nextLight ? "light" : "dark";
-    localStorage.setItem("lewis-theme", nextLight ? "light" : "dark");
-    document
-      .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", nextLight ? "#f3f2ef" : "#111114");
-  }
 
   return (
     <header className="sticky top-0 z-30 border-b border-line/70 bg-paper/75 backdrop-blur-xl backdrop-saturate-150">
@@ -89,11 +74,9 @@ function Header() {
           >
             Start a project
           </Link>
-          <ThemeSwitch light={light} onToggle={() => setTheme(!light)} />
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
-          <ThemeSwitch light={light} onToggle={() => setTheme(!light)} />
           <button
             type="button"
             className="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink"
@@ -133,29 +116,6 @@ function Header() {
         </nav>
       ) : null}
     </header>
-  );
-}
-
-function ThemeSwitch({ light, onToggle }: { light: boolean; onToggle: () => void }) {
-  return (
-    <button
-      type="button"
-      role="switch"
-      aria-checked={light}
-      aria-label={light ? "Switch to dark" : "Switch to light"}
-      onClick={onToggle}
-      className="relative grid h-11 w-[4.5rem] shrink-0 grid-cols-2 items-center rounded-full border border-line bg-card"
-    >
-      <span
-        aria-hidden
-        className={cn(
-          "absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-ink transition-all duration-200",
-          light ? "left-1" : "right-1",
-        )}
-      />
-      <Sun className={cn("relative z-10 mx-auto size-4", light ? "text-paper" : "text-muted")} aria-hidden />
-      <Moon className={cn("relative z-10 mx-auto size-4", light ? "text-muted" : "text-paper")} aria-hidden />
-    </button>
   );
 }
 

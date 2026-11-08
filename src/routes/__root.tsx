@@ -7,8 +7,6 @@ import appCss from "../styles.css?url";
 import { packages } from "@/lib/content";
 import { BUSINESS_ID, PERSON_ID, SITE_URL, WEBSITE_ID } from "@/lib/seo";
 
-const themeScript = `(function(){try{var t=localStorage.getItem("lewis-theme");if(t==="light"){document.documentElement.dataset.theme="light";var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#f3f2ef");}}catch(e){}})();`;
-
 // The business, its founder and the site, on every page. Page routes add
 // their own nodes (FAQ, case studies, packages) that point back at these @ids.
 const jsonLd = JSON.stringify({
@@ -123,7 +121,6 @@ export const Route = createRootRoute({
     <html lang="en" className="antialiased" suppressHydrationWarning>
       <head>
         <HeadContent />
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       </head>
       <body>

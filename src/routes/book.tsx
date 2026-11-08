@@ -1,6 +1,6 @@
 import { seo, webPage, breadcrumbs } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const CALENDLY = "https://calendly.com/hello-createdbylewis/30min";
 
@@ -16,9 +16,8 @@ export const Route = createFileRoute("/book")({
 });
 
 function BookPage() {
-  const light = useLightTheme();
-  const background = light ? "f3f2ef" : "111114";
-  const text = light ? "16161a" : "f4f4f2";
+  const background = "111114";
+  const text = "f4f4f2";
   const url = `${CALENDLY}?hide_gdpr_banner=1&hide_landing_page_details=1&background_color=${background}&text_color=${text}&primary_color=8b7cf7`;
 
   useEffect(() => {
@@ -76,17 +75,4 @@ function BookPage() {
       </div>
     </main>
   );
-}
-
-function useLightTheme() {
-  const [light, setLight] = useState(false);
-  useEffect(() => {
-    const root = document.documentElement;
-    const read = () => setLight(root.dataset.theme === "light");
-    read();
-    const observer = new MutationObserver(read);
-    observer.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
-    return () => observer.disconnect();
-  }, []);
-  return light;
 }

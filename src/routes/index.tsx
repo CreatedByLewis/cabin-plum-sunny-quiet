@@ -295,7 +295,7 @@ function Home() {
 
       <section id="studio" className="scroll-mt-20 border-t border-line">
         <div className="mx-auto max-w-xl px-5 py-14 text-center sm:px-8 sm:py-20">
-          <div className="ring-glow mx-auto size-56 rounded-full p-1.5 sm:size-64">
+          <div className="ring-halo mx-auto size-56 rounded-full bg-paper p-2 sm:size-64">
             <img
               src="/lewis.jpg"
               alt="Lewis Stratford"
