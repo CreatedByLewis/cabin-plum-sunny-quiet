@@ -2,7 +2,8 @@ import { seo, webPage, SITE_URL } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
-import { Testimonials } from "@/components/testimonials";
+import { Stars, Testimonials, TrustpilotMark } from "@/components/testimonials";
+import { TRUSTPILOT_URL, testimonials } from "@/lib/testimonials";
 import { clientLogos } from "@/components/client-logos";
 import { Showcase } from "@/components/showcase/showcase";
 import { PackageCard } from "@/components/package-card";
@@ -38,13 +39,22 @@ function Home() {
       <section className="relative overflow-hidden">
         <HeroOrbs />
         <div className="relative z-10 mx-auto max-w-4xl px-5 pt-12 pb-12 text-center sm:pt-20 sm:pb-16">
-          <p className="step-in inline-flex items-center gap-2 rounded-full border border-line bg-card/60 px-3.5 py-1.5 text-xs text-muted backdrop-blur">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-              <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
+          <a
+            href={TRUSTPILOT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Rated 5 stars on Trustpilot from ${testimonials.length} reviews. Opens Trustpilot.`}
+            className="step-in group inline-flex min-h-9 items-center gap-2.5 rounded-full border border-line bg-card/60 px-3.5 py-1.5 text-xs text-muted backdrop-blur transition-colors hover:border-ink/40"
+          >
+            <TrustpilotMark className="text-[13px]" />
+            <Stars rating={5} size={14} />
+            <span>
+              {testimonials.length} {testimonials.length === 1 ? "review" : "reviews"}
             </span>
-            United Kingdom · Design and build · Booking now
-          </p>
+            <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
+              ↗
+            </span>
+          </a>
           <h1 className="mt-7 font-sans text-5xl leading-[1.02] font-medium tracking-tight text-ink sm:text-7xl lg:text-8xl">
             {["A", "Site", "That", "Can", "Take", "the"].map((word, i) => (
               <span key={word + i} className="word-rise" style={{ animationDelay: `${80 + i * 70}ms` }}>
