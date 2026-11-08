@@ -104,7 +104,7 @@ export const projects: Project[] = [
     name: "The Farmers Box",
     summary: "Organic veg boxes from Lyncroft Farm. Order once, or every week.",
     image: "/work/farmers-box.jpg",
-    mobileImage: "/work/farmers-box-mobile.png",
+    mobileImage: "/work/farmers-box-mobile.jpg",
     imageAlt: "The Farmers Box homepage. Organic vegetable boxes from Lyncroft Farm, with an order button.",
     url: "https://thefarmersbox.co.uk",
     urlLabel: "thefarmersbox.co.uk",
@@ -114,7 +114,7 @@ export const projects: Project[] = [
     focus: "A weekly farm box",
     quote: "From our farm to your table.",
     result:
-      "Customers pick a box, add fruit, eggs or milk, and order for one week or every week. Delivery runs Wednesday to Friday across West Lancashire and north Liverpool.",
+      "Customers pick a box, add fruit, eggs or milk, and order for one week or every week. Delivery runs Wednesday to Friday across Liverpool, West Lancashire and Preston.",
     brief: [
       "Duncan and Jimmelyn Gielty grow certified organic vegetables at Lyncroft Farm in Aughton. The box changes with the harvest. The fruit is bought in, and the meat is raised on the farm.",
       "The site had to make the box easy to order and the weekly option obvious, without turning a farm into a generic shop.",
@@ -138,7 +138,7 @@ export const projects: Project[] = [
       },
       {
         title: "Postcode, then the day",
-        detail: "Delivery runs Wednesday to Friday depending on the area, with Southport, Formby and Crosby on Wednesday. The page tells you before you order.",
+        detail: "Each area has its own day: Southport, Formby and Crosby on Wednesday, Bootle and Sefton on Thursday, Ormskirk and Skelmersdale on Friday. The page tells you before you order.",
       },
     ],
     specs: [
@@ -155,7 +155,7 @@ export const projects: Project[] = [
     summary: "Chef-prepared meals. A custom box, or a set calorie plan.",
     image: "/work/real-food-dark.jpg",
     hoverImage: "/work/real-food-light.jpg",
-    imageAlt: "Real Food Delivered homepage, with the choice between a custom box and a set calorie plan.",
+    imageAlt: "Real Food Delivered homepage: “Real food. To your door.”, with Build Your Box, Set Calorie Plan and a countdown to the Friday 5pm menu lock.",
     url: "https://www.realfooddelivered.co.uk",
     urlLabel: "realfooddelivered.co.uk",
     lede: "Two ways to buy from the same kitchen, without the homepage turning into a catalogue.",
@@ -166,7 +166,7 @@ export const projects: Project[] = [
     result:
       "The kitchen owns its ordering. Customers build a box or pick a calorie plan, locally or nationwide, and can do it all on a phone. There’s no monthly fee to an outside box builder.",
     brief: [
-      "Real Food Delivered cooks fresh and delivers locally on Sunday and Wednesday, or nationwide in one box on Tuesday. Customers either build every meal themselves or pick a set calorie plan between 1,200 and 3,100 kcal.",
+      "Real Food Delivered cooks fresh and delivers locally on Sunday and Wednesday, or nationwide in one box on Tuesday. Customers either build every meal themselves or pick a set calorie plan between 1,250 and 3,500 kcal a day.",
       "The site had to make that choice obvious on one screen. The photos sell the food. The layout just has to get people into the right box.",
     ],
     built: [
@@ -176,7 +176,7 @@ export const projects: Project[] = [
       },
       {
         title: "The menu starts the order",
-        detail: "This week’s dishes are on the page, and choosing one starts the box instead of dropping you into a shop grid.",
+        detail: "This week’s dishes are on the page with their macros and price, and tapping one starts the box. A countdown shows when the menu locks on Friday at 5pm.",
       },
       {
         title: "Delivery in plain language",
@@ -184,7 +184,7 @@ export const projects: Project[] = [
       },
       {
         title: "One-off or ongoing",
-        detail: "A weekly subscription for people who know they’ll be back, and a pay-as-you-go plan for people who aren’t ready to commit.",
+        detail: "Order for one week, or subscribe weekly and save 5%. Subscribers can pause any week.",
       },
       {
         title: "The phone has to finish the order",
@@ -195,7 +195,7 @@ export const projects: Project[] = [
     specs: [
       { label: "Local drops", value: "Sunday & Wednesday" },
       { label: "Nationwide", value: "One Tuesday box" },
-      { label: "Plans", value: "1,200–3,100 kcal" },
+      { label: "Plans", value: "1,250–3,500 kcal" },
       { label: "Also on the box", value: "Breakfasts & dessert" },
     ],
   },

@@ -146,6 +146,13 @@ function NewcastlePage() {
               >
                 Read the case study
               </Link>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
+                Also from the North East:{" "}
+                <Link to="/work/$slug" params={{ slug: "real-food-delivered" }} className="text-ink underline underline-offset-2">
+                  Real Food Delivered
+                </Link>
+                , chef-cooked meal prep with local drops on Sunday and Wednesday and a nationwide box on Tuesday.
+              </p>
             </div>
             <Link to="/work/$slug" params={{ slug: mk.slug }} className="lift block overflow-hidden rounded-2xl border border-line">
               <img src={mk.image} alt={mk.imageAlt} className="block h-auto w-full" loading="lazy" width={1440} height={900} />

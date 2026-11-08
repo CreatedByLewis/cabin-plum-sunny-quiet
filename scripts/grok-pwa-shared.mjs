@@ -450,8 +450,11 @@ export function injectGrokPwaHead(html, ctx = {}) {
 
   const missing = grokPwaHeadTags(appName)
     .filter(([key]) => {
-      if (key === "manifest") return !next.includes('href="/__grok/manifest.webmanifest"');
-      if (key === "apple-touch-icon") return !next.includes('href="/__grok/icon-180.png"');
+      // The site ships its own manifest and home-screen icon; only fall back
+      // to the template's when the page has none at all.
+      if (key === "manifest") return !next.includes('rel="manifest"');
+      if (key === "apple-touch-icon") return !next.includes('rel="apple-touch-icon"');
+      if (key === "apple-mobile-web-app-title") return !next.includes('name="apple-mobile-web-app-title"');
       return !next.includes(`name="${key}"`);
     })
     .map(([, tag]) => tag);

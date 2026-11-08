@@ -358,9 +358,12 @@ function FarmersDemo({ accent }: { accent: string }) {
 
 function RealFoodDemo({ accent }: { accent: string }) {
   const [door, setDoor] = useState<"box" | "plan">("plan");
-  const [kcal, setKcal] = useState(2000);
+  // The plan sizes the kitchen offers, as on realfooddelivered.co.uk.
+  const stops = [1250, 1600, 1900, 2200, 2850, 3500];
+  const [step, setStep] = useState(2);
+  const kcal = stops[step];
   const [where, setWhere] = useState<"local" | "national">("local");
-  const pct = ((kcal - 1200) / (3100 - 1200)) * 100;
+  const pct = (step / (stops.length - 1)) * 100;
   return (
     <div>
       <p className="text-xs text-muted">Two ways to order from the same kitchen.</p>
@@ -387,22 +390,23 @@ function RealFoodDemo({ accent }: { accent: string }) {
           <input
             id="rfd-kcal"
             type="range"
-            min={1200}
-            max={3100}
-            step={100}
-            value={kcal}
-            onChange={(event) => setKcal(+event.target.value)}
+            min={0}
+            max={stops.length - 1}
+            step={1}
+            value={step}
+            aria-valuetext={`${kcal.toLocaleString("en-GB")} kcal a day`}
+            onChange={(event) => setStep(+event.target.value)}
             className="showcase-range mt-2 w-full"
             style={{ ["--fill" as string]: `${pct}%`, ["--accent" as string]: accent }}
           />
           <div className="mt-1 flex justify-between text-[10px] text-muted">
-            <span>1,200</span>
-            <span>3,100</span>
+            <span>1,250</span>
+            <span>3,500</span>
           </div>
         </div>
       ) : (
         <p className="step-in mt-4 text-sm leading-snug text-muted">
-          Pick every meal yourself from this week’s dishes. Choosing one starts the box.
+          Pick every meal yourself from this week’s dishes: at least six, three for Sunday and three for Wednesday.
         </p>
       )}
       <div className="mt-4">
