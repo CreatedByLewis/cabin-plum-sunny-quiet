@@ -1,6 +1,6 @@
 import { seo, webPage, SITE_URL } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock3, Store, Wallet } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { Stars, Testimonials, TrustpilotMark } from "@/components/testimonials";
 import { TRUSTPILOT_URL, testimonials } from "@/lib/testimonials";
@@ -9,7 +9,7 @@ import { Showcase } from "@/components/showcase/showcase";
 import { PackageCard } from "@/components/package-card";
 import { PricesNote } from "@/components/prices-note";
 import { ButtonLink } from "@/components/ui/button";
-import { packages, practice, faqs, projects } from "@/lib/content";
+import { faqs, formatGBP, packages, practice, projects } from "@/lib/content";
 
 export const Route = createFileRoute("/")({
   head: () => seo({
@@ -32,6 +32,122 @@ export const Route = createFileRoute("/")({
   }),
   component: Home,
 });
+
+/** Three facts a visitor actually asks about: proof, time and what it costs to start. */
+function HeroStats() {
+  const live = projects.filter((p) => p.status !== "in-progress").length;
+  const weeks = packages.map((p) => Number(p.time.match(/\d+/)?.[0] ?? 0)).filter(Boolean);
+  const minWeeks = Math.min(...weeks);
+  const maxWeeks = Math.max(...weeks);
+  const startPrice = Math.min(...packages.map((p) => p.price));
+  const deposit = 0.25;
+
+  const card =
+    "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-card/45 p-3 text-left backdrop-blur transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-signal/40 hover:bg-card/70 sm:p-5";
+  const label = "flex items-center gap-2 text-[10px] tracking-wide text-muted uppercase sm:text-[11px] sm:tracking-widest";
+  const chip =
+    "hidden size-6 shrink-0 place-items-center rounded-full bg-signal/12 text-signal ring-1 ring-signal/20 sm:grid";
+  const value = "mt-2 font-display text-[1.65rem] leading-none text-ink tabular-nums sm:mt-3 sm:text-4xl";
+  const note = "mt-auto pt-3 text-[10.5px] leading-snug text-muted sm:text-xs";
+
+  return (
+    <ul
+      className="rise mx-auto mt-10 grid max-w-2xl grid-cols-3 gap-2 sm:gap-3"
+      style={{ animationDelay: "920ms" }}
+      aria-label="At a glance"
+    >
+      <li>
+        <Link to="/work" className={card}>
+          <Sheen />
+          <span className={label}>
+            <span className={chip} aria-hidden>
+              <Store className="size-3.5" />
+            </span>
+            Sites live
+          </span>
+          <span className={value}>{live}</span>
+          <span className={note}>
+            <span className="mb-2 flex h-1 items-center gap-1" aria-hidden>
+              {Array.from({ length: live }, (_, i) => (
+                <span key={i} className="relative flex size-1.5 sm:size-2">
+                  <span
+                    className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-50"
+                    style={{ animationDelay: `${i * 350}ms`, animationDuration: "2.4s" }}
+                  />
+                  <span className="relative inline-flex size-full rounded-full bg-emerald-400" />
+                </span>
+              ))}
+            </span>
+            Taking orders<span className="hidden sm:inline"> now</span>
+          </span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/packages" className={card}>
+          <Sheen />
+          <span className={label}>
+            <span className={chip} aria-hidden>
+              <Clock3 className="size-3.5" />
+            </span>
+            Live in
+          </span>
+          <span className={`${value} whitespace-nowrap`}>
+            {minWeeks}–{maxWeeks}
+            <span className="ml-1 font-sans text-xs text-muted sm:text-base">
+              <span className="sm:hidden">wks</span>
+              <span className="hidden sm:inline">weeks</span>
+            </span>
+          </span>
+          <span className={note}>
+            <span className="mb-2 flex gap-1" aria-hidden>
+              {Array.from({ length: maxWeeks }, (_, i) => (
+                <span
+                  key={i}
+                  className={`h-1 flex-1 rounded-full ${i < minWeeks ? "bg-signal" : "bg-signal/25"}`}
+                />
+              ))}
+            </span>
+            Brief to launch
+          </span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/packages" className={card}>
+          <Sheen />
+          <span className={label}>
+            <span className={chip} aria-hidden>
+              <Wallet className="size-3.5" />
+            </span>
+            To start
+          </span>
+          <span className={value}>{formatGBP(startPrice * deposit)}</span>
+          <span className={note}>
+            <span className="mb-2 flex h-1 overflow-hidden rounded-full bg-signal/20" aria-hidden>
+              <span className="h-full rounded-full bg-signal" style={{ width: `${deposit * 100}%` }} />
+            </span>
+            The rest at launch
+          </span>
+        </Link>
+      </li>
+    </ul>
+  );
+}
+
+/** A hairline highlight along the top edge and a soft glow that wakes on hover. */
+function Sheen() {
+  return (
+    <>
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-signal/70 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-100"
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -top-12 -right-12 size-28 rounded-full bg-signal/0 blur-2xl transition-colors duration-500 group-hover:bg-signal/20"
+      />
+    </>
+  );
+}
 
 function Home() {
   return (
@@ -82,21 +198,7 @@ function Home() {
               See the work
             </ButtonLink>
           </div>
-          <dl
-            className="rise mx-auto mt-10 grid max-w-lg grid-cols-3 divide-x divide-line overflow-hidden rounded-2xl border border-line bg-card/50 backdrop-blur"
-            style={{ animationDelay: "920ms" }}
-          >
-            {[
-              { k: "Sites live", v: String(projects.filter((p) => p.status !== "in-progress").length) },
-              { k: "Packages", v: "3" },
-              { k: "Deposit", v: "25%" },
-            ].map((stat) => (
-              <div key={stat.k} className="px-3 py-4">
-                <dt className="text-[10px] tracking-wide text-muted uppercase md:text-xs md:tracking-widest">{stat.k}</dt>
-                <dd className="mt-1 font-display text-2xl text-ink md:text-3xl">{stat.v}</dd>
-              </div>
-            ))}
-          </dl>
+          <HeroStats />
         </div>
         <ClientStrip />
       </section>
