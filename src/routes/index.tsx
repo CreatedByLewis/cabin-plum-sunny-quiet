@@ -215,29 +215,6 @@ function Home() {
         </div>
       </section>
 
-      <section className="border-t border-line">
-        <div className="mx-auto grid max-w-6xl gap-4 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-2">
-          <div className="lift relative overflow-hidden rounded-2xl border border-signal/35 bg-card p-6 sm:p-8">
-            <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-signal/20 blur-3xl" />
-            <p className="text-xs tracking-[0.22em] text-signal uppercase">Yes</p>
-            <h2 className="mt-3 font-display text-4xl text-ink sm:text-5xl">Who Is It For?</h2>
-            <p className="mt-4 max-w-md leading-relaxed text-ink">
-              Brands selling something people order, often more than once. A kitchen that’s just opened, or
-              one already delivering nationwide. A bakery, a butcher, a hamper brand, a florist, a coffee
-              roaster. Anywhere in the UK.
-            </p>
-          </div>
-          <div className="lift rounded-2xl border border-line bg-paper p-6 sm:p-8">
-            <p className="text-xs tracking-[0.22em] text-muted uppercase">No</p>
-            <h2 className="mt-3 font-display text-4xl text-muted sm:text-5xl">Who Isn’t It For?</h2>
-            <p className="mt-4 max-w-md leading-relaxed text-muted">
-              A brochure site for a trade, or a page that only explains what you do. If your site doesn’t need
-              to take orders, I’m not the right person.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <Testimonials />
 
       <section className="border-t border-line">
