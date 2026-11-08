@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { sendPrices } from "@/lib/enquire";
 import { cn } from "@/lib/utils";
 
-export function PricesNote() {
+export function PricesNote({ bare = false }: { bare?: boolean }) {
   const [email, setEmail] = useState("");
   const [confirm, setConfirm] = useState(false);
   const [company, setCompany] = useState("");
@@ -39,7 +39,11 @@ export function PricesNote() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="relative mt-4 rounded-xl border border-line bg-card p-5 sm:p-6">
+    <form
+      onSubmit={onSubmit}
+      noValidate
+      className={cn("relative", bare ? "" : "mt-4 rounded-xl border border-line bg-card p-5 sm:p-6")}
+    >
       <p className="font-medium text-ink">Not ready to book?</p>
       <p className="mt-1 max-w-lg text-sm leading-relaxed text-muted">
         Leave your email and I’ll send the prices. No commitment and nothing to pay.
@@ -58,12 +62,12 @@ export function PricesNote() {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             className={cn(
-              "min-h-11 w-full rounded-md border bg-paper px-3 text-base text-ink outline-none transition-colors duration-200 focus:border-ink sm:max-w-sm",
+              "min-h-11 w-full min-w-0 rounded-md border bg-paper px-3 text-base text-ink outline-none transition-colors duration-200 focus:border-ink sm:max-w-sm sm:flex-1",
               error ? "border-signal" : "border-line",
             )}
             aria-invalid={Boolean(error)}
           />
-          <Button type="submit" disabled={sending}>
+          <Button type="submit" disabled={sending} className="shrink-0 whitespace-nowrap">
             {sending ? "Sending…" : "Send me the prices"}
           </Button>
         </div>

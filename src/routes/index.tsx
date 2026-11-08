@@ -9,7 +9,7 @@ import { Showcase } from "@/components/showcase/showcase";
 import { PackageCard } from "@/components/package-card";
 import { PricesNote } from "@/components/prices-note";
 import { ButtonLink } from "@/components/ui/button";
-import { faqs, formatGBP, packages, practice, projects } from "@/lib/content";
+import { extras, faqs, formatGBP, packages, practice, projects } from "@/lib/content";
 
 export const Route = createFileRoute("/")({
   head: () => seo({
@@ -217,35 +217,59 @@ function Home() {
 
       <Testimonials />
 
-      <section className="border-t border-line">
+      <section id="packages" className="scroll-mt-20 border-t border-line">
         <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <div>
-              <h2 className="font-display text-4xl text-ink sm:text-5xl">Three Ways to Sell</h2>
-              <p className="mt-3 max-w-lg text-muted">
-                Pick the one that fits your business. The full detail is on the packages page.
+              <p className="eyebrow">Packages</p>
+              <h2 className="mt-3 font-display text-4xl text-ink sm:text-5xl">
+                Three Ways to <span className="italic text-signal">Sell.</span>
+              </h2>
+              <p className="mt-4 max-w-xl leading-relaxed text-muted">
+                Each one is shaped around your business, not dropped into a template. Pay 25% to start and the
+                rest when the site goes live, or spread the cost.
               </p>
             </div>
-            <Link to="/packages" className="inline-flex min-h-11 items-center text-sm font-medium text-ink">
-              Compare What’s Included
+            <Link
+              to="/packages"
+              className="group inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-medium text-ink"
+            >
+              Compare everything
+              <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
             </Link>
           </div>
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+
+          <div className="mt-10 grid items-stretch gap-4 lg:grid-cols-3">
             {packages.map((pkg) => (
               <PackageCard key={pkg.id} pkg={pkg} />
             ))}
           </div>
-          <div className="lift mt-4 rounded-2xl border border-line bg-card p-6 sm:p-8">
-            <p className="text-xs tracking-widest text-muted uppercase">After Launch</p>
-            <h3 className="mt-3 font-display text-4xl text-ink">Partner</h3>
-            <p className="mt-3 max-w-2xl leading-relaxed text-muted">
-              £150 a month for six months, on top of any of the three. I handle product and menu changes
-              up to an agreed hour a week, fix anything that breaks, and make one planned improvement a month.
-              A new brand or a second project is quoted separately.
-            </p>
+
+          <div className="mt-4 grid overflow-hidden rounded-2xl border border-line bg-card/40 lg:grid-cols-2">
+            <div className="flex flex-col p-6 sm:p-8">
+              <p className="text-xs tracking-widest text-muted uppercase">After launch · optional</p>
+              <h3 className="mt-3 font-display text-3xl text-ink">
+                Partner <span className="text-muted">·</span>{" "}
+                <span className="tabular-nums">{formatGBP(extras.find((e) => e.id === "care")?.price ?? 150)}</span>
+                <span className="font-sans text-base text-muted"> a month</span>
+              </h3>
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
+                For six months after launch, on top of any package. I make your product and menu changes, fix
+                anything that breaks, and add one planned improvement a month.
+              </p>
+              <Link
+                to="/packages"
+                hash="extras"
+                className="group mt-auto inline-flex min-h-11 items-center gap-2 pt-4 text-sm font-medium text-ink"
+              >
+                How Partner works
+                <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
+              </Link>
+            </div>
+            <div className="border-t border-line p-6 sm:p-8 lg:border-t-0 lg:border-l">
+              <PricesNote bare />
+            </div>
           </div>
-          <p className="mt-6 text-sm text-muted">You can spread the cost with flexible payment options, which helps if you’re a small or new business.</p>
-          <PricesNote />
         </div>
       </section>
 
