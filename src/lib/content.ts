@@ -500,7 +500,7 @@ export const faqs = [
   },
   {
     q: "Where do you work?",
-    a: "Anywhere in the UK. We can meet on a video call, or in person if that suits.",
+    a: "I’m based in the North East and work with businesses in Newcastle and across the UK. We can meet in person around the North East, or on a video call if that suits.",
   },
   {
     q: "Do I still pay for a build-a-box tool?",

@@ -14,6 +14,7 @@ function build() {
     "/book",
     "/start",
     "/work",
+    "/web-designer-newcastle",
     ...projects.map((project) => `/work/${project.slug}`),
   ];
   const urls = paths

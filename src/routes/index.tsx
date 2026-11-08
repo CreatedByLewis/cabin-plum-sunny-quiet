@@ -12,9 +12,9 @@ import { packages, practice, faqs, projects } from "@/lib/content";
 
 export const Route = createFileRoute("/")({
   head: () => seo({
-    title: "Ecommerce Web Designer UK | Shopify & WordPress | CreatedByLewis",
+    title: "Ecommerce Web Designer in Newcastle & the UK | CreatedByLewis",
     description:
-      "Bespoke ecommerce websites for UK businesses that sell, on Shopify, WordPress or custom. Build-a-box ordering, subscriptions and checkout made for the phone.",
+      "Bespoke ecommerce websites for businesses that sell, from a web designer in the North East working across Newcastle and the UK. Shopify, WordPress or custom.",
     path: "/",
     schema: [
       webPage("/", "Ecommerce web design for UK businesses that sell"),

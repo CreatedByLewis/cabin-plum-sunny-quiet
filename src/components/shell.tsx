@@ -224,7 +224,7 @@ function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-10 sm:px-8 md:flex-row md:items-end md:justify-between">
         <div>
           <Wordmark />
-          <p className="mt-2 text-sm text-muted">Design and build. United Kingdom.</p>
+          <p className="mt-2 text-sm text-muted">Design and build. North East, working UK-wide.</p>
           <p className="mt-3 flex flex-col gap-1 text-sm">
             <a href="tel:+447484686442" className="text-muted hover:text-ink">
               07484 686442
@@ -259,8 +259,11 @@ function Footer() {
           <Link to="/start" className="text-muted hover:text-ink">
             Start a project
           </Link>
+          <Link to="/web-designer-newcastle" className="text-muted hover:text-ink">
+            Web design in Newcastle
+          </Link>
         </nav>
-        <p className="text-sm text-muted">© {new Date().getFullYear()} CreatedByLewis</p>
+        <p className="text-sm whitespace-nowrap text-muted">© {new Date().getFullYear()} CreatedByLewis</p>
       </div>
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 pb-10 sm:flex-row sm:items-end sm:justify-between sm:px-8">
         <div>
