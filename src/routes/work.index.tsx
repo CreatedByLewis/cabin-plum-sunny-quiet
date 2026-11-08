@@ -1,14 +1,28 @@
-import { seo } from "@/lib/seo";
+import { seo, webPage, breadcrumbs, SITE_URL } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/content";
 
 export const Route = createFileRoute("/work/")({
   head: () => seo({
-    title: "My work | CreatedByLewis",
+    title: "Web Design Portfolio & Ecommerce Case Studies | CreatedByLewis",
     description:
-      "Sites that take orders. JKitchen Cooks, The Farmers Box, Real Food Delivered, The Macro Kitchen, PocketPlan and Trackr.",
+      "Ecommerce websites that take orders: JKitchen Cooks, The Farmers Box, Real Food Delivered and The Macro Kitchen, plus PocketPlan and Trackr.",
     path: "/work",
+    schema: [
+      webPage("/work", "Web design portfolio", undefined, "CollectionPage"),
+      breadcrumbs([["Work", "/work"]]),
+      {
+        "@type": "ItemList",
+        name: "CreatedByLewis case studies",
+        itemListElement: projects.map((project, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${SITE_URL}/work/${project.slug}`,
+          name: project.name,
+        })),
+      },
+    ],
   }),
   component: Work,
 });

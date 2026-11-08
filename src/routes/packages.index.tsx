@@ -1,4 +1,4 @@
-import { seo } from "@/lib/seo";
+import { seo, webPage, breadcrumbs } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PackageCard } from "@/components/package-card";
 import { PricesNote } from "@/components/prices-note";
@@ -7,10 +7,14 @@ import { extras, faqs, formatGBP, packages, practice } from "@/lib/content";
 
 export const Route = createFileRoute("/packages/")({
   head: () => seo({
-    title: "Ways to work | CreatedByLewis",
+    title: "Website Design Packages & Prices from £1,000 | CreatedByLewis",
     description:
-      "Shop at £1,000, Box at £1,500, Stay at £2,000. Partner is £150 a month for six months after launch. Prices are a starting point.",
+      "Website design packages for businesses that sell: Shop from £1,000, Box from £1,500, Stay from £2,000. 25% deposit, flexible payments, prices negotiable.",
     path: "/packages",
+    schema: [
+      webPage("/packages", "Website design packages and prices"),
+      breadcrumbs([["Packages", "/packages"]]),
+    ],
   }),
   component: PackagesPage,
 });

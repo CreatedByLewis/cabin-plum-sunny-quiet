@@ -14,6 +14,7 @@ import { Route as SplatRouteImport } from './routes/$'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as EnquiriesRouteImport } from './routes/enquiries'
 import { Route as EstimateRouteImport } from './routes/estimate'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StartRouteImport } from './routes/start'
@@ -45,6 +46,11 @@ const EnquiriesRoute = EnquiriesRouteImport.update({
 const EstimateRoute = EstimateRouteImport.update({
   id: '/estimate',
   path: '/estimate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/book': typeof BookRoute
   '/enquiries': typeof EnquiriesRoute
   '/estimate': typeof EstimateRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/start': typeof StartRoute
@@ -103,6 +110,7 @@ export interface FileRoutesByTo {
   '/book': typeof BookRoute
   '/enquiries': typeof EnquiriesRoute
   '/estimate': typeof EstimateRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/start': typeof StartRoute
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/book': typeof BookRoute
   '/enquiries': typeof EnquiriesRoute
   '/estimate': typeof EstimateRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/start': typeof StartRoute
@@ -134,6 +143,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/enquiries'
     | '/estimate'
+    | '/llms.txt'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/start'
@@ -148,6 +158,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/enquiries'
     | '/estimate'
+    | '/llms.txt'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/start'
@@ -162,6 +173,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/enquiries'
     | '/estimate'
+    | '/llms.txt'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/start'
@@ -177,6 +189,7 @@ export interface RootRouteChildren {
   BookRoute: typeof BookRoute
   EnquiriesRoute: typeof EnquiriesRoute
   EstimateRoute: typeof EstimateRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StartRoute: typeof StartRoute
@@ -221,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/estimate'
       fullPath: '/estimate'
       preLoaderRoute: typeof EstimateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/robots.txt': {
@@ -281,6 +301,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookRoute: BookRoute,
   EnquiriesRoute: EnquiriesRoute,
   EstimateRoute: EstimateRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StartRoute: StartRoute,

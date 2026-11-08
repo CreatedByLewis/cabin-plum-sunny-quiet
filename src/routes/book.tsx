@@ -1,4 +1,4 @@
-import { seo } from "@/lib/seo";
+import { seo, webPage, breadcrumbs } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
@@ -6,10 +6,11 @@ const CALENDLY = "https://calendly.com/hello-createdbylewis/30min";
 
 export const Route = createFileRoute("/book")({
   head: () => seo({
-    title: "Book a consultation | CreatedByLewis",
+    title: "Book a Free Website Consultation | CreatedByLewis",
     description:
       "Book a free consultation with CreatedByLewis. The time goes straight into Lewis’s calendar. Nothing to pay.",
     path: "/book",
+    schema: [webPage("/book", "Book a free website consultation", undefined, "ContactPage"), breadcrumbs([["Book", "/book"]])],
   }),
   component: BookPage,
 });

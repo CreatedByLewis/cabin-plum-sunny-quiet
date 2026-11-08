@@ -1,11 +1,33 @@
-import { seo } from "@/lib/seo";
+import { seo, webPage, breadcrumbs, SITE_URL, BUSINESS_ID } from "@/lib/seo";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { BrowserFrame } from "@/components/browser-frame";
 import { ProjectExplorer } from "@/components/showcase/showcase";
 import { showcase } from "@/components/showcase/data";
 import { ButtonAnchor, ButtonLink } from "@/components/ui/button";
-import { getProject, nextProject } from "@/lib/content";
+import { getProject, nextProject, type Project } from "@/lib/content";
+
+function caseStudySchema(project: Project) {
+  const path = `/work/${project.slug}`;
+  const live = project.status !== "in-progress" && project.url.startsWith("http");
+  return [
+    webPage(path, `${project.name} website case study`, project.lede),
+    breadcrumbs([["Work", "/work"], [project.name, path]]),
+    {
+      "@type": "CreativeWork",
+      "@id": `${SITE_URL}${path}#work`,
+      name: `${project.name} website`,
+      headline: project.lede,
+      abstract: project.summary,
+      image: `${SITE_URL}${project.image}`,
+      creator: { "@id": BUSINESS_ID },
+      dateCreated: project.year,
+      genre: "Website design and build",
+      ...(live ? { url: project.url } : {}),
+      mainEntityOfPage: { "@id": `${SITE_URL}${path}#webpage` },
+    },
+  ];
+}
 
 export const Route = createFileRoute("/work/$slug")({
   loader: ({ params }) => {
@@ -16,9 +38,10 @@ export const Route = createFileRoute("/work/$slug")({
   head: ({ loaderData }) =>
     loaderData
       ? seo({
-          title: `${loaderData.project.name} | CreatedByLewis`,
+          title: `${loaderData.project.name} Website Case Study | CreatedByLewis`,
           description: loaderData.project.lede,
           path: `/work/${loaderData.project.slug}`,
+          schema: caseStudySchema(loaderData.project),
         })
       : { meta: [] },
   component: CaseStudy,

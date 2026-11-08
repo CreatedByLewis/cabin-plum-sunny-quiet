@@ -23,9 +23,9 @@ const TOTAL = 6;
 
 export const Route = createFileRoute("/estimate")({
   head: () => seo({
-    title: "Estimate | CreatedByLewis",
+    title: "How Much Does a Website Cost? Get an Estimate | CreatedByLewis",
     description:
-      "Answer a few questions and I’ll match a website package and a starting price.",
+      "Answer a few questions about what you sell and get a matched website package and a starting price in under a minute.",
     path: "/estimate",
   }),
   component: EstimatePage,

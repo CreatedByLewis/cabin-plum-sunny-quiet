@@ -32,7 +32,7 @@ export const Route = createFileRoute("/start")({
     return next;
   },
   head: () => seo({
-    title: "Start a project | CreatedByLewis",
+    title: "Start a Website Project | CreatedByLewis",
     description:
       "Order a CreatedByLewis website package. You’ll get an invoice to start, and no card details are taken on the site.",
     path: "/start",

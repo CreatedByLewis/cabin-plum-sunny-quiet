@@ -1,4 +1,4 @@
-import { seo } from "@/lib/seo";
+import { seo, webPage, SITE_URL } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
@@ -12,10 +12,22 @@ import { packages, practice, faqs, projects } from "@/lib/content";
 
 export const Route = createFileRoute("/")({
   head: () => seo({
-    title: "Websites that take orders | CreatedByLewis",
+    title: "Ecommerce Web Designer UK | Shopify & WordPress | CreatedByLewis",
     description:
-      "Lewis designs and builds websites for brands that sell online, anywhere in the UK. Custom shops, build-a-box ordering, and subscriptions.",
+      "Bespoke ecommerce websites for UK businesses that sell, on Shopify, WordPress or custom. Build-a-box ordering, subscriptions and checkout made for the phone.",
     path: "/",
+    schema: [
+      webPage("/", "Ecommerce web design for UK businesses that sell"),
+      {
+        "@type": "FAQPage",
+        "@id": `${SITE_URL}/#faq`,
+        mainEntity: faqs.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      },
+    ],
   }),
   component: Home,
 });

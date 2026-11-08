@@ -1,4 +1,4 @@
-import { seo } from "@/lib/seo";
+import { seo, webPage, breadcrumbs, SITE_URL, BUSINESS_ID } from "@/lib/seo";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { ButtonAnchor, ButtonLink } from "@/components/ui/button";
@@ -18,9 +18,27 @@ export const Route = createFileRoute("/packages/$id")({
   head: ({ loaderData }) =>
     loaderData
       ? seo({
-          title: `${loaderData.pkg.name} | CreatedByLewis`,
+          title: `${loaderData.pkg.name} Website Package from ${formatGBP(loaderData.pkg.price)} | CreatedByLewis`,
           description: loaderData.pkg.blurb,
           path: `/packages/${loaderData.pkg.id}`,
+          schema: [
+            webPage(`/packages/${loaderData.pkg.id}`, `${loaderData.pkg.name} website package`, loaderData.pkg.blurb),
+            breadcrumbs([["Packages", "/packages"], [loaderData.pkg.name, `/packages/${loaderData.pkg.id}`]]),
+            {
+              "@type": "Service",
+              name: `${loaderData.pkg.name} website package`,
+              serviceType: "Website design and build",
+              description: loaderData.pkg.blurb,
+              provider: { "@id": BUSINESS_ID },
+              areaServed: { "@type": "Country", name: "United Kingdom" },
+              offers: {
+                "@type": "Offer",
+                price: loaderData.pkg.price,
+                priceCurrency: "GBP",
+                url: `${SITE_URL}/packages/${loaderData.pkg.id}`,
+              },
+            },
+          ],
         })
       : { meta: [] },
   component: PackagePage,
