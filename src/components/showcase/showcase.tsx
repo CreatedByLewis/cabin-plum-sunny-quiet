@@ -2,7 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Lock, Moon, MousePointerClick, Pause, Play, Sun } from "lucide-react";
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
 import { projects, type Project } from "@/lib/content";
-import { testimonials } from "@/lib/testimonials";
+import { Stars } from "@/components/testimonials";
+import { TRUSTPILOT_URL, testimonials } from "@/lib/testimonials";
 import { cn } from "@/lib/utils";
 import { showcase, type ShowcaseEntry } from "./data";
 import { Demo } from "./demos";
@@ -219,8 +220,22 @@ export function Showcase() {
 
           {quote ? (
             <figure className="mt-6 border-l-2 border-[var(--accent)] pl-4">
-              <blockquote className="font-display text-lg leading-snug text-ink">“{quote.quote}”</blockquote>
-              <figcaption className="mt-2 text-xs text-muted">{quote.attribution}</figcaption>
+              <Stars rating={quote.rating} size={16} />
+              <blockquote className="mt-3 font-display text-lg leading-snug text-ink">
+                “{quote.excerpt ?? quote.body.join(" ")}”
+              </blockquote>
+              <figcaption className="mt-2 text-xs text-muted">
+                {quote.name}
+                {quote.business ? `, ${quote.business}` : ""} ·{" "}
+                <a
+                  href={TRUSTPILOT_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-line underline-offset-2 hover:text-ink"
+                >
+                  Trustpilot
+                </a>
+              </figcaption>
             </figure>
           ) : null}
 
