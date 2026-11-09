@@ -162,6 +162,7 @@ export async function sendThemedMail(input: {
   };
   prices?: { name: string; detail: string; price: string; start: string; time: string; extra?: string; featured?: boolean }[];
   ics?: string;
+  attachments?: { filename: string; content: string; content_type?: string }[];
 }) {
   const key = RESEND_KEY;
   if (!key) return { ok: false as const, missingKey: true, message: "Resend is not connected yet." };
@@ -189,7 +190,9 @@ export async function sendThemedMail(input: {
                 content_type: "text/calendar; charset=utf-8; method=REQUEST",
               },
             ]
-          : undefined,
+          : input.attachments?.length
+            ? input.attachments
+            : undefined,
       }),
     });
     const body = (await response.json().catch(() => null)) as { message?: string } | null;

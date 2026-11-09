@@ -226,6 +226,9 @@ function Footer() {
           <Link to="/blog" className="text-muted hover:text-ink">
             Blog
           </Link>
+          <Link to="/support" className="text-muted hover:text-ink">
+            Theme support
+          </Link>
         </nav>
         <p className="text-sm whitespace-nowrap text-muted">© {new Date().getFullYear()} CreatedByLewis</p>
       </div>

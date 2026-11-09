@@ -19,6 +19,7 @@ import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as StartRouteImport } from './routes/start'
+import { Route as SupportRouteImport } from './routes/support'
 import { Route as WebDesignerNewcastleRouteImport } from './routes/web-designer-newcastle'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -78,6 +79,11 @@ const StartRoute = StartRouteImport.update({
   path: '/start',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WebDesignerNewcastleRoute = WebDesignerNewcastleRouteImport.update({
   id: '/web-designer-newcastle',
   path: '/web-designer-newcastle',
@@ -125,6 +131,7 @@ export interface FileRoutesByFullPath {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/start': typeof StartRoute
+  '/support': typeof SupportRoute
   '/web-designer-newcastle': typeof WebDesignerNewcastleRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/packages/$id': typeof PackagesIdRoute
@@ -144,6 +151,7 @@ export interface FileRoutesByTo {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/start': typeof StartRoute
+  '/support': typeof SupportRoute
   '/web-designer-newcastle': typeof WebDesignerNewcastleRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/packages/$id': typeof PackagesIdRoute
@@ -164,6 +172,7 @@ export interface FileRoutesById {
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/start': typeof StartRoute
+  '/support': typeof SupportRoute
   '/web-designer-newcastle': typeof WebDesignerNewcastleRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/packages/$id': typeof PackagesIdRoute
@@ -185,6 +194,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/start'
+    | '/support'
     | '/web-designer-newcastle'
     | '/blog/$slug'
     | '/packages/$id'
@@ -204,6 +214,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/start'
+    | '/support'
     | '/web-designer-newcastle'
     | '/blog/$slug'
     | '/packages/$id'
@@ -223,6 +234,7 @@ export interface FileRouteTypes {
     | '/robots.txt'
     | '/sitemap.xml'
     | '/start'
+    | '/support'
     | '/web-designer-newcastle'
     | '/blog/$slug'
     | '/packages/$id'
@@ -243,6 +255,7 @@ export interface RootRouteChildren {
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StartRoute: typeof StartRoute
+  SupportRoute: typeof SupportRoute
   WebDesignerNewcastleRoute: typeof WebDesignerNewcastleRoute
   BlogSlugRoute: typeof BlogSlugRoute
   PackagesIdRoute: typeof PackagesIdRoute
@@ -324,6 +337,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StartRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/web-designer-newcastle': {
       id: '/web-designer-newcastle'
       path: '/web-designer-newcastle'
@@ -388,6 +408,7 @@ const rootRouteChildren: RootRouteChildren = {
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StartRoute: StartRoute,
+  SupportRoute: SupportRoute,
   WebDesignerNewcastleRoute: WebDesignerNewcastleRoute,
   BlogSlugRoute: BlogSlugRoute,
   PackagesIdRoute: PackagesIdRoute,

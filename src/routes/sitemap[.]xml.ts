@@ -13,6 +13,7 @@ function build() {
     ...packages.map((pkg) => `/packages/${pkg.id}`),
     "/estimate",
     "/book",
+    "/support",
     "/start",
     "/work",
     "/web-designer-newcastle",
