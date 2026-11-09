@@ -118,7 +118,7 @@ export function Prose({ blocks }: { blocks: Block[] }) {
                     </tbody>
                   </table>
                 </div>
-                <p className="mt-3 px-5 text-xs text-muted sm:hidden">Swipe the table to see all three.</p>
+                <p className="mt-3 px-5 text-xs text-muted sm:hidden">Swipe the table to see every column.</p>
                 {block.caption && (
                   <figcaption className="mt-3 px-5 text-sm text-muted sm:px-0">{block.caption}</figcaption>
                 )}
