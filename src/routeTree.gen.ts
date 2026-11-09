@@ -25,6 +25,7 @@ import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as PackagesIndexRouteImport } from './routes/packages.index'
 import { Route as PackagesIdRouteImport } from './routes/packages.$id'
+import { Route as PortionDocsRouteImport } from './routes/portion.docs'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
 import { Route as WorkSlugRouteImport } from './routes/work.$slug'
 
@@ -109,6 +110,11 @@ const PackagesIdRoute = PackagesIdRouteImport.update({
   path: '/packages/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortionDocsRoute = PortionDocsRouteImport.update({
+  id: '/portion/docs',
+  path: '/portion/docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkIndexRoute = WorkIndexRouteImport.update({
   id: '/work/',
   path: '/work/',
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/web-designer-newcastle': typeof WebDesignerNewcastleRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/packages/$id': typeof PackagesIdRoute
+  '/portion/docs': typeof PortionDocsRoute
   '/work/$slug': typeof WorkSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/packages/': typeof PackagesIndexRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByTo {
   '/web-designer-newcastle': typeof WebDesignerNewcastleRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/packages/$id': typeof PackagesIdRoute
+  '/portion/docs': typeof PortionDocsRoute
   '/work/$slug': typeof WorkSlugRoute
   '/blog': typeof BlogIndexRoute
   '/packages': typeof PackagesIndexRoute
@@ -176,6 +184,7 @@ export interface FileRoutesById {
   '/web-designer-newcastle': typeof WebDesignerNewcastleRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/packages/$id': typeof PackagesIdRoute
+  '/portion/docs': typeof PortionDocsRoute
   '/work/$slug': typeof WorkSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/packages/': typeof PackagesIndexRoute
@@ -198,6 +207,7 @@ export interface FileRouteTypes {
     | '/web-designer-newcastle'
     | '/blog/$slug'
     | '/packages/$id'
+    | '/portion/docs'
     | '/work/$slug'
     | '/blog/'
     | '/packages/'
@@ -218,6 +228,7 @@ export interface FileRouteTypes {
     | '/web-designer-newcastle'
     | '/blog/$slug'
     | '/packages/$id'
+    | '/portion/docs'
     | '/work/$slug'
     | '/blog'
     | '/packages'
@@ -238,6 +249,7 @@ export interface FileRouteTypes {
     | '/web-designer-newcastle'
     | '/blog/$slug'
     | '/packages/$id'
+    | '/portion/docs'
     | '/work/$slug'
     | '/blog/'
     | '/packages/'
@@ -259,6 +271,7 @@ export interface RootRouteChildren {
   WebDesignerNewcastleRoute: typeof WebDesignerNewcastleRoute
   BlogSlugRoute: typeof BlogSlugRoute
   PackagesIdRoute: typeof PackagesIdRoute
+  PortionDocsRoute: typeof PortionDocsRoute
   WorkSlugRoute: typeof WorkSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
   PackagesIndexRoute: typeof PackagesIndexRoute
@@ -379,6 +392,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PackagesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portion/docs': {
+      id: '/portion/docs'
+      path: '/portion/docs'
+      fullPath: '/portion/docs'
+      preLoaderRoute: typeof PortionDocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work/': {
       id: '/work/'
       path: '/work'
@@ -412,6 +432,7 @@ const rootRouteChildren: RootRouteChildren = {
   WebDesignerNewcastleRoute: WebDesignerNewcastleRoute,
   BlogSlugRoute: BlogSlugRoute,
   PackagesIdRoute: PackagesIdRoute,
+  PortionDocsRoute: PortionDocsRoute,
   WorkSlugRoute: WorkSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
   PackagesIndexRoute: PackagesIndexRoute,

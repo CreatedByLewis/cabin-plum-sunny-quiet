@@ -14,6 +14,7 @@ function build() {
     "/estimate",
     "/book",
     "/support",
+    "/portion/docs",
     "/start",
     "/work",
     "/web-designer-newcastle",

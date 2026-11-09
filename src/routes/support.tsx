@@ -13,7 +13,7 @@ import {
 } from "@/lib/support";
 import { cn } from "@/lib/utils";
 
-const DOCS_URL = "https://claude.ai/artifact/2QHcMQ5vg4ffWkXrk7y5kg";
+const DOCS_URL = "/portion/docs";
 
 export const Route = createFileRoute("/support")({
   head: () =>

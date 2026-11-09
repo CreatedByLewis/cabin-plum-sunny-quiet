@@ -84,7 +84,7 @@ export const sendSupportRequest = createServerFn({ method: "POST" })
     const reply = [
       `Thanks, ${name.split(" ")[0]}. I've got your ${theme} support request (${ref}).`,
       "I reply to every request within two working days, usually much sooner. If you think of anything else, just reply to this email.",
-      "While you wait, the documentation covers most setup questions.",
+      "While you wait, the documentation at createdbylewis.com/portion/docs covers most setup questions.",
       "Lewis",
     ];
     const toCustomer = await sendThemedMail({
