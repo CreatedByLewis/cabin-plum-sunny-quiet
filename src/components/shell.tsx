@@ -1,17 +1,15 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Instagram, Menu, X } from "lucide-react";
+import { ArrowRight, Instagram, Menu, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { Stars, TrustpilotMark } from "@/components/testimonials";
 import { TRUSTPILOT_URL, testimonials } from "@/lib/testimonials";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { label: "Work", to: "/work", hash: undefined },
-  { label: "Packages", to: "/packages", hash: undefined },
-  { label: "Estimate", to: "/estimate", hash: undefined },
-  { label: "Book", to: "/book", hash: undefined },
-  { label: "Blog", to: "/blog", hash: undefined },
-  { label: "About", to: "/", hash: "studio" },
+  { label: "Work", to: "/work" },
+  { label: "Packages", to: "/packages" },
+  { label: "Estimate", to: "/estimate" },
+  { label: "Blog", to: "/blog" },
 ] as const;
 
 export function Shell({ children }: { children: ReactNode }) {
@@ -34,9 +32,18 @@ export function Shell({ children }: { children: ReactNode }) {
 function Header() {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -47,73 +54,135 @@ function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  const isActive = (to: string) => pathname === to || pathname.startsWith(`${to}/`);
+  const solid = scrolled || open;
+
   return (
-    <header className="sticky top-0 z-30 border-b border-line/70 bg-paper/75 backdrop-blur-xl backdrop-saturate-150">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-        <Link to="/" className="flex items-center gap-2.5 text-ink">
+    <header
+      className={cn(
+        "sticky top-0 z-30 border-b transition-[background-color,border-color,backdrop-filter] duration-300",
+        solid ? "border-line/70 bg-paper/95 backdrop-blur-xl backdrop-saturate-150" : "border-transparent bg-transparent",
+      )}
+    >
+      <div
+        className={cn(
+          "mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 transition-[height] duration-300 sm:px-8",
+          scrolled ? "h-16" : "h-[4.5rem]",
+        )}
+      >
+        <Link to="/" className="flex items-center gap-2.5 text-ink" aria-label="CreatedByLewis, home">
           <Wordmark />
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
-          {links.map((link) => (
-            <Link
-              key={link.label}
-              to={link.to}
-              hash={link.hash}
-              className={cn(
-                "relative py-1 text-sm text-muted transition-colors duration-200 hover:text-ink after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-signal after:transition-transform after:duration-300 hover:after:scale-x-100",
-                !link.hash && pathname.startsWith(link.to) && "text-ink after:scale-x-100",
-              )}
-              aria-current={!link.hash && pathname.startsWith(link.to) ? "page" : undefined}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link
-            to="/start"
-            className="inline-flex min-h-11 items-center rounded-full bg-ink px-5 text-sm font-medium text-paper transition-colors duration-200 hover:bg-ink/90 active:scale-[0.96]"
-          >
-            Start a project
-          </Link>
+        <nav
+          className="hidden items-center gap-1 rounded-full border border-line bg-card/50 p-1 backdrop-blur md:flex"
+          aria-label="Primary"
+        >
+          {links.map((link) => {
+            const active = isActive(link.to);
+            return (
+              <Link
+                key={link.label}
+                to={link.to}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "relative inline-flex min-h-9 items-center rounded-full px-4 text-sm transition-colors duration-200",
+                  active ? "bg-paper text-ink shadow-[inset_0_0_0_1px_var(--color-line)]" : "text-muted hover:bg-paper/60 hover:text-ink",
+                )}
+              >
+                {link.label}
+                {active ? (
+                  <span aria-hidden className="absolute inset-x-4 -bottom-px h-px bg-gradient-to-r from-transparent via-signal to-transparent" />
+                ) : null}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="flex items-center gap-2 md:hidden">
-          <button
-            type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            onClick={() => setOpen((value) => !value)}
+        <div className="hidden items-center gap-5 md:flex">
+          <Link
+            to="/book"
+            aria-current={isActive("/book") ? "page" : undefined}
+            className={cn(
+              "inline-flex min-h-11 items-center gap-2 text-sm transition-colors duration-200 hover:text-ink",
+              isActive("/book") ? "text-ink" : "text-muted",
+            )}
           >
-            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-            {open ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
-          </button>
+            <span className="relative flex size-2" aria-hidden>
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-50 [animation-duration:2.4s]" />
+              <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
+            </span>
+            Book a call
+          </Link>
+          <Link
+            to="/start"
+            className="group inline-flex min-h-11 items-center gap-2 rounded-full bg-ink px-5 text-sm font-medium text-paper transition-[background-color,scale] duration-200 hover:bg-ink/90 active:scale-[0.96]"
+          >
+            Start a project
+            <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
+          </Link>
         </div>
+
+        <button
+          type="button"
+          className="inline-flex size-11 items-center justify-center rounded-full border border-line bg-card/50 text-ink md:hidden"
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+          {open ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
+        </button>
       </div>
 
       {open ? (
-        <nav id="mobile-nav" className="border-t border-line px-5 py-3 md:hidden" aria-label="Mobile">
-          <ul className="flex flex-col">
+        <nav
+          id="mobile-nav"
+          className="absolute inset-x-0 top-full h-[calc(100dvh-100%)] animate-[menu-in_220ms_ease-out] overflow-y-auto border-t border-line bg-paper px-5 pt-2 pb-8 md:hidden"
+          aria-label="Mobile"
+        >
+          <ul className="divide-y divide-line">
             {links.map((link) => (
               <li key={link.label}>
                 <Link
                   to={link.to}
-                  hash={link.hash}
-                  className="flex min-h-11 items-center text-base text-ink"
+                  aria-current={isActive(link.to) ? "page" : undefined}
+                  className="flex min-h-14 items-center justify-between font-display text-3xl text-ink"
                 >
-                  {link.label}
+                  <span className={isActive(link.to) ? "italic text-signal" : undefined}>{link.label}</span>
+                  <ArrowRight className="size-5 text-muted" aria-hidden />
                 </Link>
               </li>
             ))}
-            <li className="pt-2 pb-2">
-              <Link
-                to="/start"
-                className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-ink text-sm font-medium text-paper"
-              >
-                Start a project
-              </Link>
-            </li>
           </ul>
+          <div className="mt-5 grid gap-3">
+            <Link
+              to="/start"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-ink text-sm font-medium text-paper"
+            >
+              Start a project
+              <ArrowRight className="size-4" aria-hidden />
+            </Link>
+            <Link
+              to="/book"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-line text-sm font-medium text-ink"
+            >
+              <span className="size-2 rounded-full bg-emerald-400" aria-hidden />
+              Book a free call
+            </Link>
+          </div>
+          <a
+            href={TRUSTPILOT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 flex items-center justify-center gap-2.5 text-xs text-muted"
+          >
+            <TrustpilotMark className="text-[13px]" />
+            <Stars rating={5} size={13} />
+            <span>
+              {testimonials.length} {testimonials.length === 1 ? "review" : "reviews"}
+            </span>
+          </a>
         </nav>
       ) : null}
     </header>
