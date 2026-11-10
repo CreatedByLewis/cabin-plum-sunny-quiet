@@ -25,6 +25,7 @@ export function Shell({ children }: { children: ReactNode }) {
       <div id="content">{children}</div>
       <ClosingCta />
       <Footer />
+      <MobileActionBar />
     </>
   );
 }
@@ -248,71 +249,144 @@ function ClosingCta() {
   );
 }
 
+const footerGroups = [
+  {
+    title: "Explore",
+    links: [
+      { label: "Work", to: "/work" },
+      { label: "Packages", to: "/packages" },
+      { label: "Blog", to: "/blog" },
+      { label: "Web design in Newcastle", to: "/web-designer-newcastle" },
+    ],
+  },
+  {
+    title: "Get started",
+    links: [
+      { label: "Book a call", to: "/book" },
+      { label: "Get an estimate", to: "/estimate" },
+      { label: "Start a project", to: "/start" },
+      { label: "Theme support", to: "/support" },
+    ],
+  },
+] as const;
+
+function MobileActionBar() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const [show, setShow] = useState(false);
+  const hidden = ["/start", "/book", "/estimate", "/enquiries"].some((p) => pathname.startsWith(p));
+
+  useEffect(() => {
+    if (hidden) return;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const fromBottom = document.documentElement.scrollHeight - (y + window.innerHeight);
+      setShow(y > 560 && fromBottom > 520);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [hidden, pathname]);
+
+  if (hidden) return null;
+  return (
+    <div
+      className={cn(
+        "fixed inset-x-0 bottom-0 z-20 border-t border-line/70 bg-paper/95 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-xl transition-[translate,opacity] duration-300 md:hidden",
+        show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0",
+      )}
+      aria-hidden={!show}
+    >
+      <div className="mx-auto flex max-w-md gap-2.5">
+        <Link
+          to="/book"
+          tabIndex={show ? 0 : -1}
+          className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-ink text-sm font-medium text-paper active:scale-[0.97]"
+        >
+          <span className="size-2 rounded-full bg-emerald-500" aria-hidden />
+          Book a free call
+        </Link>
+        <Link
+          to="/estimate"
+          tabIndex={show ? 0 : -1}
+          className="inline-flex min-h-12 flex-1 items-center justify-center rounded-full border border-ink/30 text-sm font-medium text-ink active:scale-[0.97]"
+        >
+          Get an estimate
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 function Footer() {
   return (
     <footer className="border-t border-line">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-10 sm:px-8 md:flex-row md:items-end md:justify-between">
-        <div>
-          <Wordmark />
-          <p className="mt-2 text-sm text-muted">Design and build. North East, working UK-wide.</p>
-          <p className="mt-3 flex flex-col gap-1 text-sm">
-            <a href="tel:+447484686442" className="text-muted hover:text-ink">
-              07484 686442
-            </a>
-            <a href="mailto:hello@createdbylewis.com" className="text-muted hover:text-ink">
-              hello@createdbylewis.com
-            </a>
-            <a
-              href="https://www.instagram.com/createdbylewis"
-              className="inline-flex items-center gap-2 text-muted hover:text-ink"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Instagram className="size-4" aria-hidden />
-              Instagram
-            </a>
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 px-5 py-12 sm:px-8 md:grid-cols-[1.5fr_1fr_1fr_1.2fr] md:py-14">
+        <div className="col-span-2 md:col-span-1">
+          <Link to="/" aria-label="CreatedByLewis, home" className="inline-flex">
+            <Wordmark />
+          </Link>
+          <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
+            Design and build. North East, working UK-wide.
           </p>
         </div>
-        <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm" aria-label="Footer">
-          <Link to="/work" className="text-muted hover:text-ink">
-            Work
-          </Link>
-          <Link to="/packages" className="text-muted hover:text-ink">
-            Packages
-          </Link>
-          <Link to="/estimate" className="text-muted hover:text-ink">
-            Estimate
-          </Link>
-          <Link to="/book" className="text-muted hover:text-ink">
-            Book a consultation
-          </Link>
-          <Link to="/start" className="text-muted hover:text-ink">
-            Start a project
-          </Link>
-          <Link to="/web-designer-newcastle" className="text-muted hover:text-ink">
-            Web design in Newcastle
-          </Link>
-          <Link to="/blog" className="text-muted hover:text-ink">
-            Blog
-          </Link>
-          <Link to="/support" className="text-muted hover:text-ink">
-            Theme support
-          </Link>
-        </nav>
-        <p className="text-sm whitespace-nowrap text-muted">© {new Date().getFullYear()} CreatedByLewis</p>
-      </div>
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 pb-10 sm:flex-row sm:items-end sm:justify-between sm:px-8">
-        <div>
-          <p className="text-xs tracking-widest text-muted uppercase">Pay with</p>
-          <ul className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-4" aria-label="Payment methods">
-            <li><ApplePayMark /></li>
-            <li><GooglePayMark /></li>
-            <li><PayPalMark /></li>
-            <li><KlarnaMark /></li>
-            <li><ClearpayMark /></li>
+        {footerGroups.map((group) => (
+          <nav key={group.title} aria-label={group.title}>
+            <p className="text-xs tracking-widest text-muted uppercase">{group.title}</p>
+            <ul className="mt-4 grid gap-1">
+              {group.links.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className="inline-flex min-h-9 items-center text-sm text-ink/85 transition-colors hover:text-signal">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))}
+        <div className="col-span-2 md:col-span-1">
+          <p className="text-xs tracking-widest text-muted uppercase">Contact</p>
+          <ul className="mt-4 grid gap-1 text-sm">
+            <li>
+              <a href="tel:+447484686442" className="inline-flex min-h-9 items-center text-ink/85 transition-colors hover:text-signal">
+                07484 686442
+              </a>
+            </li>
+            <li>
+              <a href="mailto:hello@createdbylewis.com" className="inline-flex min-h-9 items-center text-ink/85 transition-colors hover:text-signal">
+                hello@createdbylewis.com
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/createdbylewis"
+                className="inline-flex min-h-9 items-center gap-2 text-ink/85 transition-colors hover:text-signal"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Instagram className="size-4" aria-hidden />
+                Instagram
+              </a>
+            </li>
           </ul>
         </div>
-        <TrustpilotBadge />
+      </div>
+      <div className="border-t border-line">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-8 sm:px-8 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-xs tracking-widest text-muted uppercase">Pay with</p>
+            <ul className="mt-4 flex flex-nowrap items-center gap-x-4 sm:gap-x-6" aria-label="Payment methods">
+              <li><ApplePayMark /></li>
+              <li><GooglePayMark /></li>
+              <li><PayPalMark /></li>
+              <li><KlarnaMark /></li>
+              <li><ClearpayMark /></li>
+            </ul>
+          </div>
+          <TrustpilotBadge />
+        </div>
+        <p className="mx-auto max-w-6xl px-5 pb-28 text-xs text-muted sm:px-8 md:pb-10">
+          © {new Date().getFullYear()} CreatedByLewis
+        </p>
       </div>
     </footer>
   );
@@ -375,7 +449,7 @@ function GooglePayMark() {
 
 function PayPalMark() {
   return (
-    <span className="text-[17px] font-semibold tracking-tight" aria-label="PayPal">
+    <span className="text-[15px] font-semibold tracking-tight sm:text-[17px]" aria-label="PayPal">
       <span className="text-[#003087]">Pay</span>
       <span className="text-[#009cde]">Pal</span>
     </span>
@@ -384,7 +458,7 @@ function PayPalMark() {
 
 function KlarnaMark() {
   return (
-    <span className="text-[17px] font-black tracking-tight text-ink" aria-label="Klarna">
+    <span className="text-[15px] font-black tracking-tight text-ink sm:text-[17px]" aria-label="Klarna">
       Klarna<span className="text-[#ff8db8]">.</span>
     </span>
   );
@@ -393,7 +467,7 @@ function KlarnaMark() {
 function ClearpayMark() {
   return (
     <span className="inline-flex flex-col text-ink" aria-label="Clearpay">
-      <span className="text-[16px] font-semibold tracking-tight lowercase">clearpay</span>
+      <span className="text-[14px] font-semibold tracking-tight lowercase sm:text-[16px]">clearpay</span>
       <span className="mt-0.5 h-0.5 w-full rounded-full bg-[#00d37f]" />
     </span>
   );

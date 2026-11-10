@@ -5,8 +5,7 @@ import { cn } from "@/lib/utils";
 
 export function PricesNote({ bare = false }: { bare?: boolean }) {
   const [email, setEmail] = useState("");
-  const [confirm, setConfirm] = useState(false);
-  const [company, setCompany] = useState("");
+    const [company, setCompany] = useState("");
   const [startedAt] = useState(() => Date.now());
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
@@ -18,14 +17,10 @@ export function PricesNote({ bare = false }: { bare?: boolean }) {
       setError("That email doesn’t look right.");
       return;
     }
-    if (!confirm) {
-      setError("Tick the box so I know it isn’t a bot.");
-      return;
-    }
     setSending(true);
     setError("");
     try {
-      const result = await sendPrices({ data: { email, confirm, company, startedAt } });
+      const result = await sendPrices({ data: { email, confirm: true, company, startedAt } });
       if (!result.ok) {
         setError(result.message || "That didn’t send. Email hello@createdbylewis.com.");
         return;
@@ -71,18 +66,6 @@ export function PricesNote({ bare = false }: { bare?: boolean }) {
             {sending ? "Sending…" : "Send me the prices"}
           </Button>
         </div>
-      )}
-      {sent ? null : (
-        <label className="mt-3 flex items-start gap-2 text-sm text-muted">
-          <input
-            type="checkbox"
-            name="confirm"
-            checked={confirm}
-            onChange={(event) => setConfirm(event.target.checked)}
-            className="mt-1 size-4 accent-signal"
-          />
-          Tick this so a bot can’t send the request.
-        </label>
       )}
       <input
         type="text"

@@ -1,7 +1,7 @@
 import { seo, webPage, SITE_URL } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Clock3, Store, Wallet } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Stars, Testimonials, TrustpilotMark } from "@/components/testimonials";
 import { TRUSTPILOT_URL, testimonials } from "@/lib/testimonials";
 import { clientLogos } from "@/components/client-logos";
@@ -189,7 +189,7 @@ function Home() {
             already a big company. You work with me from the brief to the day it goes live. No account
             managers, and no templates with your logo swapped in.
           </p>
-          <div className="rise mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row" style={{ animationDelay: "820ms" }}>
+          <div className="rise mt-9 flex flex-wrap items-center justify-center gap-3" style={{ animationDelay: "820ms" }}>
             <ButtonLink to="/book" className="group shadow-[0_10px_40px_-10px_color-mix(in_srgb,var(--color-signal)_70%,transparent)]">
               Book a call
               <ArrowRight className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
@@ -280,36 +280,31 @@ function Home() {
             The package is the starting point. What goes on the pages is worked out with you. These are the
             pieces I build in when a business needs them, and leave out when it doesn’t.
           </p>
-          <ul className="mt-10 divide-y divide-line border-y border-line">
-            {practice.map((item, i) => (
-              <li
-                key={item.title}
-                className="group grid gap-2 py-6 transition-colors duration-300 sm:grid-cols-[3rem_14rem_1fr] sm:gap-8 sm:px-3 sm:py-7 sm:hover:bg-card/60"
-              >
-                <span className="hidden font-display text-sm text-signal tabular-nums sm:block">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="text-base font-medium text-ink transition-transform duration-300 sm:group-hover:translate-x-1">{item.title}</h3>
-                <p className="max-w-xl text-sm leading-relaxed text-muted">{item.body}</p>
-              </li>
-            ))}
-          </ul>
+          <PracticeList />
         </div>
       </section>
 
       <section className="border-t border-line">
         <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
           <h2 className="font-display text-4xl text-ink sm:text-5xl">How It Goes</h2>
-          <ol className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-10 sm:grid sm:grid-cols-2 sm:gap-px sm:overflow-hidden sm:rounded-2xl sm:border sm:border-line sm:bg-line lg:grid-cols-4">
             {steps.map((step, i) => (
-              <li key={step.n} className="group relative bg-paper p-6 transition-colors duration-300 hover:bg-card sm:p-7">
+              <li
+                key={step.n}
+                className="group relative bg-paper transition-colors duration-300 max-sm:pb-8 max-sm:pl-14 max-sm:last:pb-0 sm:p-7 sm:hover:bg-card"
+              >
                 <span
                   aria-hidden
-                  className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-signal to-transparent transition-transform duration-500 group-hover:scale-x-100"
+                  className="absolute inset-x-0 top-0 hidden h-px origin-left scale-x-0 bg-gradient-to-r from-signal to-transparent transition-transform duration-500 group-hover:scale-x-100 sm:block"
                 />
-                <p className="flex items-center gap-3 font-display text-sm text-signal">
+                {i < steps.length - 1 ? (
+                  <span aria-hidden className="absolute top-10 bottom-0 left-5 w-px bg-gradient-to-b from-signal/50 to-line sm:hidden" />
+                ) : null}
+                <p className="flex items-center gap-3 font-display text-sm text-signal max-sm:absolute max-sm:top-0 max-sm:left-0 max-sm:size-10 max-sm:justify-center max-sm:rounded-full max-sm:border max-sm:border-line max-sm:bg-card">
                   {step.n}
                   {i < steps.length - 1 ? <span aria-hidden className="hidden h-px flex-1 bg-line lg:block" /> : null}
                 </p>
-                <h3 className="mt-3 text-lg font-medium text-ink">{step.title}</h3>
+                <h3 className="text-lg font-medium text-ink max-sm:pt-1.5 sm:mt-3">{step.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{step.body}</p>
               </li>
             ))}
@@ -482,5 +477,45 @@ function ClientStrip() {
         </div>
       </div>
     </div>
+  );
+}
+
+function PracticeList() {
+  const [open, setOpen] = useState(0);
+  return (
+    <ul className="mt-10 divide-y divide-line border-y border-line">
+      {practice.map((item, i) => {
+        const isOpen = open === i;
+        return (
+          <li
+            key={item.title}
+            className="group transition-colors duration-300 sm:grid sm:grid-cols-[3rem_14rem_1fr] sm:gap-8 sm:px-3 sm:py-7 sm:hover:bg-card/60"
+          >
+            <span className="hidden font-display text-sm text-signal tabular-nums sm:block">{String(i + 1).padStart(2, "0")}</span>
+            <h3 className="text-base font-medium text-ink transition-transform duration-300 sm:group-hover:translate-x-1">
+              <button
+                type="button"
+                className="flex min-h-14 w-full items-center justify-between gap-4 text-left sm:hidden"
+                aria-expanded={isOpen}
+                onClick={() => setOpen(isOpen ? -1 : i)}
+              >
+                <span className="flex items-baseline gap-3">
+                  <span className="font-display text-sm text-signal tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                  {item.title}
+                </span>
+                <span
+                  aria-hidden
+                  className={"grid size-8 shrink-0 place-items-center rounded-full border border-line text-muted transition-transform duration-300 " + (isOpen ? "rotate-45 text-ink" : "")}
+                >
+                  +
+                </span>
+              </button>
+              <span className="hidden sm:inline">{item.title}</span>
+            </h3>
+            <p className={"max-w-xl text-sm leading-relaxed text-muted max-sm:pb-5 max-sm:pl-8 sm:block " + (isOpen ? "" : "max-sm:hidden")}>{item.body}</p>
+          </li>
+        );
+      })}
+    </ul>
   );
 }

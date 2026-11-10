@@ -456,6 +456,20 @@ function StartPage() {
           </fieldset>
 
           <div>
+            <dl className="mb-5 grid grid-cols-3 divide-x divide-line overflow-hidden rounded-xl border border-line bg-card text-center lg:hidden">
+              <div className="px-2 py-3">
+                <dt className="text-[10px] tracking-widest text-muted uppercase">Package</dt>
+                <dd className="mt-1 font-display text-lg text-ink">{estimate.pkg.name}</dd>
+              </div>
+              <div className="px-2 py-3">
+                <dt className="text-[10px] tracking-widest text-muted uppercase">Build</dt>
+                <dd className="mt-1 font-display text-lg text-ink tabular-nums">{formatGBP(estimate.build)}</dd>
+              </div>
+              <div className="px-2 py-3">
+                <dt className="text-[10px] tracking-widest text-signal uppercase">To start</dt>
+                <dd className="mt-1 font-display text-lg text-ink tabular-nums">{formatGBP(estimate.deposit)}</dd>
+              </div>
+            </dl>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button type="submit" className="w-full sm:w-auto" disabled={sending}>
                 {sending ? "Sending…" : "Place order"}

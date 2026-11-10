@@ -29,10 +29,11 @@ function PackagesPage() {
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
           Every site is shaped around what you sell and built so people can finish an order on a desktop or
-          a phone. Shop is the homepage and the store. Box adds a postcode check, a custom hero and a
+          a phone.{" "}
+          <span className="max-sm:hidden">Shop is the homepage and the store. Box adds a postcode check, a custom hero and a
           build-a-box you own. Stay includes everything in Shop and Box, plus weekly or monthly
           subscriptions to keep customers coming back, and a refresh of your branding. Partner is a
-          monthly add-on after launch, and it isn’t hidden inside the build price.
+          monthly add-on after launch, and it isn’t hidden inside the build price.</span>
         </p>
         <Link
           to="/estimate"
@@ -99,7 +100,7 @@ function PackagesPage() {
               <details key={faq.q} className="group py-1">
                 <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 text-base font-medium text-ink">
                   {faq.q}
-                  <span className="text-muted transition-transform duration-200 group-open:rotate-45" aria-hidden>
+                  <span className="grid size-8 shrink-0 place-items-center rounded-full border border-line text-muted transition-all duration-300 group-open:rotate-45 group-open:border-signal group-open:text-signal" aria-hidden>
                     +
                   </span>
                 </summary>

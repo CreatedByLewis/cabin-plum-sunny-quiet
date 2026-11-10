@@ -81,7 +81,7 @@ function Work() {
         if (!deck) return null;
         return (
           <section key={project.slug} className="border-t border-line">
-            <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[0.9fr_1.2fr]">
+            <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[0.9fr_1.2fr]">
               <div>
                 <p className="flex items-center gap-3 text-xs tracking-widest text-signal uppercase"><span className="font-display text-muted">{project.index}</span>{project.name}</p>
                 <h2 className="mt-3 max-w-md font-display text-4xl leading-tight text-ink sm:text-5xl">{deck.headline}</h2>
@@ -112,7 +112,7 @@ function Work() {
                   )}
                 </div>
               </div>
-              <div>
+              <div className="max-lg:order-first">
                 <Link
                   to="/work/$slug"
                   params={{ slug: project.slug }}
@@ -136,9 +136,9 @@ function Work() {
                 </Link>
                 <ul className="mt-4 flex flex-wrap gap-2" aria-label="Colours">
                   {deck.colours.map((colour) => (
-                    <li key={colour} className="inline-flex items-center gap-2 rounded-full border border-line bg-card py-1 pr-3 pl-1 text-[11px] text-muted uppercase tabular-nums">
+                    <li key={colour} className="inline-flex items-center gap-2 rounded-full border border-line bg-card py-1 pr-1 pl-1 text-[11px] sm:pr-3 text-muted uppercase tabular-nums">
                       <span className="size-5 rounded-full border border-line" style={{ background: colour }} />
-                      {colour}
+                      <span className="max-sm:sr-only">{colour}</span>
                     </li>
                   ))}
                 </ul>
