@@ -287,28 +287,7 @@ function Home() {
       <section className="border-t border-line">
         <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-20">
           <h2 className="font-display text-4xl text-ink sm:text-5xl">How It Goes</h2>
-          <ol className="mt-10 sm:grid sm:grid-cols-2 sm:gap-px sm:overflow-hidden sm:rounded-2xl sm:border sm:border-line sm:bg-line lg:grid-cols-4">
-            {steps.map((step, i) => (
-              <li
-                key={step.n}
-                className="group relative bg-paper transition-colors duration-300 max-sm:pb-8 max-sm:pl-14 max-sm:last:pb-0 sm:p-7 sm:hover:bg-card"
-              >
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 hidden h-px origin-left scale-x-0 bg-gradient-to-r from-signal to-transparent transition-transform duration-500 group-hover:scale-x-100 sm:block"
-                />
-                {i < steps.length - 1 ? (
-                  <span aria-hidden className="absolute top-10 bottom-0 left-5 w-px bg-gradient-to-b from-signal/50 to-line sm:hidden" />
-                ) : null}
-                <p className="flex items-center gap-3 font-display text-sm text-signal max-sm:absolute max-sm:top-0 max-sm:left-0 max-sm:size-10 max-sm:justify-center max-sm:rounded-full max-sm:border max-sm:border-line max-sm:bg-card">
-                  {step.n}
-                  {i < steps.length - 1 ? <span aria-hidden className="hidden h-px flex-1 bg-line lg:block" /> : null}
-                </p>
-                <h3 className="text-lg font-medium text-ink max-sm:pt-1.5 sm:mt-3">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{step.body}</p>
-              </li>
-            ))}
-          </ol>
+          <ProcessSteps />
         </div>
       </section>
 
@@ -517,5 +496,95 @@ function PracticeList() {
         );
       })}
     </ul>
+  );
+}
+
+/** Four steps. A boxed row on desktop; on phones a timeline that lights up as you scroll or tap. */
+function ProcessSteps() {
+  const ref = useRef<HTMLOListElement>(null);
+  const [active, setActive] = useState(-1);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      const line = window.innerHeight * 0.6;
+      let next = -1;
+      Array.from(el.children).forEach((child, i) => {
+        if (child.getBoundingClientRect().top < line) next = i;
+      });
+      setActive(next);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(measure);
+    };
+    measure();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  return (
+    <ol
+      ref={ref}
+      className="mt-10 sm:grid sm:grid-cols-2 sm:gap-px sm:overflow-hidden sm:rounded-2xl sm:border sm:border-line sm:bg-line lg:grid-cols-4"
+    >
+      {steps.map((step, i) => {
+        const reached = i <= active;
+        const current = i === active;
+        return (
+          <li
+            key={step.n}
+            onClick={() => setActive(i)}
+            className="group relative transition-colors duration-300 max-sm:pb-9 max-sm:pl-14 max-sm:last:pb-0 sm:bg-paper sm:p-7 sm:hover:bg-card"
+          >
+            <span
+              aria-hidden
+              className="absolute inset-x-0 top-0 hidden h-px origin-left scale-x-0 bg-gradient-to-r from-signal to-transparent transition-transform duration-500 group-hover:scale-x-100 sm:block"
+            />
+            {/* phone: soft violet wash behind the step you're on */}
+            <span
+              aria-hidden
+              className={
+                "pointer-events-none absolute -inset-x-4 -top-4 bottom-2 -z-10 rounded-3xl bg-[radial-gradient(120%_90%_at_0%_0%,color-mix(in_srgb,var(--color-signal)_26%,transparent),transparent_70%)] transition-opacity duration-700 sm:hidden " +
+                (current ? "opacity-100" : "opacity-0")
+              }
+            />
+            {i < steps.length - 1 ? (
+              <span aria-hidden className="absolute top-10 bottom-0 left-5 w-px bg-line sm:hidden">
+                <span
+                  className={
+                    "absolute inset-0 origin-top bg-gradient-to-b from-[#8b7cf7] via-[#d46a9a] to-[#5ec4d8] transition-transform duration-700 ease-out " +
+                    (i < active ? "scale-y-100" : "scale-y-0")
+                  }
+                />
+              </span>
+            ) : null}
+            <p
+              className={
+                "flex items-center gap-3 font-display text-sm text-signal max-sm:absolute max-sm:top-0 max-sm:left-0 max-sm:size-10 max-sm:justify-center max-sm:rounded-full max-sm:border max-sm:transition-all max-sm:duration-500 " +
+                (reached
+                  ? "max-sm:border-signal/70 max-sm:bg-[color-mix(in_srgb,var(--color-signal)_22%,var(--color-paper))] max-sm:text-ink max-sm:shadow-[0_0_26px_-2px_color-mix(in_srgb,var(--color-signal)_75%,transparent)]"
+                  : "max-sm:border-line max-sm:bg-card") +
+                (current ? " max-sm:scale-110" : "")
+              }
+            >
+              {step.n}
+              {i < steps.length - 1 ? <span aria-hidden className="hidden h-px flex-1 bg-line lg:block" /> : null}
+            </p>
+            <h3 className={"text-lg font-medium transition-colors duration-500 max-sm:pt-1.5 sm:mt-3 sm:text-ink " + (reached ? "text-ink" : "max-sm:text-ink/60")}>
+              {step.title}
+            </h3>
+            <p className={"mt-2 text-sm leading-relaxed text-muted transition-opacity duration-500 " + (reached ? "" : "max-sm:opacity-60")}>{step.body}</p>
+          </li>
+        );
+      })}
+    </ol>
   );
 }
