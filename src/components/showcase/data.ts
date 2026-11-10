@@ -61,9 +61,10 @@ export const showcase: Record<string, ShowcaseEntry> = {
       { feature: 3, x: 43.4, y: 83 },
     ],
     phoneFeature: 4,
-    phone: [{ src: "/work/real-food-mobile.jpg", label: "Home", alt: "Real Food Delivered on a phone in dark mode, with Build Your Box, Set Calorie Plan and the menu countdown." }],
-    lightImage: "/work/real-food-light.jpg",
-    themeToggle: { x: 75.8, y: 9.1 },
+    phone: [
+      { src: "/work/real-food-mobile.jpg", label: "Home", alt: "Real Food Delivered on a phone: Real food. To your door., with Build Your Box and Set Calorie Plan above a strip of this week’s dishes." },
+      { src: "/work/real-food-ways-mobile.jpg", label: "Two ways to order", alt: "Real Food Delivered on a phone: Two ways to eat. Same kitchen., with the Build Your Box card and a sticky Build Your Box and Calorie Plan bar." },
+    ],
   },
   "the-macro-kitchen": {
     accent: "#b9cf8c",
