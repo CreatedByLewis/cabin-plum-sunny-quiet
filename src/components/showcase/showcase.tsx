@@ -383,7 +383,7 @@ function Stage({
   }, []);
 
   return (
-    <div className="showcase-rise relative pb-16 sm:pb-14 lg:sticky lg:top-24 lg:pr-8 [perspective:1800px]">
+    <div className="showcase-rise relative pb-16 max-sm:pr-12 sm:pb-14 lg:sticky lg:top-24 lg:pr-8 [perspective:1800px]">
       {/* Accent glow */}
       <div
         aria-hidden
@@ -586,7 +586,7 @@ function Phone({
   return (
     <div
       className={cn(
-        "showcase-phone absolute -right-1 -bottom-14 w-[25%] max-w-[12.5rem] min-w-[6rem] transition-transform duration-500 sm:-bottom-14 sm:w-[27%] lg:-right-8",
+        "showcase-phone absolute -right-1 -bottom-14 max-sm:-right-12 w-[25%] max-w-[12.5rem] min-w-[5.25rem] sm:min-w-[6rem] transition-transform duration-500 sm:-bottom-14 sm:w-[27%] lg:-right-8",
         highlighted && "scale-[1.06]",
       )}
     >
