@@ -40,6 +40,23 @@ export const testimonials: Testimonial[] = [
     dateLabel: "7 November 2026",
   },
   {
+    name: "Real Food Delivered",
+    project: "real-food-delivered",
+    rating: 5,
+    title: "Couldn't recommend more!",
+    body: [
+      "Working with Lewis to fully change our website for Real Food Delivered has been a fantastic experience from start to finish.",
+      "After having the same website for the past 6 years we knew that it was time for a change. Through a number of meetings and phone calls Lewis went above and beyond what we could expect to make what we wanted come into reality.",
+      "He has a great eye for detail & has been very helpful with adding his own creative ideas to make our website have some incredible features that makes it a better and easier experience for our customers placing their orders!",
+      "We’d most definitely recommend Lewis to anyone thinking about getting a new website or redesigning a current site.",
+      "We are looking forward to work with Lewis in the future to continue and develop Real Food Delivered.",
+    ],
+    excerpt:
+      "Working with Lewis to fully change our website for Real Food Delivered has been a fantastic experience from start to finish.",
+    date: "2026-10-31",
+    dateLabel: "31 October 2026",
+  },
+  {
     name: "Maxi Nourish",
     rating: 5,
     title: "Easy, Quick, Great Job",
