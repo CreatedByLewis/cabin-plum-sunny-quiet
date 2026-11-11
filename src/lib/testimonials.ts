@@ -40,6 +40,25 @@ export const testimonials: Testimonial[] = [
     dateLabel: "7 November 2026",
   },
   {
+    name: "Lyncroft Farm",
+    business: "The Farmers Box",
+    project: "the-farmers-box",
+    rating: 5,
+    title: "I cannot recommend Created By Lewis highly enough!",
+    body: [
+      "I cannot recommend Created By Lewis highly enough! The service has been absolutely fantastic from start to finish! The building of The Farmers Box (Lyncroft Farm Ltd) new website was absolutely fantastic and reviews from my returning customers says it all.",
+      "Lewis have been incredibly helpful, professional and attentive throughout the whole process, always happy to help and go the extra mile. Always response to query swiftly. Supported me right through the onboarding process of old and new customers.",
+      "Lewis knowledge, attention to detail and willingness to help and take my input/changes have been outstanding.",
+      "Nothing has ever been too much trouble, and the whole experience has been a pleasure.",
+      "It’s so refreshing to receive such excellent service and knowing I’ll get quick support as a small independent business. I am absolutely delighted and wouldn’t hesitate to recommend Lewis to anyone looking for a brilliant web developer!",
+      "Thank you for your hard work, support and brilliant service!",
+    ],
+    excerpt:
+      "The building of The Farmers Box (Lyncroft Farm Ltd) new website was absolutely fantastic and reviews from my returning customers says it all.",
+    date: "2026-11-10",
+    dateLabel: "10 November 2026",
+  },
+  {
     name: "Real Food Delivered",
     project: "real-food-delivered",
     rating: 5,
