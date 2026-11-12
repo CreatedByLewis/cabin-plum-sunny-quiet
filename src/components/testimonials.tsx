@@ -32,12 +32,13 @@ export function TrustpilotMark({ className = "" }: { className?: string }) {
   );
 }
 
-const CLAMP_AFTER = 2;
+/** Reviews longer than this are shown cut short, with a fade and a button to read the rest. */
+const CLAMP_CHARS = 300;
 
-function Review({ item, featured }: { item: Testimonial; featured: boolean }) {
-  const long = item.body.length > CLAMP_AFTER + 1;
+function Review({ item, firstLineBold }: { item: Testimonial; firstLineBold: boolean }) {
+  const long = item.body.join(" ").length > CLAMP_CHARS;
   const [open, setOpen] = useState(false);
-  const shown = long && !open ? item.body.slice(0, CLAMP_AFTER + 1) : item.body;
+  const clamped = long && !open;
   const initials = item.name
     .split(" ")
     .map((w) => w[0])
@@ -46,9 +47,7 @@ function Review({ item, featured }: { item: Testimonial; featured: boolean }) {
   const id = `review-${item.date}-${initials}`;
 
   return (
-    <figure
-      className="lift relative flex flex-col overflow-hidden rounded-2xl border border-line bg-card p-7 sm:p-10"
-    >
+    <figure className="lift relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-card p-7 sm:p-9">
       <div aria-hidden className="pointer-events-none absolute -right-24 -bottom-24 size-72 rounded-full bg-signal/10 blur-3xl" />
 
       <div className="relative flex flex-wrap items-center justify-between gap-3">
@@ -58,12 +57,18 @@ function Review({ item, featured }: { item: Testimonial; featured: boolean }) {
         </time>
       </div>
 
-      <h3 className="relative mt-6 font-display text-3xl leading-tight text-ink sm:text-4xl">{item.title}</h3>
+      <h3 className="relative mt-6 font-display text-2xl leading-tight text-ink sm:text-[1.75rem]">{item.title}</h3>
 
-      <blockquote id={id} className="relative mt-5 space-y-4 text-[15px] leading-relaxed text-muted sm:text-base">
-        {shown.map((para, i) =>
+      <blockquote
+        id={id}
+        className={
+          "relative mt-4 space-y-4 text-[15px] leading-relaxed text-muted " +
+          (clamped ? "max-h-[11.5rem] overflow-hidden [mask-image:linear-gradient(180deg,#000_55%,transparent)]" : "")
+        }
+      >
+        {item.body.map((para, i) =>
           // The first line of James's review repeats his title in bold, as he wrote it.
-          i === 0 && featured ? (
+          i === 0 && firstLineBold ? (
             <p key={i} className="font-medium text-ink">
               {para}
             </p>
@@ -79,14 +84,14 @@ function Review({ item, featured }: { item: Testimonial; featured: boolean }) {
           aria-expanded={open}
           aria-controls={id}
           onClick={() => setOpen((v) => !v)}
-          className="relative mt-4 inline-flex min-h-11 items-center gap-2 self-start text-sm font-medium text-ink underline decoration-signal decoration-2 underline-offset-4 transition-colors hover:text-signal"
+          className="relative mt-3 inline-flex min-h-11 items-center gap-2 self-start text-sm font-medium text-ink underline decoration-signal decoration-2 underline-offset-4 transition-colors hover:text-signal"
         >
           {open ? "Show less" : "Read the full review"}
         </button>
       ) : null}
 
-      <div className="min-h-8 flex-1" aria-hidden />
-      <figcaption className="relative flex items-center gap-3 border-t border-line pt-6 text-sm">
+      <div className="min-h-6 flex-1" aria-hidden />
+      <figcaption className="relative flex items-center gap-3 border-t border-line pt-5 text-sm">
         <span
           aria-hidden
           className="grid size-10 shrink-0 place-items-center rounded-full bg-signal/15 font-medium text-ink"
@@ -133,37 +138,31 @@ export function Testimonials() {
           </a>
         </div>
 
-        {testimonials.length > 1 ? (
-          <div className="mt-10 grid items-start gap-4 lg:grid-cols-[1.35fr_1fr]">
-            <Review item={testimonials[0]} featured />
-            <div className="grid gap-4">
-              {testimonials.slice(1).map((item) => (
-                <Review key={`${item.name}-${item.date}`} item={item} featured={false} />
-              ))}
-              <a
-                href={TRUSTPILOT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="lift group flex flex-col gap-6 rounded-2xl border border-dashed border-line p-7 transition-colors hover:border-ink/40 sm:p-10"
-              >
-                <div>
-                  <TrustpilotMark className="text-lg" />
-                  <p className="mt-4 font-display text-2xl leading-snug text-ink">Worked with me? I’d love to hear how it went.</p>
-                </div>
-                <span className="inline-flex items-center gap-2 text-sm font-medium text-ink">
-                  Read or leave a review
-                  <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
-                    ↗
-                  </span>
-                </span>
-              </a>
-            </div>
-          </div>
-        ) : (
-          <div className="mt-10">
-            <Review item={testimonials[0]} featured={false} />
-          </div>
-        )}
+        <ul className="mt-10 grid gap-4 md:grid-cols-2">
+          {testimonials.map((item, i) => (
+            <li key={`${item.name}-${item.date}`}>
+              <Review item={item} firstLineBold={i === 0} />
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href={TRUSTPILOT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group mt-4 flex flex-col gap-4 rounded-2xl border border-dashed border-line p-7 transition-colors hover:border-ink/40 sm:flex-row sm:items-center sm:justify-between sm:px-9 sm:py-7"
+        >
+          <span className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+            <TrustpilotMark className="text-lg" />
+            <span className="font-display text-xl leading-snug text-ink sm:text-2xl">Worked with me? I’d love to hear how it went.</span>
+          </span>
+          <span className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-ink">
+            Read or leave a review
+            <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
+              ↗
+            </span>
+          </span>
+        </a>
       </div>
     </section>
   );
