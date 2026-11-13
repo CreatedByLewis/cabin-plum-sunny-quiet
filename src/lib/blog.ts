@@ -25,6 +25,225 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "website-mistakes-that-cost-you-orders",
+    title: "Website Mistakes That Quietly Cost You Orders",
+    description:
+      "The website mistakes that quietly cost you orders: surprise delivery costs, forced accounts, slow pages and awkward phone checkouts, plus how to fix each one.",
+    published: "2026-11-13",
+    updated: "2026-11-13",
+    readingMinutes: 9,
+    tags: ["Conversion", "Ecommerce", "Checkout", "Shopify", "Small Business"],
+    lede: "Most websites don’t lose orders in a dramatic way. Nothing crashes and nobody complains. People just look, hesitate and leave, and you never hear about it. These are the mistakes I see most often when I look at a small business site, why they matter and how to put each one right.",
+    body: [
+      { type: "h2", text: "The Quick Answer" },
+      {
+        type: "p",
+        text: "If you only have ten minutes, check these first. They are the problems that come up again and again, and most of them can be fixed without rebuilding anything.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Delivery costs that only appear at checkout.** Show the price of delivery, or the threshold for free delivery, before anyone adds to basket.",
+          "**Making people create an account to order.** Let them check out as a guest and offer an account afterwards.",
+          "**No clear answer to “do you deliver to me, and when?”** Put the area, the days and the order cutoff where people can see them.",
+          "**A site designed on a laptop and ordered from on a phone.** Test every step of an order on your own phone.",
+          "**Slow pages.** Big images and too many apps are the usual causes.",
+          "**Not enough reasons to trust you.** Real photos, contact details, reviews and a clear refund policy.",
+          "**A checkout that asks for too much.** Remove every field you don’t need.",
+        ],
+      },
+
+      { type: "h2", text: "Why Small Leaks Add Up" },
+      {
+        type: "p",
+        text: "Baymard Institute, which has studied online checkouts for well over a decade, puts the average documented cart abandonment rate at around 70%. In other words, roughly seven in ten baskets that get started are never paid for. Some of that is just people browsing, and you’ll never win those back. But a large share leave because of something on the site itself.",
+      },
+      {
+        type: "p",
+        text: "In Baymard’s latest survey, once you set aside people who were only looking, the most common reasons for leaving were these:",
+      },
+      {
+        type: "table",
+        caption: "Reasons shoppers gave for abandoning an order, from Baymard Institute’s survey of US online shoppers. People could give more than one reason.",
+        head: ["Reason for leaving", "Share of shoppers"],
+        rows: [
+          ["Extra costs such as delivery, tax or fees were too high", "40%"],
+          ["Delivery was too slow", "20%"],
+          ["Didn’t trust the site with card details", "19%"],
+          ["Had to create an account", "18%"],
+          ["Checkout was too long or complicated", "17%"],
+          ["The website had errors or crashed", "17%"],
+          ["Returns policy wasn’t good enough", "13%"],
+          ["Couldn’t see the total cost up front", "12%"],
+          ["Not enough ways to pay", "9%"],
+        ],
+      },
+      {
+        type: "callout",
+        title: "A note on the numbers",
+        text: "Baymard’s survey is of US shoppers and the exact figures won’t match a UK veg box or meal prep business perfectly. I use it because the pattern is the same one I see here: people rarely leave because they changed their mind about the food. They leave because something about the site made ordering feel uncertain or like hard work.",
+      },
+      {
+        type: "p",
+        text: "Baymard also estimates that a typical large ecommerce site could lift its conversion rate by around 35% through better checkout design alone. You won’t get that from one tweak, but it shows how much is usually sitting on the table.",
+      },
+
+      { type: "h2", text: "Mistake 1: Surprise Costs at the Last Step" },
+      {
+        type: "p",
+        text: "This is the big one. Someone fills a basket, gets to checkout and finds a delivery charge they weren’t expecting. Even if the charge is fair, the surprise feels like a trick, and a lot of people close the tab.",
+      },
+      {
+        type: "p",
+        text: "The fix is simple: tell people early. Put your delivery price, or the spend needed for free delivery, in the header bar, on product pages and in the basket. If delivery depends on where someone lives, let them check their postcode before they start building an order. On my Box and Stay [packages](/packages) the postcode check comes first for exactly this reason, so nobody spends five minutes choosing meals for an address you can’t reach.",
+      },
+
+      { type: "h2", text: "Mistake 2: Forcing People to Create an Account" },
+      {
+        type: "p",
+        text: "Asking a first-time customer to make an account with a password before they can pay is one of the easiest ways to lose them. They came to buy dinner, not to sign up for something.",
+      },
+      {
+        type: "p",
+        text: "On Shopify there is a checkout setting that requires customers to sign in before checking out. For almost every small shop, I’d leave it switched off. Let people check out as a guest, then invite them to save their details afterwards. Shopify’s Shop sign-in can still give returning customers a fast checkout with their details filled in, without forcing it on anyone. The exception is subscriptions, where customers do need an account to manage deliveries, and even then it should feel like part of the order rather than a hurdle in front of it.",
+      },
+
+      { type: "h2", text: "Mistake 3: Leaving People Guessing About Delivery" },
+      {
+        type: "p",
+        text: "Slow delivery was the second biggest reason in Baymard’s survey, and for food businesses the question is usually less about speed and more about certainty. People want to know three things: do you deliver to me, which day will it arrive and when do I need to order by.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Say where you deliver** in plain words, and back it up with a postcode check rather than a long list of towns.",
+          "**Name the delivery days**, not just “we deliver weekly”.",
+          "**Show the cutoff.** A visible deadline, such as orders closing on Friday at 5pm, answers the question before it’s asked and gives people a gentle reason to order now.",
+          "**Explain collection or courier options** if you offer them, with the price of each.",
+        ],
+      },
+      {
+        type: "p",
+        text: "You can see how I’ve handled this for meal prep and veg box businesses on [my work page](/work). Several of them put the cutoff front and centre, because that’s the first thing a new customer asks.",
+      },
+
+      { type: "h2", text: "Mistake 4: Designed on a Laptop, Ordered on a Phone" },
+      {
+        type: "p",
+        text: "Ofcom’s 2025 research on how the UK goes online found that adults spend around four and a half hours online a day, and most of that time is on a smartphone. Yet many small business sites are still designed and signed off on a big screen.",
+      },
+      {
+        type: "p",
+        text: "The result is buttons that are too small to tap, menus that hide the shop, pop-ups that cover the page and can’t be closed, and product options that need sideways scrolling. None of it looks broken on a desktop, which is why it goes unnoticed for months.",
+      },
+      {
+        type: "callout",
+        title: "Order from your own site",
+        text: "Once a month, place a real order on your own phone over mobile data, not office wifi. Time how long it takes and note every moment you have to pinch, zoom or hunt for something. Then refund yourself. It’s the cheapest piece of testing you’ll ever do.",
+      },
+
+      { type: "h2", text: "Mistake 5: A Slow Site" },
+      {
+        type: "p",
+        text: "Speed matters twice over: people leave pages that take too long to appear, and Google uses page experience signals when it ranks sites. Google’s Core Web Vitals give a useful benchmark. A page is considered good when its main content appears within 2.5 seconds, it responds to a tap within 200 milliseconds and the layout doesn’t jump around as it loads, all measured across three quarters of real visits.",
+      },
+      {
+        type: "p",
+        text: "On small business sites, the usual causes are photos uploaded straight from a camera at full size, several apps each loading their own code on every page, auto-playing video in the header and, on WordPress, cheap hosting. Compressing images and removing apps you no longer use often makes a noticeable difference in an afternoon. You can check any page for free with Google’s PageSpeed Insights.",
+      },
+
+      { type: "h2", text: "Mistake 6: Not Giving People Enough Reasons to Trust You" },
+      {
+        type: "p",
+        text: "Nearly one in five shoppers in Baymard’s survey left because they didn’t trust the site with their card details. Big brands get trust for free. A small business has to earn it on the page.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Real photos** of your food, your products and ideally the people behind them, not stock images.",
+          "**A way to reach you:** an email address, a phone number if you can, and where you’re based.",
+          "**Genuine reviews** close to where people decide to buy, not tucked away on one page.",
+          "**A clear refund and returns policy**, written in plain English, including what happens if a delivery is missed or something arrives damaged.",
+          "**A tidy, up-to-date site.** Last season’s menu or a broken link tells people nobody is minding the shop.",
+        ],
+      },
+
+      { type: "h2", text: "Mistake 7: A Checkout That Asks Too Much" },
+      {
+        type: "p",
+        text: "Every extra field is another reason to stop. Shopify lets you decide whether fields such as company name, the second address line and the delivery phone number are hidden, optional or required. Unless you really need one, don’t make it required. If your driver needs a phone number, say why next to the field so it doesn’t feel nosy.",
+      },
+      {
+        type: "p",
+        text: "The same goes for payment. Not having enough ways to pay was a smaller reason in Baymard’s survey, but it’s an easy one to remove. Make sure the express options your platform supports, such as Apple Pay, Google Pay and Shop Pay on Shopify, are switched on and appear on a phone.",
+      },
+
+      { type: "h2", text: "Mistake 8: Errors Nobody Has Noticed" },
+      {
+        type: "p",
+        text: "Website errors were behind 17% of abandoned orders in Baymard’s survey. On a small site these are rarely dramatic crashes. They’re a discount code that no longer works, an app that stopped talking to the checkout after an update, a sold out item that can still be added to the basket or a contact form that sends messages nowhere.",
+      },
+      {
+        type: "p",
+        text: "These are the problems that hurt most, because you only find out when someone takes the trouble to tell you, and most people won’t. Regular test orders catch most of them. So does having someone who keeps an eye on the site after launch, which is what my Partner plan is for.",
+      },
+
+      { type: "h2", text: "A Checklist You Can Run This Week" },
+      {
+        type: "list",
+        items: [
+          "Can a new visitor see the price of delivery, or the free delivery threshold, before they add anything to the basket?",
+          "Can they check whether you deliver to their postcode before building an order?",
+          "Are your delivery days and order cutoff visible on the homepage?",
+          "Can someone check out without creating an account?",
+          "Have you placed a real order on your phone, over mobile data, in the last month?",
+          "Does your homepage pass Core Web Vitals in PageSpeed Insights on mobile?",
+          "Are your photos your own, and is every product and menu item current?",
+          "Is your refund policy easy to find and written in plain English?",
+          "Is every checkout field you require really necessary?",
+          "Are Apple Pay, Google Pay or Shop Pay showing on a phone?",
+          "Do your discount codes, contact form and order emails still work?",
+          "Have you removed apps and plugins you no longer use?",
+        ],
+      },
+      {
+        type: "p",
+        text: "If you answer no to two or three of these, you’re very likely losing orders you could be keeping. The good news is that most of them are an afternoon’s work rather than a new website.",
+      },
+
+      { type: "h2", text: "When It’s Time for More Than a Fix" },
+      {
+        type: "p",
+        text: "Sometimes the problems run deeper. If ordering on your site means picking from a generic product grid when customers really want to build a box, or if you’re paying for three or four apps to do something the site should do on its own, patching it can cost more over time than building it properly. I wrote about the real costs in [how much a website costs in the UK](/blog/how-much-does-a-website-cost-uk), including the running costs that catch people out.",
+      },
+
+      { type: "h2", text: "What I’d Recommend" },
+      {
+        type: "p",
+        text: "Start with the checklist. Fix what you can yourself, and keep placing test orders so you see your site the way customers do. If you find more than you’d like, or you’re not sure why people are leaving, [book a free consultation](/book). I’ll go through your site with you, in person around the North East or on a video call, and tell you honestly whether it needs a few fixes or a fresh start. You can also [see the sites I’ve built](/work) for food and subscription businesses, or look at my [packages](/packages) if you already know you want something new.",
+      },
+    ],
+    sources: [
+      {
+        label: "Baymard Institute: Cart abandonment rate statistics",
+        url: "https://baymard.com/blog/cart-abandonment-rate-statistics",
+      },
+      {
+        label: "web.dev: How the Core Web Vitals thresholds were defined",
+        url: "https://web.dev/articles/defining-core-web-vitals-thresholds",
+      },
+      {
+        label: "Shopify Help Center: Editing the checkout form options",
+        url: "https://help.shopify.com/manual/checkout-settings/checkout-form-options",
+      },
+      { label: "Shopify Help Center: Customer accounts", url: "https://help.shopify.com/manual/customers/customer-accounts" },
+      {
+        label: "Ofcom: From apps to AI search, how the UK goes online in 2025",
+        url: "https://www.ofcom.org.uk/media-use-and-attitudes/online-habits/from-apps-to-ai-search-how-the-uk-goes-online-in-2025",
+      },
+    ],
+  },
+  {
     slug: "how-much-does-a-website-cost-uk",
     title: "How Much Does a Website Cost in the UK?",
     description:
