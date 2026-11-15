@@ -19,6 +19,7 @@ export function Demo({ slug, accent, onPhoneScreen, phoneScreen }: {
   if (slug === "the-macro-kitchen") return <MacroKitchenDemo accent={accent} />;
   if (slug === "pocketplan") return <PocketPlanDemo accent={accent} />;
   if (slug === "zanapoli") return <ZaNapoliDemo accent={accent} />;
+  if (slug === "tayu") return <TayuDemo accent={accent} />;
   if (slug === "trackr") return <TrackrDemo accent={accent} active={phoneScreen} onPick={onPhoneScreen} />;
   return null;
 }
@@ -504,16 +505,46 @@ function ZaNapoliDemo({ accent }: { accent: string }) {
             <p className="text-ink">
               <span style={{ color: accent }}>Open.</span> Breakfast 9:30am to 12pm, then pizza and the full menu until 9:30pm.
             </p>
-            <p className="mt-1 text-muted">Next: how many of you, which day, where you’d like to sit, and a time.</p>
+            <p className="mt-1 text-muted">Next: straight to Low Fell’s DishCult page to pick a time.</p>
           </>
         ) : (
           <>
             <p className="text-ink">
               <span style={{ color: accent }}>Opening soon</span> on Front Street.
             </p>
-            <p className="mt-1 text-muted">Bookings open shortly. The site is ready to take them the day it opens.</p>
+            <p className="mt-1 text-muted">Bookings open shortly. Follow ZaNapoli on Instagram for the opening date.</p>
           </>
         )}
+      </div>
+    </div>
+  );
+}
+
+const TAYU_WAYS = {
+  book: { label: "Book a table", line: "Date night, a mid-week treat or the whole crew.", next: "Opens Tayu’s DishCult page." },
+  collect: { label: "Collection", line: "Order online and pick it up hot from Kells Lane.", next: "Opens their online ordering." },
+  delivery: { label: "Delivery", line: "Tayu at Home, across Gateshead.", next: "Choose Uber Eats or Just Eat." },
+  gift: { label: "Gift card", line: "A night under the lanterns, sent straight to their inbox.", next: "Opens the gift card checkout." },
+} as const;
+
+function TayuDemo({ accent }: { accent: string }) {
+  const [way, setWay] = useState<keyof typeof TAYU_WAYS>("book");
+  const pick = TAYU_WAYS[way];
+  return (
+    <div>
+      <p className="mb-2 text-xs text-muted">What are you after?</p>
+      <Segmented
+        label="Four ways to Tayu"
+        accent={accent}
+        value={way}
+        onChange={setWay}
+        options={(Object.keys(TAYU_WAYS) as (keyof typeof TAYU_WAYS)[]).map((key) => ({ value: key, label: TAYU_WAYS[key].label }))}
+      />
+      <div className="mt-3 rounded-xl border border-line bg-paper/60 px-4 py-3 text-sm" aria-live="polite">
+        <p className="text-ink">{pick.line}</p>
+        <p className="mt-1 text-muted">
+          <span style={{ color: accent }}>One tap.</span> {pick.next}
+        </p>
       </div>
     </div>
   );

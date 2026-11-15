@@ -314,16 +314,16 @@ export const projects: Project[] = [
     browserLabel: "zanapoli.com",
     status: "in-progress",
     soonLabel: "Coming soon",
-    lede: "One site for two pizza restaurants, with its own booking system built in. Opening soon.",
+    lede: "One site for two pizza restaurants, with booking, collection orders and gift cards a tap away. Opening soon.",
     role: "Design and build",
     year: "2026",
-    focus: "Bookings for two restaurants",
+    focus: "Two restaurants, one site",
     quote: "Slow dough, a roaring oven, and ninety seconds.",
     result:
-      "Guests choose a restaurant and book a table in six steps, on their phone or anywhere else. Staff run the bookings from their own dashboard, and Monkseaton is ready to take bookings the day it opens.",
+      "Guests choose a restaurant and go straight to its booking page, order collection or buy a gift card. Monkseaton has its own page, ready for bookings the day it opens.",
     brief: [
       "ZaNapoli makes wood-fired Napoletana pizza in Low Fell, Gateshead, and is opening a second restaurant on Front Street in Monkseaton.",
-      "They wanted one site for both restaurants, with a page for each, and a booking system of their own that staff can run from any device, in the restaurant or away from it.",
+      "They wanted one site for both restaurants, with a page for each, while keeping DishCult, the booking system their staff already use.",
     ],
     built: [
       {
@@ -331,12 +331,12 @@ export const projects: Project[] = [
         detail: "Low Fell and Monkseaton each have their own page, with the address, opening hours and a button to book there.",
       },
       {
-        title: "Book a table in six steps",
-        detail: "Restaurant, guests, date, seating, time and details, one step at a time, with the booking summed up as you go.",
+        title: "Book in two taps",
+        detail: "Pick a restaurant and you’re on its DishCult booking page. Monkseaton says when bookings will open instead.",
       },
       {
-        title: "A booking system of their own",
-        detail: "Built into the site rather than a third-party widget, with a staff dashboard that works on any device.",
+        title: "Collection and gift cards",
+        detail: "Order for collection online, or buy a gift card, straight from the menu bar.",
       },
       {
         title: "The full menu",
@@ -345,14 +345,63 @@ export const projects: Project[] = [
     ],
     specs: [
       { label: "Restaurants", value: "Low Fell, Monkseaton soon" },
-      { label: "Bookings", value: "Built in, with a staff dashboard" },
+      { label: "Bookings", value: "DishCult, a tap away" },
       { label: "Status", value: "Coming soon" },
       { label: "Built on", value: "Custom build" },
     ],
   },
   {
-    slug: "trackr",
+    slug: "tayu",
     index: "07",
+    name: "Tayu",
+    summary: "Coming soon. A pan-Asian bar and restaurant in Low Fell, with booking, collection, delivery and gift cards a tap away.",
+    image: "/work/tayu.jpg",
+    mobileImage: "/work/tayu-mobile.jpg",
+    imageAlt: "The Tayu homepage: “Come for the food. Stay for the whole thing.” beside a lantern-lit dining room, with Book a table and Order collection.",
+    url: "/work/tayu",
+    urlLabel: "Coming soon",
+    browserLabel: "tayu · preview",
+    status: "in-progress",
+    soonLabel: "Coming soon",
+    lede: "A bar and restaurant site that gets people where they want to go: a table, a collection order, delivery or a gift card. Opening soon.",
+    role: "Design and build",
+    year: "2026",
+    focus: "Four ways in",
+    quote: "Come for the food. Stay for the whole thing.",
+    result:
+      "Booking, collection, delivery and gift cards each sit one tap from the first screen. This week’s offers, the signatures, the full menu and reviews from Google, Tripadvisor and DishCult all sit on one page.",
+    brief: [
+      "Tayu is a pan-Asian bar and restaurant on Kells Lane in Low Fell, serving plates from Japan, Thailand, China and Korea.",
+      "They wanted the site to feel like the room, with its lanterns, blossom and neon, in violets and electric pinks on charcoal. It had to link up the services they already use, rather than replace them.",
+    ],
+    built: [
+      {
+        title: "Four ways to Tayu",
+        detail: "Book a table, order collection, get it delivered or buy a gift card, each one tap away.",
+      },
+      {
+        title: "This week’s offers",
+        detail: "Happi Awa and the 2 for £15 cocktails get their own section, plus a bar across the top of every page.",
+      },
+      {
+        title: "The full menu",
+        detail: "Sorted into sections, with spicy, peanut and nut dishes marked.",
+      },
+      {
+        title: "Reviews from everywhere",
+        detail: "Google, Tripadvisor and DishCult ratings side by side, with a link to leave a review.",
+      },
+    ],
+    specs: [
+      { label: "Location", value: "Low Fell, Gateshead" },
+      { label: "Bookings", value: "DishCult" },
+      { label: "Orders", value: "Collection and delivery" },
+      { label: "Status", value: "Coming soon" },
+    ],
+  },
+  {
+    slug: "trackr",
+    index: "08",
     name: "Trackr",
     summary: "In the works. Calories, meals, workouts and weight in one diary.",
     image: "/work/trackr-home.jpg",

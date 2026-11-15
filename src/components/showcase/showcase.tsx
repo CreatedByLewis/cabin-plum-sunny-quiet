@@ -24,6 +24,8 @@ export function Showcase() {
   const [playing, setPlaying] = useState(true);
   const [visible, setVisible] = useState(false);
   const root = useRef<HTMLDivElement>(null);
+  const tabRow = useRef<HTMLDivElement>(null);
+  const [edges, setEdges] = useState({ left: false, right: false });
 
   const project = projects[index];
   const entry = showcase[project.slug];
@@ -46,6 +48,31 @@ export function Showcase() {
     const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.35 });
     io.observe(el);
     return () => io.disconnect();
+  }, []);
+
+  // Keep the chosen project's tab in view: slide the row so it sits in the middle.
+  useEffect(() => {
+    const row = tabRow.current;
+    const tab = row?.querySelector<HTMLElement>(`#work-tab-${projects[index].slug}`);
+    if (!row || !tab) return;
+    const target = tab.offsetLeft - row.offsetLeft - (row.clientWidth - tab.offsetWidth) / 2;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    row.scrollTo({ left: Math.max(0, target), behavior: reduce ? "auto" : "smooth" });
+  }, [index]);
+
+  // Fade the row's edges only when there are more tabs hidden that way.
+  useEffect(() => {
+    const row = tabRow.current;
+    if (!row) return;
+    const update = () =>
+      setEdges({ left: row.scrollLeft > 4, right: row.scrollLeft + row.clientWidth < row.scrollWidth - 4 });
+    update();
+    row.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      row.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   const running = playing && visible;
@@ -75,7 +102,12 @@ export function Showcase() {
           role="tablist"
           aria-label="Projects"
           onKeyDown={onTabKey}
-          className="-mx-5 flex flex-1 gap-1.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden"
+          ref={tabRow}
+          className="relative -mx-5 flex flex-1 gap-1.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden"
+          style={{
+            maskImage: `linear-gradient(90deg, ${edges.left ? "transparent" : "#000"}, #000 ${edges.left ? "3rem" : "0"}, #000 calc(100% - ${edges.right ? "3rem" : "0px"}), ${edges.right ? "transparent" : "#000"})`,
+            WebkitMaskImage: `linear-gradient(90deg, ${edges.left ? "transparent" : "#000"}, #000 ${edges.left ? "3rem" : "0"}, #000 calc(100% - ${edges.right ? "3rem" : "0px"}), ${edges.right ? "transparent" : "#000"})`,
+          }}
         >
           {projects.map((p, i) => {
             const on = i === index;
