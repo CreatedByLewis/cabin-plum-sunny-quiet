@@ -302,8 +302,57 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "trackr",
+    slug: "zanapoli",
     index: "06",
+    name: "ZaNapoli",
+    summary: "Coming soon. Wood-fired Napoletana pizza in Low Fell, with a second restaurant opening in Monkseaton.",
+    image: "/work/zanapoli.jpg",
+    mobileImage: "/work/zanapoli-mobile.jpg",
+    imageAlt: "The ZaNapoli homepage: “Wood-fired Napoletana” over a prosciutto pizza, with Book a table and View the menu.",
+    url: "/work/zanapoli",
+    urlLabel: "Coming soon",
+    browserLabel: "zanapoli.com",
+    status: "in-progress",
+    soonLabel: "Coming soon",
+    lede: "One site for two pizza restaurants, with its own booking system built in. Opening soon.",
+    role: "Design and build",
+    year: "2026",
+    focus: "Bookings for two restaurants",
+    quote: "Slow dough, a roaring oven, and ninety seconds.",
+    result:
+      "Guests choose a restaurant and book a table in six steps, on their phone or anywhere else. Staff run the bookings from their own dashboard, and Monkseaton is ready to take bookings the day it opens.",
+    brief: [
+      "ZaNapoli makes wood-fired Napoletana pizza in Low Fell, Gateshead, and is opening a second restaurant on Front Street in Monkseaton.",
+      "They wanted one site for both restaurants, with a page for each, and a booking system of their own that staff can run from any device, in the restaurant or away from it.",
+    ],
+    built: [
+      {
+        title: "One site, two restaurants",
+        detail: "Low Fell and Monkseaton each have their own page, with the address, opening hours and a button to book there.",
+      },
+      {
+        title: "Book a table in six steps",
+        detail: "Restaurant, guests, date, seating, time and details, one step at a time, with the booking summed up as you go.",
+      },
+      {
+        title: "A booking system of their own",
+        detail: "Built into the site rather than a third-party widget, with a staff dashboard that works on any device.",
+      },
+      {
+        title: "The full menu",
+        detail: "Small plates, sharing boards, red and white base pizzas, each with its price, in ZaNapoli’s own style.",
+      },
+    ],
+    specs: [
+      { label: "Restaurants", value: "Low Fell, Monkseaton soon" },
+      { label: "Bookings", value: "Built in, with a staff dashboard" },
+      { label: "Status", value: "Coming soon" },
+      { label: "Built on", value: "Custom build" },
+    ],
+  },
+  {
+    slug: "trackr",
+    index: "07",
     name: "Trackr",
     summary: "In the works. Calories, meals, workouts and weight in one diary.",
     image: "/work/trackr-home.jpg",

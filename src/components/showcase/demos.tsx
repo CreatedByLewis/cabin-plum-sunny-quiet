@@ -18,6 +18,7 @@ export function Demo({ slug, accent, onPhoneScreen, phoneScreen }: {
   if (slug === "real-food-delivered") return <RealFoodDemo accent={accent} />;
   if (slug === "the-macro-kitchen") return <MacroKitchenDemo accent={accent} />;
   if (slug === "pocketplan") return <PocketPlanDemo accent={accent} />;
+  if (slug === "zanapoli") return <ZaNapoliDemo accent={accent} />;
   if (slug === "trackr") return <TrackrDemo accent={accent} active={phoneScreen} onPick={onPhoneScreen} />;
   return null;
 }
@@ -476,6 +477,43 @@ function TrackrDemo({ accent, active, onPick }: { accent: string; active: number
             {(active === 0 ? 2230 : eaten).toLocaleString("en-GB")} <span className="text-sm text-muted">kcal</span>
           </p>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function ZaNapoliDemo({ accent }: { accent: string }) {
+  const [place, setPlace] = useState<"low-fell" | "monkseaton">("low-fell");
+  const open = place === "low-fell";
+  return (
+    <div>
+      <p className="mb-2 text-xs text-muted">Where would you like to dine?</p>
+      <Segmented
+        label="Restaurant"
+        accent={accent}
+        value={place}
+        onChange={setPlace}
+        options={[
+          { value: "low-fell", label: "Low Fell" },
+          { value: "monkseaton", label: "Monkseaton" },
+        ]}
+      />
+      <div className="mt-3 rounded-xl border border-line bg-paper/60 px-4 py-3 text-sm" aria-live="polite">
+        {open ? (
+          <>
+            <p className="text-ink">
+              <span style={{ color: accent }}>Open.</span> Breakfast 9:30am to 12pm, then pizza and the full menu until 9:30pm.
+            </p>
+            <p className="mt-1 text-muted">Next: how many of you, which day, where you’d like to sit, and a time.</p>
+          </>
+        ) : (
+          <>
+            <p className="text-ink">
+              <span style={{ color: accent }}>Opening soon</span> on Front Street.
+            </p>
+            <p className="mt-1 text-muted">Bookings open shortly. The site is ready to take them the day it opens.</p>
+          </>
+        )}
       </div>
     </div>
   );

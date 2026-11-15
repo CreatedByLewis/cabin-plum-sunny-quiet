@@ -103,6 +103,23 @@ export const showcase: Record<string, ShowcaseEntry> = {
       { src: "/work/pocketplan-train-mobile.jpg", label: "Train", alt: "Train With Pocket on a phone: what do you most want to work on?" },
     ],
   },
+  zanapoli: {
+    accent: "#5b84b8",
+    colours: ["#11212d", "#1e3a5c", "#eef0f0", "#c4623a"],
+    hotspots: [
+      { feature: 0, x: 62.6, y: 3.9 },
+      { feature: 2, x: 86.4, y: 3.9 },
+      { feature: 3, x: 56.2, y: 76 },
+    ],
+    phoneFeature: 1,
+    phoneFeatureScreen: 1,
+    phone: [
+      { src: "/work/zanapoli-mobile.jpg", label: "Home", alt: "ZaNapoli on a phone: Wood-fired Napoletana, with Book a table and View the menu." },
+      { src: "/work/zanapoli-book-mobile.jpg", label: "Book", alt: "Booking a table at ZaNapoli on a phone: step one of six, choose Low Fell or Monkseaton." },
+      { src: "/work/zanapoli-menu-mobile.jpg", label: "Menu", alt: "The ZaNapoli menu on a phone: Il Menù, starting with small plates and their prices." },
+      { src: "/work/zanapoli-monkseaton-mobile.jpg", label: "Monkseaton", alt: "The Monkseaton page on a phone: opening soon, with bookings opening soon and a drawing of the Front Street shopfront." },
+    ],
+  },
   trackr: {
     accent: "#8b7cf7",
     colours: ["#111114", "#8b7cf7", "#1c1c22", "#f3f2ef"],
