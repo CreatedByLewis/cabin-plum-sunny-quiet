@@ -97,13 +97,13 @@ export function Showcase() {
   return (
     <div ref={root} style={{ ["--accent" as string]: entry.accent } as CSSProperties}>
       {/* Project tabs */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 lg:items-start">
         <div
           role="tablist"
           aria-label="Projects"
           onKeyDown={onTabKey}
           ref={tabRow}
-          className="relative -mx-5 flex flex-1 gap-1.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden"
+          className="relative -mx-5 flex flex-1 gap-1.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0 lg:flex-wrap lg:overflow-visible lg:pb-0 xl:grid xl:grid-cols-4 [&::-webkit-scrollbar]:hidden"
           style={{
             maskImage: `linear-gradient(90deg, ${edges.left ? "transparent" : "#000"}, #000 ${edges.left ? "3rem" : "0"}, #000 calc(100% - ${edges.right ? "3rem" : "0px"}), ${edges.right ? "transparent" : "#000"})`,
             WebkitMaskImage: `linear-gradient(90deg, ${edges.left ? "transparent" : "#000"}, #000 ${edges.left ? "3rem" : "0"}, #000 calc(100% - ${edges.right ? "3rem" : "0px"}), ${edges.right ? "transparent" : "#000"})`,
@@ -122,7 +122,7 @@ export function Showcase() {
                 tabIndex={on ? 0 : -1}
                 onClick={() => select(i)}
                 className={cn(
-                  "group relative min-h-12 shrink-0 overflow-hidden rounded-full border px-3.5 text-left transition-all duration-300 sm:px-4",
+                  "group relative min-h-12 shrink-0 overflow-hidden rounded-full border px-3.5 text-left transition-all duration-300 sm:px-4 xl:min-w-0",
                   on ? "border-[var(--accent)]/60 bg-card text-ink" : "border-line text-muted hover:border-ink/30 hover:text-ink",
                 )}
               >
@@ -145,7 +145,10 @@ export function Showcase() {
             );
           })}
         </div>
-        <div className="hidden shrink-0 gap-2 sm:flex">
+        <div className="hidden shrink-0 items-center gap-2 sm:flex">
+          <p className="mr-1 font-display text-sm text-muted tabular-nums" aria-live="polite">
+            <span className="text-ink">{projects[index].index}</span> / {String(projects.length).padStart(2, "0")}
+          </p>
           <IconButton label={playing ? "Pause the tour" : "Play the tour"} onClick={() => setPlaying((v) => !v)}>
             {playing ? <Pause className="size-4" aria-hidden /> : <Play className="size-4" aria-hidden />}
           </IconButton>
