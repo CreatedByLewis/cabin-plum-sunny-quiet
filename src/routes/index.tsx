@@ -431,7 +431,11 @@ function ClientStrip() {
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-5 sm:px-8">
         <p className="hidden shrink-0 text-[11px] tracking-[0.22em] text-muted uppercase sm:block">Built for</p>
         <div className="marquee-mask group/marquee relative flex-1 overflow-hidden">
-          <ul className="marquee flex w-max items-center gap-16 group-hover/marquee:[animation-play-state:paused] sm:gap-20" aria-label="Clients">
+          <ul
+            className="marquee flex w-max items-center gap-16 group-hover/marquee:[animation-play-state:paused] sm:gap-20"
+            style={{ animationDuration: `${clients.length * 3 * 4.5}s` }}
+            aria-label="Clients"
+          >
             {[...row, ...row].map((project, i) => {
               const logo = clientLogos[project.slug];
               const hidden = i >= clients.length;
