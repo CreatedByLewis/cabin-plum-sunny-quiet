@@ -53,7 +53,7 @@ export function Showcase() {
   // Keep the chosen project's tab in view: slide the row so it sits in the middle.
   useEffect(() => {
     const row = tabRow.current;
-    const tab = row?.querySelector<HTMLElement>(`#work-tab-${projects[index].slug}`);
+    const tab = row?.querySelector<HTMLElement>(`#work-tabm-${projects[index].slug}`);
     if (!row || !tab) return;
     const target = tab.offsetLeft - row.offsetLeft - (row.clientWidth - tab.offsetWidth) / 2;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -97,13 +97,13 @@ export function Showcase() {
   return (
     <div ref={root} style={{ ["--accent" as string]: entry.accent } as CSSProperties}>
       {/* Project tabs */}
-      <div className="flex items-center gap-3 lg:items-start">
+      <div className="flex items-center gap-3 lg:hidden">
         <div
           role="tablist"
           aria-label="Projects"
           onKeyDown={onTabKey}
           ref={tabRow}
-          className="relative -mx-5 flex flex-1 gap-1.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0 lg:flex-wrap lg:overflow-visible lg:pb-0 xl:grid xl:grid-cols-4 [&::-webkit-scrollbar]:hidden"
+          className="relative -mx-5 flex flex-1 gap-1.5 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden"
           style={{
             maskImage: `linear-gradient(90deg, ${edges.left ? "transparent" : "#000"}, #000 ${edges.left ? "3rem" : "0"}, #000 calc(100% - ${edges.right ? "3rem" : "0px"}), ${edges.right ? "transparent" : "#000"})`,
             WebkitMaskImage: `linear-gradient(90deg, ${edges.left ? "transparent" : "#000"}, #000 ${edges.left ? "3rem" : "0"}, #000 calc(100% - ${edges.right ? "3rem" : "0px"}), ${edges.right ? "transparent" : "#000"})`,
@@ -116,13 +116,13 @@ export function Showcase() {
                 key={p.slug}
                 type="button"
                 role="tab"
-                id={`work-tab-${p.slug}`}
+                id={`work-tabm-${p.slug}`}
                 aria-selected={on}
                 aria-controls="work-panel"
                 tabIndex={on ? 0 : -1}
                 onClick={() => select(i)}
                 className={cn(
-                  "group relative min-h-12 shrink-0 overflow-hidden rounded-full border px-3.5 text-left transition-all duration-300 sm:px-4 xl:min-w-0",
+                  "group relative min-h-12 shrink-0 overflow-hidden rounded-full border px-3.5 text-left transition-all duration-300 sm:px-4",
                   on ? "border-[var(--accent)]/60 bg-card text-ink" : "border-line text-muted hover:border-ink/30 hover:text-ink",
                 )}
               >
@@ -146,9 +146,6 @@ export function Showcase() {
           })}
         </div>
         <div className="hidden shrink-0 items-center gap-2 sm:flex">
-          <p className="mr-1 font-display text-sm text-muted tabular-nums" aria-live="polite">
-            <span className="text-ink">{projects[index].index}</span> / {String(projects.length).padStart(2, "0")}
-          </p>
           <IconButton label={playing ? "Pause the tour" : "Play the tour"} onClick={() => setPlaying((v) => !v)}>
             {playing ? <Pause className="size-4" aria-hidden /> : <Play className="size-4" aria-hidden />}
           </IconButton>
@@ -160,6 +157,15 @@ export function Showcase() {
           </IconButton>
         </div>
       </div>
+
+      <DesktopPicker
+        index={index}
+        running={running}
+        playing={playing}
+        onSelect={select}
+        onKey={onTabKey}
+        onTogglePlay={() => setPlaying((v) => !v)}
+      />
 
       <div
         id="work-panel"
@@ -757,6 +763,106 @@ export function ProjectExplorer({ project }: { project: Project }) {
           <p className="mb-3 text-xs font-medium tracking-widest text-ink uppercase">Try it</p>
           <Demo slug={project.slug} accent={entry.accent} phoneScreen={phoneScreen} onPhoneScreen={setPhoneScreen} />
         </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Desktop project picker: a filmstrip of every project's thumbnail, all on
+ * screen at once, so there is nothing to scroll.
+ */
+function DesktopPicker({
+  index,
+  running,
+  playing,
+  onSelect,
+  onKey,
+  onTogglePlay,
+}: {
+  index: number;
+  running: boolean;
+  playing: boolean;
+  onSelect: (i: number) => void;
+  onKey: (event: KeyboardEvent<HTMLDivElement>) => void;
+  onTogglePlay: () => void;
+}) {
+  const controls = (
+    <div className="flex shrink-0 items-center gap-2">
+      <p className="mr-1 font-display text-sm text-muted tabular-nums" aria-live="polite">
+        <span className="text-ink">{projects[index].index}</span> / {String(projects.length).padStart(2, "0")}
+      </p>
+      <IconButton label={playing ? "Pause the tour" : "Play the tour"} onClick={onTogglePlay}>
+        {playing ? <Pause className="size-4" aria-hidden /> : <Play className="size-4" aria-hidden />}
+      </IconButton>
+      <IconButton label="Previous project" onClick={() => onSelect(index - 1)}>
+        <ChevronLeft className="size-5" aria-hidden />
+      </IconButton>
+      <IconButton label="Next project" onClick={() => onSelect(index + 1)}>
+        <ChevronRight className="size-5" aria-hidden />
+      </IconButton>
+    </div>
+  );
+
+  return (
+    <div className="hidden lg:block">
+      <div className="flex justify-end">{controls}</div>
+      <div role="tablist" aria-label="Projects" onKeyDown={onKey} className="mt-5 grid grid-cols-8 gap-2.5">
+        {projects.map((p, i) => {
+          const on = i === index;
+          return (
+            <button
+              key={p.slug}
+              type="button"
+              role="tab"
+              id={`work-tab-${p.slug}`}
+              aria-selected={on}
+              aria-controls="work-panel"
+              tabIndex={on ? 0 : -1}
+              onClick={() => onSelect(i)}
+              className="group min-w-0 text-left"
+            >
+              <span
+                className={cn(
+                  "relative block aspect-[16/10] overflow-hidden rounded-lg border transition-all duration-300",
+                  on
+                    ? "border-[var(--accent)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--accent)_25%,transparent),0_18px_40px_-18px_var(--accent)]"
+                    : "border-line group-hover:-translate-y-0.5 group-hover:border-ink/30",
+                )}
+              >
+                <img
+                  src={`/work/thumbs/${p.slug}.jpg`}
+                  alt=""
+                  loading="lazy"
+                  className={cn(
+                    "size-full object-cover object-top transition-[opacity,filter] duration-300",
+                    on ? "" : "opacity-55 saturate-50 group-hover:opacity-90 group-hover:saturate-100",
+                  )}
+                />
+                {on ? (
+                  <span aria-hidden className="absolute inset-x-0 bottom-0 h-0.5 bg-black/40">
+                    <span
+                      key={`${index}-${running}`}
+                      className={cn("block h-full bg-[var(--accent)]", running ? "showcase-progress" : "w-full")}
+                      style={{ animationDuration: `${AUTOPLAY_MS}ms` }}
+                    />
+                  </span>
+                ) : null}
+              </span>
+              <span className="mt-2.5 flex items-center gap-1.5 text-xs">
+                <span className={cn("font-display tabular-nums", on ? "text-[var(--accent)]" : "text-muted")}>{p.index}</span>
+                <span
+                  aria-hidden
+                  className={cn("size-1.5 shrink-0 rounded-full", p.status === "in-progress" ? "bg-amber-400/80" : "bg-emerald-400")}
+                />
+                <span className="sr-only">{p.status === "in-progress" ? "Coming soon" : "Live"}</span>
+              </span>
+              <span className={cn("mt-0.5 block truncate text-sm font-medium transition-colors", on ? "text-ink" : "text-muted group-hover:text-ink")}>
+                {p.name}
+              </span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
