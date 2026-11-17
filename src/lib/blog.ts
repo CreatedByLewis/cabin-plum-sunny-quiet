@@ -25,6 +25,227 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "what-every-meal-prep-website-needs",
+    title: "What Every Meal Prep Website Needs",
+    description:
+      "What every meal prep website needs: a weekly menu, postcode check, build-a-box, macros, allergens, flexible subscriptions and a visible cutoff, in plain words.",
+    published: "2026-11-17",
+    updated: "2026-11-17",
+    readingMinutes: 9,
+    tags: ["Meal Prep", "Food Business", "Ecommerce", "Subscriptions", "Shopify"],
+    lede: "A meal prep website has a harder job than most shops. The menu changes every week, orders close on a deadline, delivery only reaches certain postcodes and half your customers want to count their protein before they pay. I’ve built sites for several meal prep kitchens, and these are the pieces I’d never launch without.",
+    body: [
+      { type: "h2", text: "The Quick Answer" },
+      {
+        type: "p",
+        text: "If you’re planning a new site or reviewing the one you have, these are the essentials. Everything else in this article explains why each one matters and how to get it right.",
+      },
+      {
+        type: "list",
+        items: [
+          "**This week’s menu, front and centre**, with a photo, price and macros for every dish.",
+          "**A postcode check before anything else**, so nobody builds a box you can’t deliver.",
+          "**Delivery days and the order cutoff on the homepage**, ideally with a countdown.",
+          "**A build-a-box** that lets people choose a box size and fill it, within your limits.",
+          "**Allergen information for every dish**, available before people pay.",
+          "**Subscriptions customers can pause and skip**, so a holiday doesn’t become a cancellation.",
+          "**A menu you can change yourself** each week without touching the design.",
+          "**A site that works on a phone**, because that’s where most orders happen.",
+        ],
+      },
+
+      { type: "h2", text: "Why Meal Prep Is Different From a Normal Shop" },
+      {
+        type: "p",
+        text: "A normal online shop sells the same products month after month, ships anywhere and takes orders at any hour. A meal prep kitchen sells a menu that changes weekly, cooks to a production schedule, delivers chilled food to a limited area on set days and needs to know exactly how many portions of each dish to make before the shopping is done.",
+      },
+      {
+        type: "p",
+        text: "That’s why a standard theme with a product grid rarely works well. It can take the money, but it doesn’t answer the questions customers actually have, and it doesn’t protect the kitchen from orders it can’t fulfil. The best meal prep sites are built around the way the kitchen runs, not the other way round.",
+      },
+
+      { type: "h2", text: "Put the Menu Where People Can See It" },
+      {
+        type: "p",
+        text: "The menu is the product. People come to see what’s cooking this week, so don’t make them click through three pages to find it. Show the dishes on the homepage with a real photo, the price and the key numbers, and let a tap on any dish start the order.",
+      },
+      {
+        type: "p",
+        text: "Behind the scenes, the menu should be easy for you to change. On The Macro Kitchen, the weekly menu comes straight from the kitchen’s Shopify products, so changing the week means editing products rather than editing the website. If updating your menu currently means emailing a developer or wrestling with a page builder every Thursday, that’s a sign the site wasn’t built for a weekly menu.",
+      },
+
+      { type: "h2", text: "Answer “Do You Deliver to Me?” First" },
+      {
+        type: "p",
+        text: "Delivery is the first question every new customer has, and it should be the first thing your site answers. A postcode check at the start of the order saves people from spending ten minutes choosing meals for an address your drivers don’t cover, and it saves you the awkward refund.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Check the postcode before the box**, not at checkout.",
+          "**Name the delivery days.** If different areas get different days, say which day applies once someone enters their postcode.",
+          "**Make the cutoff impossible to miss.** A countdown to the moment orders close tells people when to act and stops the “can I still order?” messages.",
+          "**Explain the options outside your area**, such as a nationwide courier box or collection, with the price of each.",
+        ],
+      },
+      {
+        type: "p",
+        text: "You can see this pattern across [my work](/work). JKitchen Cooks closes orders at 5pm on Friday for Sunday delivery and checks the postcode before the box. Real Food Delivered shows a countdown to its Friday menu lock and spells out two local drops and a nationwide Tuesday box.",
+      },
+
+      { type: "h2", text: "Let Customers Build Their Own Box" },
+      {
+        type: "p",
+        text: "Most meal prep customers want some control. They want to pick a box size, choose the dishes and maybe add breakfasts or snacks. A good build-a-box makes that feel simple: choose how many meals, fill the slots, see the running total and check out. A poor one sends people back and forth between product pages trying to remember what they’ve picked.",
+      },
+      {
+        type: "p",
+        text: "The rules matter as much as the layout. Your box should enforce your limits, such as fixed box sizes, a maximum number of one dish or dishes that sell out once a batch is gone, so you never receive an order you can’t cook. On The Macro Kitchen, customers say who’s eating, pick 5, 7, 10 or 14 meals a week and then choose dishes. JKitchen Cooks runs boxes from 6 to 15 meals with breakfasts and juices as extras.",
+      },
+      {
+        type: "callout",
+        title: "Watch the monthly app fees",
+        text: "Many kitchens run their box through a third-party bundle app with a monthly fee that rises as they grow. That can be a sensible way to start. But if the box is central to your business, it’s worth knowing it can be built into your own site instead. On my Box and Stay packages the build-a-box is custom and belongs to you, with no monthly fee to an outside company.",
+      },
+      {
+        type: "p",
+        text: "It also helps to offer a simpler route for people who don’t want to choose. Real Food Delivered puts Build Your Box next to set calorie plans between 1,250 and 3,500 kcal a day, so a customer can either pick every meal or hand the decision to the kitchen.",
+      },
+
+      { type: "h2", text: "Show the Numbers on Every Dish" },
+      {
+        type: "p",
+        text: "A lot of meal prep customers are training, cutting or tracking. For them, the macros aren’t a nice extra, they’re the reason to buy. Put the numbers on the dish, not in a PDF, and consider a filter for things like high protein.",
+      },
+      {
+        type: "table",
+        caption: "What I’d show on each dish. Allergen information is a legal requirement; the rest is what customers expect.",
+        head: ["Information", "Why it matters"],
+        rows: [
+          ["Photo of the actual dish", "Sells the food and sets honest expectations"],
+          ["Price", "No surprises when the box total updates"],
+          ["Calories", "The first number most customers look for"],
+          ["Protein, carbs and fat", "Essential for anyone tracking their intake"],
+          ["Allergens", "Required by law before purchase when selling food online"],
+          ["Storage and reheating", "Reduces questions and keeps food safe at home"],
+        ],
+      },
+
+      { type: "h2", text: "Get Allergen Information Right" },
+      {
+        type: "p",
+        text: "This is the part with legal weight. In the UK, when you sell food online or over the phone, customers must be able to get allergen information before they complete the order, and again when the food is delivered. That covers the 14 major allergens, including milk, eggs, gluten-containing cereals, peanuts, tree nuts, sesame, soya, fish, crustaceans, molluscs, celery, mustard, lupin and sulphites.",
+      },
+      {
+        type: "p",
+        text: "How you provide it depends on whether your food counts as prepacked. Prepacked food needs a full ingredients list with allergens emphasised, and you should show the same information online. Non-prepacked food doesn’t need a full ingredients list, but the allergen information still has to be accurate at both stages. The Food Standards Agency recommends giving it in writing at both points. If you’re unsure which category your meals fall into, ask your local council’s food team before launch, because it affects your labels as well as your website.",
+      },
+      {
+        type: "callout",
+        title: "Make it part of the dish, not a separate page",
+        text: "The safest set-up is allergens stored against each dish, shown on the menu and the dish page, and printed on the label from the same source. When a recipe changes, you update it once and the website and labels stay in step.",
+      },
+
+      { type: "h2", text: "Subscriptions That Bend Instead of Break" },
+      {
+        type: "p",
+        text: "Regular customers are what make a meal prep business work, and a subscription means the next order doesn’t rely on someone remembering to come back. The catch is that life gets in the way. Holidays, a week of eating out or a change in training plans are the moments subscribers cancel, unless they can simply skip a week.",
+      },
+      {
+        type: "p",
+        text: "On Shopify, the free Shopify Subscriptions app supports weekly and monthly renewals and subscribe-and-save discounts, and customers can pause, skip, resume or cancel from their account. They sign in with their email and a one-time code rather than a password, which keeps it painless. Make the saving clear without hiding the one-off option. Real Food Delivered and The Macro Kitchen both offer a 5% saving for subscribing, and JKitchen Cooks takes 15% off the first box.",
+      },
+
+      { type: "h2", text: "Build It for the Phone" },
+      {
+        type: "p",
+        text: "Real Food Delivered was designed on the basis that most of its orders are made on a phone, and the same goes for most food businesses I speak to. People order in spare moments, often just before the cutoff. That means the box builder needs big, easy-to-tap buttons, a running total that stays visible and a checkout with Apple Pay, Google Pay or Shop Pay switched on. Test the whole order on your own phone over mobile data, not just on a laptop.",
+      },
+      {
+        type: "p",
+        text: "Speed matters here too. Food sites are photo-heavy, so images need to be properly sized and compressed or the menu will crawl on a 4G connection. I covered the most common speed and checkout problems in [website mistakes that quietly cost you orders](/blog/website-mistakes-that-cost-you-orders).",
+      },
+
+      { type: "h2", text: "Give People Reasons to Trust Your Kitchen" },
+      {
+        type: "p",
+        text: "Buying a week of food from a kitchen you’ve never visited takes trust. Show who cooks it, where and how. Real photos of the team and the kitchen go a long way, as do genuine reviews close to the order button.",
+      },
+      {
+        type: "p",
+        text: "Your food hygiene rating is worth showing too. Displaying it online isn’t a legal requirement in England, Wales or Northern Ireland, but the Food Standards Agency strongly encourages it, and its own audit found only around one in ten businesses do. If you have a good rating, it’s an easy way to stand out.",
+      },
+
+      { type: "h2", text: "Don’t Forget the Basics Behind the Site" },
+      {
+        type: "p",
+        text: "A website makes a meal prep business look established, but the legal groundwork still has to be in place. Any business that prepares and sells food must register with its local council, including home kitchens and businesses that only sell online, and the usual advice is to do it around 28 days before you start trading. Chilled food must be kept at 8°C or below in England, Wales and Northern Ireland, which affects how you deliver as well as how you store. None of this lives on the website, but it shapes what the website promises, such as delivery areas and times.",
+      },
+
+      { type: "h2", text: "Must-Haves and Nice-to-Haves" },
+      {
+        type: "table",
+        head: ["Must-have at launch", "Worth adding as you grow"],
+        rows: [
+          ["Weekly menu with photos, prices and macros", "Filters such as high protein or vegetarian"],
+          ["Postcode check and delivery days", "Different days or prices by area"],
+          ["Visible cutoff", "A live countdown"],
+          ["Build-a-box with your limits", "Set calorie plans alongside"],
+          ["Allergens on every dish", "Reheating and storage guides"],
+          ["Guest checkout with express payments", "Subscriptions with pause and skip"],
+          ["A menu you can edit yourself", "Goal-based example weeks"],
+        ],
+      },
+
+      { type: "h2", text: "A Checklist Before You Launch" },
+      {
+        type: "list",
+        items: [
+          "Can a new visitor see this week’s menu within one scroll of the homepage?",
+          "Does the postcode check happen before anyone starts a box?",
+          "Are your delivery days and cutoff on the homepage?",
+          "Does the box stop customers going over your limits or ordering sold out dishes?",
+          "Does every dish show its allergens, and do they match your labels?",
+          "Can subscribers skip a week without contacting you?",
+          "Can you change next week’s menu yourself in under an hour?",
+          "Have you placed a full test order on your phone over mobile data?",
+          "Is your food hygiene rating and a way to contact you easy to find?",
+          "Are you registered with your local council, with chilled delivery planned?",
+        ],
+      },
+
+      { type: "h2", text: "What I’d Recommend" },
+      {
+        type: "p",
+        text: "If you’re just starting, get the must-haves right and keep everything else simple. A clear menu, a postcode check, a visible cutoff and accurate allergens will do more for your orders than any clever feature. If you’re already trading and paying for several apps to hold it all together, it may be time for a site built around how your kitchen actually works.",
+      },
+      {
+        type: "p",
+        text: "You can [see the meal prep sites I’ve built](/work), or look at my [packages](/packages), where Box adds the postcode check and a custom build-a-box and Stay adds subscriptions on top. If you’d like to talk it through, [book a free consultation](/book). I’m based in the North East and can meet in person or on a video call, and I’ll tell you honestly what your kitchen needs and what it doesn’t.",
+      },
+    ],
+    sources: [
+      {
+        label: "CIEH: Selling food online, allergen responsibilities explained",
+        url: "https://www.cieh.org/training-and-courses/resources/food-safety/selling-food-online-allergen-responsibilities-explained/",
+      },
+      { label: "GOV.UK: Food business registration", url: "https://www.gov.uk/guidance/food-business-registration" },
+      {
+        label: "GOV.UK: Food hygiene for businesses, chilling and freezing",
+        url: "https://www.gov.uk/food-hygiene-businesses/chilling-and-freezing",
+      },
+      {
+        label: "Food Standards Agency: Most businesses are missing out on promoting their hygiene rating online",
+        url: "https://food.gov.uk/news-alerts/news/majority-of-businesses-are-missing-out-on-the-opportunity-to-promote-their-food-hygiene-rating-online",
+      },
+      { label: "Shopify App Store: Shopify Subscriptions", url: "https://apps.shopify.com/shopify-subscriptions" },
+      {
+        label: "Shopify Help Center: Shopify Subscriptions customer experience",
+        url: "https://help.shopify.com/en/manual/products/purchase-options/subscriptions/shopify-subscriptions/customer-experience",
+      },
+    ],
+  },
+  {
     slug: "website-mistakes-that-cost-you-orders",
     title: "Website Mistakes That Quietly Cost You Orders",
     description:
