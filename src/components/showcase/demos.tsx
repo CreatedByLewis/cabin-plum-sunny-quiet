@@ -503,7 +503,7 @@ function ZaNapoliDemo({ accent }: { accent: string }) {
         {open ? (
           <>
             <p className="text-ink">
-              <span style={{ color: accent }}>Open.</span> Breakfast 9:30am to 12pm, then pizza and the full menu until 9:30pm.
+              <span style={{ color: accent }}>Open until 9:30pm.</span> Colazione and coffee from 10am, Thursday to Sunday, and pizza from 12pm every day.
             </p>
             <p className="mt-1 text-muted">Next: straight to Low Fell’s DishCult page to pick a time.</p>
           </>

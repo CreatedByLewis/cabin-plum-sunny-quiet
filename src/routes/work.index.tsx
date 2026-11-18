@@ -7,7 +7,7 @@ export const Route = createFileRoute("/work/")({
   head: () => seo({
     title: "Web Design Portfolio & Ecommerce Case Studies | CreatedByLewis",
     description:
-      "Ecommerce websites that take orders: JKitchen Cooks, The Farmers Box, Real Food Delivered and The Macro Kitchen, plus PocketPlan, ZaNapoli, Tayu and Trackr.",
+      "Ecommerce websites that take orders: JKitchen Cooks, The Farmers Box, Real Food Delivered, The Macro Kitchen, Tayu and ZaNapoli, plus PocketPlan and Trackr.",
     path: "/work",
     schema: [
       webPage("/work", "Web design portfolio", undefined, "CollectionPage"),
@@ -61,7 +61,7 @@ const decks: Record<string, { stack: string; headline: string; points: string[];
   zanapoli: {
     stack: "/work/zn-stack.jpg",
     headline: "Two pizza restaurants, one site.",
-    points: ["Low Fell, with Monkseaton opening soon", "Book through DishCult in two taps", "Collection orders and gift cards"],
+    points: ["Low Fell, with Monkseaton opening soon", "Book through DishCult in two taps", "Collection, delivery and gift cards"],
     colours: ["#11212d", "#1e3a5c", "#eef0f0", "#c4623a"],
   },
   tayu: {
@@ -85,7 +85,7 @@ function Work() {
         <p className="eyebrow">My work</p>
         <h1 className="mt-4 max-w-3xl font-display text-5xl text-ink sm:text-6xl">Sites that take the order.</h1>
         <p className="mt-4 max-w-xl text-muted">
-          Four live sites, three launching soon and an app in the works, each built around what the business sells.
+          Six live sites, one launching soon and an app in the works, each built around what the business sells.
         </p>
       </section>
       {projects.map((project) => {
