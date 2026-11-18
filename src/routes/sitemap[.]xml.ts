@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/seo";
 import { posts } from "@/lib/blog";
 
 // /enquiries is private and deliberately left out.
-const LASTMOD = "2026-11-17";
+const LASTMOD = "2026-11-18";
 
 function build() {
   const paths = [
@@ -18,6 +18,7 @@ function build() {
     "/start",
     "/work",
     "/web-designer-newcastle",
+    "/technical-seo",
     ...projects.map((project) => `/work/${project.slug}`),
     "/blog",
     ...posts.map((post) => `/blog/${post.slug}`),

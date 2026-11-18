@@ -51,6 +51,7 @@ function build() {
     `- [Home](${SITE_URL}/): what CreatedByLewis does and who it is for`,
     `- [Work](${SITE_URL}/work): all case studies`,
     `- [Web designer in Newcastle](${SITE_URL}/web-designer-newcastle): web design for Newcastle and North East businesses, meeting in person or on video`,
+    `- [Technical SEO](${SITE_URL}/technical-seo): technical SEO audits and fixes, covering speed, indexing, structured data and mobile`,
     `- [Packages](${SITE_URL}/packages): packages, prices and what each includes`,
     `- [Estimate](${SITE_URL}/estimate): a short questionnaire that suggests a package and a starting price`,
     `- [Book a consultation](${SITE_URL}/book): book a free call with Lewis`,

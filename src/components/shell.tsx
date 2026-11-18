@@ -257,6 +257,7 @@ const footerGroups = [
       { label: "Packages", to: "/packages" },
       { label: "Blog", to: "/blog" },
       { label: "Web design in Newcastle", to: "/web-designer-newcastle" },
+      { label: "Technical SEO", to: "/technical-seo" },
     ],
   },
   {
