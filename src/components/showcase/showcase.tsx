@@ -807,7 +807,8 @@ function DesktopPicker({
   return (
     <div className="hidden lg:block">
       <div className="flex justify-end">{controls}</div>
-      <div role="tablist" aria-label="Projects" onKeyDown={onKey} className="mt-5 grid grid-cols-8 gap-2.5">
+      <div role="tablist" aria-label="Projects" onKeyDown={onKey} className="mt-5 grid gap-2.5"
+        style={{ gridTemplateColumns: `repeat(${projects.length}, minmax(0, 1fr))` }}>
         {projects.map((p, i) => {
           const on = i === index;
           return (

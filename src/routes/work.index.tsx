@@ -7,7 +7,7 @@ export const Route = createFileRoute("/work/")({
   head: () => seo({
     title: "Web Design Portfolio & Ecommerce Case Studies | CreatedByLewis",
     description:
-      "Ecommerce websites that take orders: JKitchen Cooks, The Farmers Box, Real Food Delivered, The Macro Kitchen, Tayu and ZaNapoli, plus PocketPlan and Trackr.",
+      "Websites that take orders: ZaNapoli, Tayu, The Macro Kitchen, JKitchen Cooks, Real Food Delivered and The Farmers Box, plus PocketPlan.",
     path: "/work",
     schema: [
       webPage("/work", "Web design portfolio", undefined, "CollectionPage"),
@@ -60,7 +60,7 @@ const decks: Record<string, { stack: string; headline: string; points: string[];
   },
   zanapoli: {
     stack: "/work/zn-stack.jpg",
-    headline: "Two pizza restaurants, one site.",
+    headline: "Two pizza restaurants, one page.",
     points: ["Low Fell, with Monkseaton opening soon", "Book through DishCult in two taps", "Collection, delivery and gift cards"],
     colours: ["#11212d", "#1e3a5c", "#eef0f0", "#c4623a"],
   },
@@ -70,12 +70,7 @@ const decks: Record<string, { stack: string; headline: string; points: string[];
     points: ["Book, collect, delivery or a gift card", "This week’s offers up front", "Google, Tripadvisor and DishCult reviews"],
     colours: ["#141217", "#6d2fd6", "#ff2e93", "#f4f0f6"],
   },
-  trackr: {
-    stack: "/work/trackr-stack.jpg",
-    headline: "Calories, meals, workouts and weight. One diary.",
-    points: ["Still in the works", "Photograph a plate, or describe it", "A website plan can add it, branded"],
-    colours: ["#111114", "#8b7cf7", "#1c1c22", "#f3f2ef"],
-  },
+
 };
 
 function Work() {
@@ -85,7 +80,7 @@ function Work() {
         <p className="eyebrow">My work</p>
         <h1 className="mt-4 max-w-3xl font-display text-5xl text-ink sm:text-6xl">Sites that take the order.</h1>
         <p className="mt-4 max-w-xl text-muted">
-          Six live sites, one launching soon and an app in the works, each built around what the business sells.
+          Six live sites and one launching soon, each built around what the business sells.
         </p>
       </section>
       {projects.map((project) => {

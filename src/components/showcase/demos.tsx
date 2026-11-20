@@ -20,7 +20,6 @@ export function Demo({ slug, accent, onPhoneScreen, phoneScreen }: {
   if (slug === "pocketplan") return <PocketPlanDemo accent={accent} />;
   if (slug === "zanapoli") return <ZaNapoliDemo accent={accent} />;
   if (slug === "tayu") return <TayuDemo accent={accent} />;
-  if (slug === "trackr") return <TrackrDemo accent={accent} active={phoneScreen} onPick={onPhoneScreen} />;
   return null;
 }
 

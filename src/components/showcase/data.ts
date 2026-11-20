@@ -104,20 +104,20 @@ export const showcase: Record<string, ShowcaseEntry> = {
     ],
   },
   zanapoli: {
-    accent: "#5b84b8",
-    colours: ["#11212d", "#1e3a5c", "#eef0f0", "#c4623a"],
+    accent: "#e8692e",
+    colours: ["#0f1a26", "#1a2a3c", "#f3ead8", "#e8692e"],
     hotspots: [
-      { feature: 0, x: 51.7, y: 3.9 },
-      { feature: 2, x: 75.3, y: 3.9 },
-      { feature: 3, x: 69.2, y: 3.9 },
+      { feature: 0, x: 60.1, y: 4.1 },
+      { feature: 2, x: 24.4, y: 86.2 },
+      { feature: 3, x: 47.6, y: 4.1 },
     ],
     phoneFeature: 1,
-    phoneFeatureScreen: 1,
     phone: [
-      { src: "/work/zanapoli-mobile.jpg", label: "Home", alt: "ZaNapoli on a phone: Wood-fired Napoletana, with Book a table and View the menu." },
-      { src: "/work/zanapoli-book-mobile.jpg", label: "Book", alt: "Booking at ZaNapoli on a phone: Book a table, with Low Fell taking bookings and open until 9:30pm." },
-      { src: "/work/zanapoli-menu-mobile.jpg", label: "Menu", alt: "The ZaNapoli menu on a phone: Il Menù, starting with small plates and their prices." },
-      { src: "/work/zanapoli-monkseaton-mobile.jpg", label: "Monkseaton", alt: "The Monkseaton page on a phone: opening soon, with a drawing of the Front Street shopfront." },
+      { src: "/work/zanapoli-mobile.jpg", label: "Home", alt: "ZaNapoli on a phone: Wood-fired Napoletana, properly., with Book a table, Order collection and See the menu." },
+      { src: "/work/zanapoli-story-mobile.jpg", label: "Story", alt: "ZaNapoli’s story on a phone: Dough that’s had time. A fire that doesn’t wait." },
+      { src: "/work/zanapoli-menu-mobile.jpg", label: "Menu", alt: "The ZaNapoli menu on a phone: Fire, flour and patience, with red base pizzas and their prices." },
+      { src: "/work/zanapoli-reviews-mobile.jpg", label: "Reviews", alt: "ZaNapoli reviews on a phone: Words from the table, with Google reviews." },
+      { src: "/work/zanapoli-visit-mobile.jpg", label: "Visit", alt: "Visiting ZaNapoli on a phone: Two ovens. One recipe., with Low Fell open now and a sticky Book, Call, Directions bar." },
     ],
   },
   tayu: {
@@ -137,21 +137,5 @@ export const showcase: Record<string, ShowcaseEntry> = {
       { src: "/work/tayu-reviews-mobile.jpg", label: "Reviews", alt: "Tayu reviews on a phone: 4.8 on Google, 4.4 on Tripadvisor and 4.7 from DishCult diners." },
     ],
   },
-  trackr: {
-    accent: "#8b7cf7",
-    colours: ["#111114", "#8b7cf7", "#1c1c22", "#f3f2ef"],
-    hotspots: [
-      { feature: 0, x: 16, y: 19 },
-      { feature: 1, x: 36, y: 65 },
-      { feature: 2, x: 45, y: 40 },
-    ],
-    phoneFeature: 3,
-    phone: [
-      { src: "/work/trackr-mobile.jpg", label: "Diary", alt: "Trackr diary on a phone: Tuesday, 2,230 kcal remaining." },
-      { src: "/work/trackr-today.jpg", label: "Today", alt: "Trackr today screen: 1,640 of 2,200 kcal eaten, with protein, carbs and fat." , fit: "contain" },
-      { src: "/work/trackr-log.jpg", label: "Add a meal", alt: "Trackr add a meal screen: grilled chicken, white rice and broccoli." , fit: "contain" },
-      { src: "/work/trackr-order.jpg", label: "Order", alt: "Trackr order screen: meals from the kitchen, added to a box." , fit: "contain" },
-      { src: "/work/trackr-week.jpg", label: "Week", alt: "Trackr week screen: a bar chart of daily calories and protein days hit." , fit: "contain" },
-    ],
-  },
+
 };
