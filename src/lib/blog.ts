@@ -25,6 +25,187 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "selling-subscriptions-on-shopify",
+    title: "Selling Subscriptions on Shopify: How It Works",
+    description:
+      "Selling subscriptions on Shopify explained: which app to use, payment rules, pause and skip, failed payments, UK law and how to set it up for a food business.",
+    published: "2026-11-21",
+    updated: "2026-11-21",
+    readingMinutes: 8,
+    tags: ["Subscriptions", "Shopify", "Ecommerce", "Food Business", "Meal Prep"],
+    lede: "A subscription turns a one-off customer into a regular one. For a meal prep kitchen, a veg box scheme or a coffee roaster, it’s often the difference between guessing next week’s orders and knowing them. Shopify makes subscriptions possible on almost any store, but there are a few decisions and a few catches worth understanding before you switch it on. This is how it works, in plain words.",
+    body: [
+      { type: "h2", text: "The Quick Answer" },
+      {
+        type: "p",
+        text: "Shopify doesn’t run subscriptions on its own. You add a subscription app, and the app creates the plans, takes the repeat payments and gives customers a way to manage what they’ve signed up for. For most small businesses, the starting point looks like this:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Start with the free Shopify Subscriptions app** unless you already know you need something it can’t do.",
+          "**Use Shopify Payments** if you can, because it supports the widest range of ways to pay on repeat orders.",
+          "**Offer a clear reason to subscribe**, usually a modest saving, without hiding the one-off option.",
+          "**Let customers pause, skip and cancel themselves.** It feels risky, but it keeps more subscribers than it loses.",
+          "**Decide what happens when a payment fails** before your first renewal, not after.",
+          "**Get your terms right**, because UK rules on subscriptions are tightening.",
+        ],
+      },
+
+      { type: "h2", text: "How Subscriptions Work on Shopify" },
+      {
+        type: "p",
+        text: "On a Shopify store, a subscription is really a purchase option attached to a product. Alongside the normal price, the product page shows a choice such as “Deliver every week and save 5%”. When someone picks it and pays, Shopify stores their payment method securely and the app creates a contract that renews on the schedule you set. Each renewal becomes a normal order in your admin, so it flows into your fulfilment the same way a one-off order does.",
+      },
+      {
+        type: "p",
+        text: "For each product you can sell it as a subscription only, or offer both a one-off purchase and a subscription. Shopify notes that products sold only as a subscription can only be sold through the online store, so if you also sell in person or through other channels, offering both is usually the safer choice. Shopify also adds a subscription cancellation policy to your store automatically and shows subscription wording at checkout, so customers know what they’re agreeing to.",
+      },
+
+      { type: "h2", text: "Choosing a Subscription App" },
+      {
+        type: "p",
+        text: "There are two broad routes. Shopify’s own app is free and covers the essentials. Paid apps add more control over retention, bundles and the customer portal, in return for a monthly fee and often a percentage of every subscription order.",
+      },
+      {
+        type: "table",
+        caption: "A simplified comparison. Paid app pricing changes often and is usually charged in US dollars, so check the current listing before you commit.",
+        head: ["", "Shopify Subscriptions", "Paid subscription apps"],
+        rows: [
+          ["Cost", "Free", "Monthly fee, and often a fee per transaction"],
+          ["Frequencies", "Weekly, monthly or yearly", "Usually more flexible"],
+          ["Discounts", "Percentage, fixed amount and subscribe and save", "Similar, often with tiered or loyalty rewards"],
+          ["Customer self-service", "Skip, pause, resume, cancel, update payment and address", "Often adds swapping products and changing dates"],
+          ["Bundles", "Not compatible with bundles", "Some support customer-built boxes"],
+          ["Best for", "Simple repeat products and most new subscription offers", "Larger stores with complex boxes or retention needs"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Recharge is the best-known paid option. Its listing shows a monthly plan fee plus a percentage and a fixed amount on each transaction, which adds up quickly once you have a few hundred subscribers. Other apps such as Appstle, Seal and Loop sit at different price points, and several have free tiers for small stores. None of this makes them a bad choice. It just means the app becomes a running cost that grows with your success, and that’s worth knowing at the start.",
+      },
+      {
+        type: "callout",
+        title: "Don’t uninstall casually",
+        text: "Shopify warns that uninstalling the Shopify Subscriptions app deletes all of your plans, contracts and subscription discounts. If you ever move to a different app, plan the migration properly so your existing subscribers carry on being billed.",
+      },
+
+      { type: "h2", text: "Payments: The Part People Miss" },
+      {
+        type: "p",
+        text: "A subscription only works if the payment method can be charged again without the customer being present. That rules out some ways of paying. Shopify lists Shopify Payments, PayPal Express, Authorize.net, Adyen and, for selected merchants, Stripe as gateways that support subscriptions, depending on your region.",
+      },
+      {
+        type: "p",
+        text: "With Shopify Payments, customers can subscribe using Shop Pay, Apple Pay, Google Pay or PayPal as well as a card, although Shopify says Apple Pay for subscriptions is limited to Visa and Mastercard. Other gateways are more restrictive. On Authorize.net, for example, Apple Pay and Google Pay aren’t supported. Since so many food and drink orders happen on a phone, those express payment buttons matter, and it’s one more reason I’d use Shopify Payments where possible.",
+      },
+      {
+        type: "p",
+        text: "Gift cards are another small trap. Shopify says a gift card used on a subscription only covers the first payment, so customers paying that way need a card on file for the renewals.",
+      },
+
+      { type: "h2", text: "Pause, Skip and Cancel: Let Customers Do It" },
+      {
+        type: "p",
+        text: "The instinct is to make cancelling hard. It usually backfires. A customer who can’t find the cancel button disputes the charge with their bank instead, and you lose the customer, the money and possibly a fee. A customer who can skip a week while they’re on holiday often just comes back the week after.",
+      },
+      {
+        type: "p",
+        text: "With Shopify Subscriptions, customers manage their subscription from their account on your store, and the emails they receive include a link to manage it. They can skip, pause, resume or cancel, and update their payment method and delivery address. Make that link easy to find in your menu and in every confirmation email. For a meal prep or veg box business, “skip next week” should be the most obvious button on the page.",
+      },
+      {
+        type: "callout",
+        title: "UK subscription rules are changing",
+        text: "The Digital Markets, Competition and Consumers Act 2024 brings in a new regime for consumer subscriptions, currently expected to take effect in 2027. It covers clear information before sign-up, reminders before renewals, cooling-off rights and making it easy to leave. Building easy self-service in now means you won’t be scrambling later. I’m not a lawyer, so check the detail with a legal adviser once the final guidance is published.",
+      },
+
+      { type: "h2", text: "When a Payment Fails" },
+      {
+        type: "p",
+        text: "Cards expire and accounts run low, so some renewals will fail. Shopify Subscriptions lets you set how many times it retries a failed payment and how many days it waits between attempts, with customers notified each time. You also choose what happens once the retries run out: skip that order, pause the subscription or cancel it. There’s a separate setting for when a renewal can’t go through because you’ve run out of stock.",
+      },
+      {
+        type: "p",
+        text: "For perishable food, timing matters more than it does for most shops. If your kitchen shops on Thursday for Sunday delivery, a payment that succeeds on Saturday after three retries is no use. Set the renewal date and the retry window so that you know who has paid before you buy ingredients, and pick skip rather than cancel as the final step, so a missed payment doesn’t lose you the customer for good.",
+      },
+
+      { type: "h2", text: "Subscriptions for Food, Meal Prep and Veg Boxes" },
+      {
+        type: "p",
+        text: "Food businesses are where subscriptions shine, and also where they get complicated. A simple product such as a weekly coffee bag or a fixed veg box fits the standard model perfectly. A meal prep box where the menu changes every week and customers choose their own dishes does not, because the subscription renews a product, not a set of choices.",
+      },
+      {
+        type: "p",
+        text: "The approach that tends to work is to make the subscription about the box rather than the dishes. The customer subscribes to “10 meals a week”, and the kitchen either chooses for them or lets them pick next week’s dishes before the cutoff. Because Shopify Subscriptions doesn’t work with bundles, a customer-built box on subscription usually needs either a paid app or a custom build. On the meal prep sites I’ve built, the subscribe option sits right next to the one-off order. Real Food Delivered and The Macro Kitchen both take 5% off for subscribing, and JKitchen Cooks takes 15% off the first box. You can see them on [my work page](/work).",
+      },
+      {
+        type: "p",
+        text: "One legal point is specific to food. Under the Consumer Contracts Regulations, online buyers of goods normally have 14 days to cancel after delivery, but that right doesn’t apply to goods that can deteriorate or expire rapidly. Fresh meals and produce usually fall into that exception, though your terms should still say so clearly. I covered the other essentials, including allergens and delivery cutoffs, in [what every meal prep website needs](/blog/what-every-meal-prep-website-needs).",
+      },
+
+      { type: "h2", text: "Setting It Up: A Step-by-Step Checklist" },
+      {
+        type: "list",
+        items: [
+          "**Check your payment set-up.** Make sure you’re on a gateway that supports subscriptions, ideally Shopify Payments.",
+          "**Install the subscription app** and decide which products can be bought on subscription.",
+          "**Choose your frequencies.** Weekly for food and fresh produce, monthly for most other repeat products.",
+          "**Set the saving.** A small percentage is usually enough. Make sure your margins can carry it on every order, not just the first.",
+          "**Check your theme** shows the subscription option clearly on the product page, the cart and the order confirmation.",
+          "**Set your failed payment rules**, matched to when you need to know who has paid.",
+          "**Write your terms**: how renewals work, how to skip or cancel and any cutoffs.",
+          "**Customise the emails** so the link to manage the subscription is easy to find.",
+          "**Place a test subscription yourself**, on your phone, then skip, pause and cancel it to see what your customers will see.",
+        ],
+      },
+
+      { type: "h2", text: "Common Mistakes to Avoid" },
+      {
+        type: "list",
+        items: [
+          "**Hiding the one-off option.** Some people want to try you first. Forcing a subscription puts them off entirely.",
+          "**A saving you can’t afford.** A 20% discount feels generous until it applies to every order for a year.",
+          "**No skip button.** Without one, a holiday becomes a cancellation.",
+          "**Renewals that ignore your production schedule**, so you’re buying stock before you know who has paid.",
+          "**Choosing a paid app before you need it.** Start simple and move up when the features earn their fee.",
+        ],
+      },
+
+      { type: "h2", text: "What I’d Recommend" },
+      {
+        type: "p",
+        text: "If you sell something people buy again and again, a subscription is one of the best things you can add to your site. For most small businesses, the free Shopify Subscriptions app and Shopify Payments are the right place to start. Keep the offer simple, make the saving clear, let customers skip and cancel without contacting you, and set renewals around how your business actually runs. If your box is customer-built or your menu changes weekly, plan that part carefully, because that’s where off-the-shelf set-ups tend to struggle.",
+      },
+      {
+        type: "p",
+        text: "Subscriptions are part of my Stay package, alongside a postcode check and a custom build-a-box with no monthly fee to an outside company. You can compare what’s included on my [packages page](/packages) or get a quick figure from the [estimate tool](/estimate). If you’d rather talk it through, [book a free consultation](/book) and I’ll tell you honestly whether subscriptions suit your business and the simplest way to set them up.",
+      },
+    ],
+    sources: [
+      {
+        label: "Shopify Help Center: Shopify Subscriptions",
+        url: "https://help.shopify.com/en/manual/products/purchase-options/shopify-subscriptions",
+      },
+      {
+        label: "Shopify Help Center: Subscription considerations and payment gateways",
+        url: "https://help.shopify.com/en/manual/products/purchase-options/subscriptions/considerations",
+      },
+      {
+        label: "Shopify Help Center: Managing Shopify Subscriptions",
+        url: "https://help.shopify.com/en/manual/products/purchase-options/shopify-subscriptions/manage-subscriptions",
+      },
+      { label: "Shopify App Store: Recharge Subscriptions", url: "https://apps.shopify.com/subscription-payments" },
+      {
+        label: "legislation.gov.uk: Consumer Contracts Regulations 2013, Part 3",
+        url: "https://www.legislation.gov.uk/uksi/2013/3134/part/3",
+      },
+      {
+        label: "DWF: DMCCA subscription contracts regime, preparing for the new restrictions",
+        url: "https://dwfgroup.com/en/news-and-insights/insights/2026/10/dmcca-subscription-contracts-regime-preparing-for-the-new-restrictions",
+      },
+    ],
+  },
+  {
     slug: "what-every-meal-prep-website-needs",
     title: "What Every Meal Prep Website Needs",
     description:
