@@ -25,6 +25,223 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "google-business-profile-guide",
+    title: "Google Business Profile: A Complete Guide for Local Businesses",
+    description:
+      "A plain guide to Google Business Profile for UK local businesses: who qualifies, set-up, verification, service areas, reviews and how to rank on the map.",
+    published: "2026-11-25",
+    updated: "2026-11-25",
+    readingMinutes: 9,
+    tags: ["Local SEO", "Google", "Small Business", "Marketing", "Food Business"],
+    lede: "When someone nearby searches for what you do, the first thing they often see isn’t a website at all. It’s a map with three businesses underneath it, each with a star rating, opening hours and a button to call or get directions. That listing is your Google Business Profile. It’s free, it takes an afternoon to set up properly, and for a lot of local businesses it brings in more enquiries than anything else online. This is how to get it right.",
+    body: [
+      { type: "h2", text: "The Quick Answer" },
+      {
+        type: "p",
+        text: "A Google Business Profile is the free listing that shows your business on Google Search and Google Maps. If you serve customers face to face, at your premises or at theirs, you should almost certainly have one. The short version of doing it well:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Check you’re eligible.** Google wants businesses that meet customers in person during their stated hours.",
+          "**Claim or create your profile** using the business’s own Google Account, not one belonging to a designer or agency.",
+          "**Verify it.** Google picks the method, often a short video, and review can take up to five business days.",
+          "**Fill in everything**: the right category, accurate hours, your service area, photos and a link to your website.",
+          "**Ask every happy customer for a review**, and reply to the ones you get, good and bad.",
+          "**Keep it current.** Holiday hours, new products and fresh photos all tell Google and customers that you’re open and active.",
+        ],
+      },
+
+      { type: "h2", text: "What a Google Business Profile Actually Does" },
+      {
+        type: "p",
+        text: "Your profile is the information panel Google shows about your business. It appears when someone searches your name, and it can also appear in the map results when someone searches for something like “meal prep near me” or “bakery in Whitley Bay”. From there people can call you, get directions, read reviews, see photos, check whether you’re open and click through to your website.",
+      },
+      {
+        type: "p",
+        text: "A profile is brilliant at getting you noticed, but it can’t take an order, check a delivery postcode or sell a subscription. The best set-ups treat the profile as the shop window and the website as the shop. If the window is great and the shop is hard to use, you lose the sale at the door.",
+      },
+
+      { type: "h2", text: "Are You Eligible?" },
+      {
+        type: "p",
+        text: "This catches people out more than anything else. Google’s eligibility guidelines say a business needs to make in-person contact with customers during the hours it lists. In practice, that splits businesses into three types:",
+      },
+      {
+        type: "table",
+        caption: "Based on Google’s eligibility and service area guidance. If you’re unsure which you are, read Google’s own wording before you set up.",
+        head: ["Type", "What it means", "Examples"],
+        rows: [
+          ["Storefront", "Customers come to you at a staffed address", "A café, a shop, a salon, a kitchen with a collection counter"],
+          ["Service-area business", "You go to customers or deliver, but don’t serve them at your address", "A plumber, a cleaner, a delivery-only meal prep kitchen"],
+          ["Hybrid", "Customers can visit you, and you also deliver or travel to them", "A restaurant that also delivers, a farm shop with a veg box round"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Some businesses can’t have a profile at all. Google lists online-only businesses and brands, lead generation companies, rental properties and P.O. box or remote mailbox addresses among those that aren’t eligible. So if you only sell online and post everything nationally, a profile isn’t for you, and your effort is better spent on your website and search. Google does allow delivery-only food businesses, with some conditions, which matters for a lot of meal prep kitchens I work with.",
+      },
+      {
+        type: "callout",
+        title: "Don’t invent an address",
+        text: "Using a virtual office, a mailbox or a friend’s address to get a pin on the map breaks Google’s rules and can get the profile suspended. If customers don’t visit you, set yourself up as a service-area business instead. It’s allowed, and it works.",
+      },
+
+      { type: "h2", text: "Setting It Up Step by Step" },
+      {
+        type: "p",
+        text: "Before you start, search for your business name on Google Maps. There may already be a profile, created by Google or by a customer, waiting to be claimed. If there is, claim it rather than making a second one, because duplicates confuse Google and split your reviews.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Use the right Google Account.** Ideally one tied to a business email you control. If someone else sets it up for you, make sure you’re the owner and they’re added as a manager.",
+          "**Enter your business name exactly as customers see it**, on your signage, packaging and paperwork. Resist adding keywords or your town to the name.",
+          "**Pick your primary category carefully.** It’s one of the strongest signals of what you do. Choose the most specific one that fits, then add a few secondary categories.",
+          "**Add your address or service area**, depending on which type of business you are.",
+          "**Add your phone number and website.** Use your main number and your own website, not a link to a third-party ordering page if you can avoid it.",
+          "**Set your hours**, including any times you’re only open for collection.",
+          "**Verify the profile** and wait for Google to confirm it.",
+        ],
+      },
+
+      { type: "h2", text: "Verification: What to Expect" },
+      {
+        type: "p",
+        text: "Google needs to know you really run the business before your profile goes fully live. You don’t get to pick the method. Google offers whichever options suit your business type, location and hours, and sometimes asks for more than one.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Video:** Google’s recommended option where it’s available. You record or join a call during your opening hours, showing your location and something that proves you manage the business, such as signage, equipment or paperwork.",
+          "**Phone or text:** a code sent to the business number. It needs to reach a real phone, as automated answering systems won’t pass the code on.",
+          "**Email:** a code sent to an address shown on screen.",
+          "**Postcard:** not available to every business. Most cards arrive within 14 days and the code expires after 30.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Once you’ve done your part, Google says its review can take up to five business days, occasionally longer. The most common way to slow things down is to start editing your name, address or category while you wait, or to request a new postcard before the first has had time to arrive. Set the details correctly first, then leave it alone until you hear back.",
+      },
+
+      { type: "h2", text: "Service Areas for Delivery Businesses" },
+      {
+        type: "p",
+        text: "If you deliver, the service area is where you tell Google where you go. You can add up to 20 areas, using towns, cities or postcodes, but not a simple radius around your base. Google also asks that the whole area stays within roughly two hours’ drive of where you operate from.",
+      },
+      {
+        type: "p",
+        text: "If customers never come to your premises, remove the address from the profile and show only the service area. A delivery-only kitchen in Wallsend, for example, might list Newcastle, North Tyneside, South Tyneside and Sunderland rather than a pin on an industrial estate that nobody should turn up to. A hybrid business, such as a takeaway that also delivers, can show both its address and its service area.",
+      },
+      {
+        type: "callout",
+        title: "Match it to your website",
+        text: "Your service area on Google and the postcodes your website accepts should agree. If the profile says you deliver to Durham and the postcode check on your site says no, that customer won’t trust either. It’s one of the reasons I build a postcode check into delivery sites from the start.",
+      },
+
+      { type: "h2", text: "How to Show Up Higher in the Map Results" },
+      {
+        type: "p",
+        text: "Google says local results are mainly decided by three things. **Relevance** is how well your profile matches what someone searched for. **Distance** is how far you are from the person searching, or from the place they named. **Prominence** is how well known your business is, which takes in your reviews and rating and how much the rest of the web mentions and links to you.",
+      },
+      {
+        type: "p",
+        text: "You can’t change where your customers are standing, so distance is out of your hands. Google is also clear that there’s no way to pay for a better local ranking. What you can influence is relevance and prominence:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Complete every section.** Categories, hours, attributes, products or services and a description in plain words about what you do.",
+          "**Keep your hours right**, including bank holidays and Christmas. Wrong hours lead to frustrated customers and bad reviews.",
+          "**Add real photos regularly**: your food, your premises, your team, your packaging. Phone photos taken in good light are fine.",
+          "**Build up reviews steadily.** A slow, steady flow of genuine reviews looks far healthier than a burst followed by silence.",
+          "**Have a good website behind it.** Your site should say clearly what you do and where you do it, with the same name, address and phone number as your profile.",
+          "**Get mentioned locally.** Local press, suppliers, markets and business groups linking to your site all add to how well known you are.",
+        ],
+      },
+
+      { type: "h2", text: "Reviews: Getting Them and Replying to Them" },
+      {
+        type: "p",
+        text: "Reviews do two jobs. They help you appear in the first place, and they’re often what makes someone choose you over the business listed above you. Most happy customers will leave one if you ask at the right moment and make it easy.",
+      },
+      {
+        type: "p",
+        text: "Google lets you share a review link or a QR code straight from your profile. Put the link in your order confirmation email, on a card in the box, or in a follow-up message a day after delivery. Customers need to be signed in to a Google Account to post a review, though they can make one with any email address.",
+      },
+      {
+        type: "callout",
+        title: "Never pay for reviews",
+        text: "Google treats offering a discount, freebie or any other reward in return for a review as fake and misleading content, and it’s strictly prohibited. That includes “10% off your next order for a review”. Ask everyone, reward no one, and you’re fine.",
+      },
+      {
+        type: "p",
+        text: "Reply to your reviews, all of them if you can. Google recommends keeping replies short, friendly and specific, and never using them to push offers. With a negative review, stay calm, apologise where it’s deserved, take responsibility for what was in your control and offer to put it right. Never share the customer’s details or get personal. A fair, polite reply is read by every future customer, and Google notes it can even encourage the reviewer to update what they wrote.",
+      },
+
+      { type: "h2", text: "Your Monthly Checklist" },
+      {
+        type: "p",
+        text: "A profile isn’t something you set up once and forget. Twenty minutes a month keeps it healthy:",
+      },
+      {
+        type: "list",
+        items: [
+          "Reply to any new reviews.",
+          "Add a few new photos, ideally of this month’s products or menu.",
+          "Check your hours, and add special hours for any holidays coming up.",
+          "Post an update about anything new: a menu change, a new delivery area, a seasonal box.",
+          "Check that the website link, phone number and service area are still right.",
+          "Glance at your profile’s performance figures to see how many people called, clicked or asked for directions.",
+        ],
+      },
+
+      { type: "h2", text: "Common Mistakes" },
+      {
+        type: "list",
+        items: [
+          "**Letting a designer or agency own the profile.** If you fall out or they disappear, getting it back is slow. You should be the owner.",
+          "**Stuffing keywords into the business name.** It might help briefly, but it risks suspension and looks spammy to customers.",
+          "**Two profiles for one business**, often after a move or a rebrand. Merge or remove duplicates.",
+          "**Out-of-date hours**, especially over Christmas and bank holidays.",
+          "**Linking to a slow or confusing website.** All that visibility is wasted if people bounce off the site.",
+        ],
+      },
+
+      { type: "h2", text: "What I’d Recommend" },
+      {
+        type: "p",
+        text: "If you serve customers locally, set up your Google Business Profile this week. It costs nothing, and for many small businesses it’s the single most useful thing they can do online after having a good website. Get eligible the honest way, fill in every section, set a sensible service area, and make asking for reviews part of how every order ends.",
+      },
+      {
+        type: "p",
+        text: "Then make sure the website it points to can finish the job. On my Stay package, search is part of the build, so your site and your profile tell Google the same story about what you sell and where. You can see how that plays out on [my work page](/work), read more about working with a [web designer in Newcastle](/web-designer-newcastle), or [book a free consultation](/book) and I’ll look at your profile and your site together and tell you honestly what would make the biggest difference.",
+      },
+    ],
+    sources: [
+      {
+        label: "Google Business Profile Help: Business eligibility and ownership guidelines",
+        url: "https://support.google.com/business/answer/13763036",
+      },
+      {
+        label: "Google Business Profile Help: Manage your service areas",
+        url: "https://support.google.com/business/answer/9157481",
+      },
+      {
+        label: "Google Business Profile Help: Verify your business on Google",
+        url: "https://support.google.com/business/answer/7107242",
+      },
+      {
+        label: "Google Business Profile Help: How to improve your local ranking on Google",
+        url: "https://support.google.com/business/answer/7091?hl=en-GB",
+      },
+      {
+        label: "Google Business Profile Help: Tips to get more reviews",
+        url: "https://support.google.com/business/answer/3474122",
+      },
+    ],
+  },
+  {
     slug: "selling-subscriptions-on-shopify",
     title: "Selling Subscriptions on Shopify: How It Works",
     description:
